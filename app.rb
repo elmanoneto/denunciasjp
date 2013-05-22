@@ -12,7 +12,6 @@ enable :session
 set :logging, true
 
 #PRINCIPAL
-
 get '/' do
 	haml :index
 end
@@ -31,7 +30,6 @@ post '/busca' do
 end
 
 #DENÚNCIAS
-
 get '/denuncias' do
 	@denuncias = Denuncia.all(:order => [:id.desc])
 	@denuncias.to_json
@@ -70,6 +68,23 @@ delete '/denuncias/:id' do
 	@denuncia.destroy
 end
 
+#USUÁRIOS
+post '/usuarios' do
+end
+
+get '/usuarios' do
+end
+
+get '/usuarios/:id' do
+end
+
+put '/usuarios/:id' do
+end
+
+delete '/usuarios/:id' do
+end
+
+#ERROS
 not_found do
 	haml :'404', :layout => false
 end

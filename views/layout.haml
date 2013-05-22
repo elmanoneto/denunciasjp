@@ -10,9 +10,9 @@
 	%body
 		#header
 			%img{:src => "img/denunciasjp.png", :title => 'DenúnciasJP', :alt => 'DenúciasJP'}
-			%form{:name => "busca", :method => "post", :class => "form-busca", :action => 'busca'}
-				%input{:type => "text", :placeholder => "Pesquisar, ex: bairro, rua, denúncia..", :name => 'busca'}
-				<button type="submit">buscar</button>
+			%form{:name => "busca", :method => "post", :class => "form-busca", :action => 'busca', :id => 'busca'}
+				%input{:type => "text", :placeholder => "Pesquisar, ex: bairro, rua, denúncia..", :name => 'busca', :class => 'input-busca'}
+				<button class="btn-busca" type="submit">buscar</button>
 			%ul
 				%li{:class => 'home', :title => 'Página Inicial'} <a href="http://localhost:4567/">Página Inicial</a>
 				%li{:class => 'denuncia', :title => 'Registrar Denúncia'} <form name="formdenuncia" action="denuncias" method="POST" class="denuncia"><a href="javascript:document.formdenuncia.submit();" onclick="form.submit()">Registar Denúncia</a></form>

@@ -422,12 +422,12 @@ body{
 	text-indent: 4px;
 }
 
-.principal .form-add-denuncia{
+.principal .form-add{
 	float: left;
 	margin: 10px 0 0 0;
 }
 
-.principal .form-add-denuncia input{
+.principal .form-add input{
 	font-family: 'Open Sans', sans-serif;
 	text-indent: 5px;
 	color: gray;
@@ -440,7 +440,7 @@ body{
 	margin-bottom: 10px;
 }
 
-.principal .form-add-denuncia .titulo{
+.principal .form-add .titulo{
 	font-family: 'Open Sans', sans-serif;
 	text-indent: 5px;
 	border: 1px #cecece solid;
@@ -454,7 +454,7 @@ body{
 	margin-left: 11px;
 }
 
-.principal .form-add-denuncia textarea{
+.principal .form-add textarea{
 	font-family: 'Open Sans', sans-serif;
 	text-indent: 5px;
 	border: 1px #cecece solid;
@@ -468,7 +468,7 @@ body{
 	margin-bottom: 10px;
 }
 
-.principal .form-add-denuncia input{
+.principal .form-add input{
 	border: 1px #cecece solid;
 	height: 30px;
 	width: 449px;
@@ -477,7 +477,7 @@ body{
 	margin-bottom: 10px;
 }
 
-.principal .form-add-denuncia .file{
+.principal .form-add .file{
 	font-size: 10pt;
 	height: 30px;
 	width: 300px;
@@ -487,7 +487,7 @@ body{
 	margin-bottom: 10px;
 }
 
-.principal .form-add-denuncia button{
+.principal .form-add button{
 	background-color: #848484;
 	border: none;
 	font-family: 'Open Sans', sans-serif;
@@ -497,7 +497,16 @@ body{
 	border-radius: 5px;
 }
 
-.principal .form-add-denuncia .contador{
+.principal .form-add .contador{
 	float: right;
 	margin-top: 7px;
+}
+
+.principal .erros{
+	background-color: #FFE4E1;
+	margin: 5px 0 0 0;
+	float: left;
+	color: red;
+	padding: 4px;
+	width: 700px;
 }
