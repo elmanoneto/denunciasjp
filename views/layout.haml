@@ -1,0 +1,52 @@
+!!!
+%html{:lang => 'pt-br'}
+	%head
+		%title DenúnciasJP
+		%meta{:charset => 'utf-8'}
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+		%link(rel="stylesheet" href="/css/style.css")
+		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery.js"></script>
+	%body
+		#header
+			%img{:src => "img/denunciasjp.png", :title => 'DenúnciasJP', :alt => 'DenúciasJP'}
+			%form{:name => "busca", :method => "post", :class => "form-busca", :action => 'busca'}
+				%input{:type => "text", :placeholder => "Pesquisar, ex: bairro, rua, denúncia..", :name => 'busca'}
+				<button type="submit">buscar</button>
+			%ul
+				%li{:class => 'home', :title => 'Página Inicial'} <a href="http://localhost:4567/">Página Inicial</a>
+				%li{:class => 'denuncia', :title => 'Registrar Denúncia'} <form name="formdenuncia" action="denuncias" method="POST" class="denuncia"><a href="javascript:document.formdenuncia.submit();" onclick="form.submit()">Registar Denúncia</a></form>
+				%li{:class => 'cadastre-se', :title => 'Cadastre-se'} <a href=#">Cadastre-se</a>
+				%li{:class => 'como-funciona', :title => "Como Funciona"} <a href="como-funciona">Como Funciona</a>
+			.barra
+				%img(src="img/barra-cima.jpg")
+		#content
+			=yield
+			.menu
+				.areadousuario
+					.titulo Área do Usuário
+					%form{:name => 'login', :method => 'post', :class => 'form-login', :action => 'login'}
+						%input{:type => 'text', :placeholder => 'Usuário'}
+						%input{:type => 'password', :placeholder => 'Senha'}
+						<button type="submit">Login</button>
+						%p Esqueci a senha
+						%img{:src => "img/login-facebook.png", :title => 'Login com o Facebook', :alt => 'Login com o Facebook'}
+				.usuarios-destaques
+					.titulo Usuários em Destaque
+					%ol
+						%li Elmano
+						%li Neto
+						%li Elmano
+						%li Neto
+						%li Elmano
+						%li Neto
+						%li Elmano
+						%li Neto
+		#footer
+			%img{:src => "img/barra-baixo.jpg", :title => 'DenúnciasJP'}
+			%ul
+				%li <a href="http://localhost:4567/">Início</a>
+				%li <a href="http://localhost:4567/">Sobre</a>
+				%li <a href="http://localhost:4567/">Contato</a>
+			- year = Date.today.strftime("%Y")
+			%p= '© Copyright ' + year + ' • DenúnciasJP	'

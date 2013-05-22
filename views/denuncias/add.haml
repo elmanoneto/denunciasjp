@@ -1,0 +1,19 @@
+.principal
+	.titulo-registrar-denuncia Registrar Denúncia
+	.form-add-denuncia
+		%form{:action => 'denuncias', :method => 'post', :name => 'denuncia',:enctype => 'multipart/form-data'}
+			%label Resumo
+			%input{:type => 'text', :class => 'titulo', :name => 'denuncia[resumo]'}
+			.contador
+			%br
+			%label Endereço
+			%input{:type => 'text', :name => 'denuncia[endereco]'}
+			%br
+			%label Descrição
+			%br
+			%textarea{:name => 'denuncia[descricao]'}
+			%br
+			%label Foto
+			%input{:type => 'file', :class => 'file', :name => 'denuncia[foto]'}
+			%br
+			%button{:type =>'Submit'} + Registrar

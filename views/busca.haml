@@ -1,0 +1,10 @@
+.principal
+	.titulo-busca Resultado da Busca
+	.conteudo
+		-if @denuncias.length > 0
+			- @denuncias.each do |denuncia|
+				.resultado-busca
+					.titulo= denuncia.titulo
+					.autor= denuncia.autor
+		-else
+			%p Nenhum resultado encontrado.

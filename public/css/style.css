@@ -1,0 +1,503 @@
+body{
+	background-image: url('../img/background.png');
+	background-attachment: fixed;
+	background-repeat: repeat-x;
+	background-color: white;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12pt;
+	margin: 0 auto;
+	padding: 0;
+	text-align: center;
+	margin-top: 30px;
+}
+
+.notfound{
+	margin-top: 30px;
+}
+
+#header{
+	margin: 0 auto;
+	width: 1005px;
+	position: relative;	
+}
+
+#header img{
+	float: left;
+	position: relative;	
+}
+
+#header .form{
+	z-index: 10;
+}
+
+#header .form-busca input{
+	width: 500px;
+	border-radius: 10px;
+	border: 5px #e8e8e8 solid;
+	height: 40px;
+	outline: none;
+	float: left;
+	margin: 10px 0 0 62px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14pt;
+	color: gray;
+	text-indent: 5px;
+	background-image: url('../img/lupa.png');
+	background-repeat: no-repeat;
+	background-position: 460px;
+	z-index: 10;
+}
+
+#header .form-busca button{
+	float: left;	
+	border-radius: 10px;
+	border: none;
+	width: 100px;
+	height: 50px;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14pt;
+	background-color: #848484;
+	color: #fff;
+	margin: 10px 0 0 14px;
+}
+
+#header ul {
+	width: 1005px;
+	float: left;
+	font-size: 12pt;
+	z-index: 30;
+	list-style-type: none;
+	padding-bottom: 8px;
+}
+
+#header li{
+	width: 140px;
+	float: left;
+	padding: 1px;
+	margin: 0 20px 0 -39px;
+}
+
+#header li.home{
+	background: url('../img/icone-home.png') no-repeat 0px 0px;
+	padding-right: 40px;
+}
+
+#header li.denuncia{
+	background: url('../img/icone-denuncia.png') no-repeat 0px 0px;
+	padding-right: 60px;
+	padding-left: 22px;
+}
+
+#header li.cadastre-se{
+	background: url('../img/icone-cadastro.png') no-repeat 0px 0px;
+	padding-right: 25px;
+	padding-left: 0px;
+}
+
+#header li.como-funciona{
+	background: url('../img/icone-como-funciona.png') no-repeat 10px 0px;
+	padding-right: 40px;
+	padding-left: 22px;
+}
+
+#header form.denuncia{
+	width: 200px;
+}
+
+#header button{
+	font-family: 'Open Sans', sans-serif;
+	background-color: transparent;
+	border: none;
+	font-size: 12pt;
+	margin-right: 50px;
+
+}
+
+#header button a:hover{
+	text-decoration: underline;
+}
+
+#header li a{
+	text-decoration: none;
+	color: black;
+	float: left;
+	width: 140px;
+}
+
+#header li a:active{
+	text-decoration: none;
+	color: black;
+}
+
+#header li a:hover{
+	color: black;
+	text-decoration: underline;
+}
+
+.barra img{
+	float: left;
+	margin: -10px 0 0 0;
+	padding-bottom: 15px;
+}
+
+#content{
+	width: 1005px;
+	margin: 0 auto;
+}
+
+#content .menu{
+	width: 100px;
+	border: none;
+	float: right;
+}
+
+#footer{
+	padding: 0;
+	margin: 0 auto;
+	width: 1005px;
+	text-align: center;
+	font-size: 10pt;
+	z-index: 0;
+}
+
+#footer img{
+	padding-top: 10px;
+}
+
+#footer ul{
+	position: relative;
+	float: left;
+	list-style-type: square;
+	text-align: left;
+	bottom: 30px;
+	right: 40px;
+}
+
+#footer p{
+	position: relative;
+	float: left;
+	text-align: center;
+	bottom: 10px;
+	right: 210px;
+}
+
+#footer li{
+	display: inline;
+	color: black;
+	padding: 10px;
+}
+
+#footer a{
+	color: black;
+}
+
+#footer a:active{
+	color: black;
+}
+
+.principal {
+	width: 700px;
+	float: left;
+	margin-bottom: 30px;	
+}
+
+.areadousuario {
+	width: 280px;
+	float: right;	
+	text-align: left;
+}
+
+.menu .titulo{
+	font-size: 14pt;
+	border-left: 6px gray solid;
+	text-indent: 4px;
+	background-image: url('../img/transversal.png');
+}
+
+.areadousuario form{
+	margin: 5px 0 0 0px;
+}
+
+.areadousuario input{
+	border: 1px #cecece solid;
+	border-radius: 5px;
+	outline: none;
+	width: 255px;
+	height: 30px;
+	text-indent: 5px;
+	font-family: 'Open Sans', sans-serif;
+	margin-bottom: 5px;
+}
+
+.areadousuario button{
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14pt;
+	background-color: #848484;
+	color: #fff;
+	border: none;
+	border-radius: 5px;
+	width: 100px;
+	float: left;
+}
+
+.areadousuario p{
+	float: left;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12pt;
+	margin: 5px 0 0 20px;
+}
+
+.areadousuario img{
+	margin-top: 5px;
+}
+
+.usuarios-destaques{
+	width: 280px;
+	float: right;	
+	padding: 5px;
+	text-align: left;
+	font-size: 14pt;
+	text-indent: 4px;
+	margin: 10px 0 0 0;
+}
+
+.usuarios-destaques ol{
+	font-size: 11pt;
+	margin: 0 15px 0 -13px;
+}
+
+.usuarios-destaques li{
+
+}
+
+.blocopopulares {
+	width: 780px;
+	float: left;
+	font-size: 11pt;
+	height: auto;
+	text-indent: 4px;
+	margin-right: 25px;
+	margin-top: 15px;
+}
+
+.blocopopulares .titulo{
+	width: 690px;
+	padding: 5px;
+	float: left;	
+	background-image: url('../img/transversal.png');
+	font-size: 16pt;
+	border-left: 6px blue solid;
+	height: auto;
+	text-indent: 4px;
+
+}
+
+.blocopopulares .denuncia-sem-cor{
+	float: left;
+}
+
+.blocopopulares .autor{
+	color: gray;
+}
+
+.blocopopulares .denuncia-cor{
+	margin-top: 1px;
+	width: 705px;
+	float: left;
+	border-bottom: 1px #cecece dotted;
+}
+
+.blocopopulares .titulo-denuncia{
+	color: black;
+}
+
+.blocodenuncias{
+	width: 700px;
+	float: left;
+	font-size: 11pt;
+	height: auto;
+	text-indent: 4px;
+}
+
+.blocodenuncias .mais{
+	float: right;
+	margin-top: 3px;
+}
+
+.blocodenuncias .mais a:active{
+	color: black;
+	float: right;
+	margin-top: 3px;
+}
+
+.blocodenuncias .mais a{
+	color: black;
+	float: right;
+	margin-top: 3px;
+}
+
+.blocodenuncias .red{
+	color: red;
+}
+
+.blocodenuncias .autor{
+	color: gray;
+}
+
+.blocodenuncias .denuncia-cor{
+	background-color: #eaeaea;
+	margin-top: 1px;
+	width: 705px;
+	float: left;
+}
+
+.blocodenuncias .denuncia-sem-cor{
+	border-bottom: 1px #cecece dotted;
+}
+
+.blocodenuncias .titulo{
+	width: 690px;
+	float: left;
+	padding: 5px;
+	background-image: url('../img/transversal.png');
+	font-size: 16pt;
+	border-left: 6px red solid;
+	height: auto;
+	text-indent: 4px;
+}
+
+.blocodenuncias .titulo-denuncia{
+	color: black;
+}
+
+.principal{
+	text-align: left;
+	float: left;
+}
+
+.principal .titulo-busca{
+	background-image: url('../img/transversal.png');
+	width: 690px;
+	font-size: 16pt;
+	border-left: 6px green solid;
+	padding: 5px;
+	text-indent: 4px;
+}
+
+.principal .titulo-como-funciona{
+	background-image: url('../img/transversal.png');
+	width: 690px;
+	font-size: 16pt;
+	border-left: 6px pink solid;
+	padding: 5px;
+	text-indent: 4px;
+}
+
+.principal .conteudo{
+	float: left;
+	position: relative;
+	bottom: 10px;
+}
+
+.principal .resultado-busca{
+	text-indent: 8px;
+	float: left;
+	border-bottom: 1px #cecece dotted;
+	width: 700px;
+	margin-top: 18px;
+	padding-bottom: 5px;
+	margin-bottom: -14px;
+}
+
+.principal .resultado-busca .titulo{
+	color: green;
+}
+
+.principal .titulo-registrar-denuncia{
+	background-image: url('../img/transversal.png');
+	width: 690px;
+	font-size: 16pt;
+	border-left: 6px brown solid;
+	padding: 5px;
+	text-indent: 4px;
+}
+
+.principal .form-add-denuncia{
+	float: left;
+	margin: 10px 0 0 0;
+}
+
+.principal .form-add-denuncia input{
+	font-family: 'Open Sans', sans-serif;
+	text-indent: 5px;
+	color: gray;
+	font-size: 12pt;
+	border: 1px #cecece solid;
+	height: 30px;
+	width: 500px;
+	border-radius: 4px;
+	outline: none;
+	margin-bottom: 10px;
+}
+
+.principal .form-add-denuncia .titulo{
+	font-family: 'Open Sans', sans-serif;
+	text-indent: 5px;
+	border: 1px #cecece solid;
+	font-size: 12pt;
+	color: gray;
+	height: 30px;
+	width: 449px;
+	border-radius: 4px;
+	outline: none;
+	margin-bottom: 10px;
+	margin-left: 11px;
+}
+
+.principal .form-add-denuncia textarea{
+	font-family: 'Open Sans', sans-serif;
+	text-indent: 5px;
+	border: 1px #cecece solid;
+	font-size: 12pt;
+	color: gray;
+	border: 1px #cecece solid;
+	height: 150px;
+	width: 518px;
+	border-radius: 4px;
+	outline: none;
+	margin-bottom: 10px;
+}
+
+.principal .form-add-denuncia input{
+	border: 1px #cecece solid;
+	height: 30px;
+	width: 449px;
+	border-radius: 4px;
+	outline: none;
+	margin-bottom: 10px;
+}
+
+.principal .form-add-denuncia .file{
+	font-size: 10pt;
+	height: 30px;
+	width: 300px;
+	border: none;
+	color: black;
+	outline: none;
+	margin-bottom: 10px;
+}
+
+.principal .form-add-denuncia button{
+	background-color: #848484;
+	border: none;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12pt;
+	color: white;
+	padding: 10px;
+	border-radius: 5px;
+}
+
+.principal .form-add-denuncia .contador{
+	float: right;
+	margin-top: 7px;
+}
