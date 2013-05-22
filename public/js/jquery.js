@@ -12,12 +12,10 @@ $('document').ready(function () {
 		$('.contador').html(contador - tam);
 	});
 
-	$('#busca').submit(function(){
+	$('#busca').submit(function () {
 		var valor = $('.input-busca').val();
-		if(valor == ""){
+		if (valor === "") {
 			return false;
-		}else{
-			return true;
 		}
 	});
 });

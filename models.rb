@@ -12,12 +12,12 @@ class Denuncia
 
 	property :resumo,	String,  :required => true,
 		:messages => {
-			:presence => 'Resumo é obrigatório.'
+			:presence => 'Resumo é obrigatório'
 		}
 
 	property :descricao,	Text,  :required => true,
 		:messages => {
-			:presence => 'Descrição é obrigatória.'
+			:presence => 'Descrição é obrigatória'
 		}
 
 	property :endereco,	String
