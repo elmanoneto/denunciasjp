@@ -1,5 +1,9 @@
 .principal
 	.titulo-registrar-denuncia Registrar Denúncia
+	.erros
+		- if session[:errors]
+			- session[:errors].each do |e|
+				.p= e.delete '["]', '"[]"'
 	.form-add-denuncia
 		%form{:action => 'denuncias', :method => 'post', :name => 'denuncia',:enctype => 'multipart/form-data'}
 			%label Resumo

@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 require 'sinatra'
 require 'rubygems'
 require 'haml'
@@ -6,7 +8,7 @@ require 'dm-migrations'
 require File.dirname(__FILE__) + '/models.rb'
 require 'pp'
 
-enable :sessions
+enable :session
 set :logging, true
 
 #PRINCIPAL
@@ -43,13 +45,18 @@ end
 post '/denuncias' do
 	unless params[:denuncia].nil?
 		denuncia = params[:denuncia]
+
 		@denuncia = Denuncia.create(
 			:resumo => denuncia[:resumo],
 			:endereco => denuncia[:endereco],
 			:descricao => denuncia[:descricao],
 		)
-		@denuncia.save
-		redirect to ('/')
+
+		if @denuncia.save
+			puts 'Salvou'
+		else
+			session[:errors] = @denuncia.errors.values.map{|e| e.to_s}
+		end
 	end
 	haml :'denuncias/add'
 end
@@ -59,7 +66,8 @@ put '/denuncias/:id' do
 end
 
 delete '/denuncias/:id' do
-
+	@denuncia = Denuncia.get(params[:id])
+	@denuncia.destroy
 end
 
 not_found do
