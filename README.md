@@ -1,4 +1,4 @@
 denunciasjp
 ===========
 
-Projeto da disciplinas Projeto de Software Avançado 1
+Projeto da disciplinas Projeto Avançado de Software 1
