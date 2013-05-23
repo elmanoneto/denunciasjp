@@ -1,23 +1,24 @@
 .principal
 	.titulo-registrar-denuncia Registrar Denúncia
+	- pp params[:denuncia]
 	- if session[:errors]
 		.erros
 			- session[:errors].each do |e|
 				.p= e.delete '["]', '"[]"'
 	.form-add
-		%form{:action => 'denuncias', :method => 'post', :name => 'denuncia',:enctype => 'multipart/form-data'}
+		%form{:action => 'denuncias', :method => 'post',:enctype => 'multipart/form-data'}
 			%label Resumo
-			%input{:type => 'text', :class => 'titulo', :name => 'denuncia[resumo]'}
+			%input{:type => 'text', :class => 'titulo', :name => 'resumo', :value => params[:resumo] }
 			.contador
 			%br
 			%label Endereço
-			%input{:type => 'text', :name => 'denuncia[endereco]'}
+			%input{:type => 'text', :name => 'endereco', :value => params[:endereco]}
 			%br
 			%label Descrição
 			%br
-			%textarea{:name => 'denuncia[descricao]'}
+			%textarea{:name => 'denuncia'} #{params[:denuncia]}
 			%br
 			%label Foto
-			%input{:type => 'file', :class => 'file', :name => 'denuncia[foto]'}
+			%input{:type => 'file', :class => 'file', :name => 'foto', :value => params[:foto]}
 			%br
 			%button{:type =>'Submit'} + Registrar

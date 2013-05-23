@@ -460,13 +460,12 @@ body{
 	margin-left: 11px;
 }
 
-.principal .form-add textarea{
+.principal .form-add  textarea{
 	font-family: 'Open Sans', sans-serif;
 	text-indent: 5px;
 	border: 1px #cecece solid;
 	font-size: 12pt;
 	color: gray;
-	border: 1px #cecece solid;
 	height: 150px;
 	width: 518px;
 	border-radius: 4px;

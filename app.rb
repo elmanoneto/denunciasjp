@@ -42,12 +42,10 @@ end
 
 post '/denuncias' do
 	unless params[:denuncia].nil?
-		denuncia = params[:denuncia]
-
 		@denuncia = Denuncia.create(
-			:resumo => denuncia[:resumo],
-			:endereco => denuncia[:endereco],
-			:descricao => denuncia[:descricao],
+			:resumo => params[:resumo],
+			:endereco => params[:endereco],
+			:descricao => params[:descricao],
 		)
 
 		if @denuncia.save
