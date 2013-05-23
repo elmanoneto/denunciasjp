@@ -1,5 +1,5 @@
 body{
-	background-image: url('../img/background.png');
+	background-image: url('../img/bckg.png');
 	background-attachment: fixed;
 	background-repeat: repeat-x;
 	background-color: white;
@@ -12,7 +12,13 @@ body{
 }
 
 .notfound{
-	margin-top: 30px;
+	margin-top: 20px;
+	font-size: 20pt;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.404{
+	margin-top: 80px;
 }
 
 #header{

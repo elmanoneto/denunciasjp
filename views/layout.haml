@@ -12,7 +12,7 @@
 		<script type="text/javascript" src="js/jquery.js"></script>
 	%body
 		#header
-			%img{:src => "img/denunciasjp.png", :title => 'DenúnciasJP', :alt => 'DenúciasJP'}
+			<a href="http://localhost:4567/" title="DenúnciasJP" alt="DenúnciasJP"><img src="img/denunciasjp.png" /></a>
 			%form{:name => "busca", :method => "post", :class => "form-busca", :action => 'busca', :id => 'busca'}
 				%input{:type => "text", :placeholder => "Pesquisar, ex: bairro, rua, denúncia..", :name => 'busca', :class => 'input-busca'}
 				<button class="btn-busca" type="submit">buscar</button>

@@ -14,6 +14,8 @@ class Denuncia
 		:messages => {
 			:presence => 'Resumo é obrigatório'
 		}
+	validates_length_of :resumo, :max => 60, 
+		:message => 'Resumo excedeu o limite de caracteres'
 
 	property :descricao,	Text,  :required => true,
 		:messages => {
@@ -25,8 +27,6 @@ class Denuncia
 	property :foto,	String
 
 	property :data,	DateTime
-
-	validates_length_of :resumo, :max => 60
 end
 
 DataMapper.auto_upgrade!
