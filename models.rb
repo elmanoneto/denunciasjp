@@ -17,7 +17,7 @@ class Denuncia
 	validates_length_of :resumo, :max => 60, 
 		:message => 'Resumo excedeu o limite de caracteres'
 
-	property :descricao,	Text,  :required => true,
+	property :denuncia,	Text,  :required => true,
 		:messages => {
 			:presence => 'Descrição é obrigatória'
 		}
@@ -29,4 +29,17 @@ class Denuncia
 	property :data,	DateTime
 end
 
+class Comentario
+	include DataMapper::Resource
+
+	property :id,	Serial
+
+	property :autor,	String
+
+	property :data,	DateTime
+
+	property :comentario,	Text
+end
+
+# DataMapper.auto_migrate!
 DataMapper.auto_upgrade!

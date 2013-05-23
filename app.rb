@@ -45,7 +45,7 @@ post '/denuncias' do
 		@denuncia = Denuncia.create(
 			:resumo => params[:resumo],
 			:endereco => params[:endereco],
-			:descricao => params[:descricao],
+			:denuncia => params[:denuncia],
 		)
 
 		if @denuncia.save
