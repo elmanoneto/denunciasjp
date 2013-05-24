@@ -501,6 +501,8 @@ body{
 	color: white;
 	padding: 10px;
 	border-radius: 5px;
+	position: relative;
+	bottom: 20px;
 }
 
 .principal .form-add .contador{
@@ -515,4 +517,11 @@ body{
 	color: red;
 	padding: 4px;
 	width: 700px;
+}
+
+.principal .form-add .formato{
+	bottom: 15px;
+	position: relative;
+	font-size: 10pt;
+	font-weight: bold;
 }

@@ -6,39 +6,39 @@ DataMapper.setup(:default, 'mysql://root:qwe123@localhost/denunciasjp')
 class Denuncia
 	include DataMapper::Resource
 
-	property :id,	Serial
+	property :id, Serial
 
-	property :autor,	String
+	property :autor, String
 
-	property :resumo,	String,  :required => true,
+	property :resumo, String,  :required => true,
 		:messages => {
 			:presence => 'Resumo é obrigatório'
 		}
-	validates_length_of :resumo, :max => 60, 
-		:message => 'Resumo excedeu o limite de caracteres'
+		validates_length_of :resumo, :max => 60, 
+			:message => 'Resumo excedeu o limite de caracteres'
 
 	property :denuncia,	Text,  :required => true,
 		:messages => {
 			:presence => 'Descrição é obrigatória'
 		}
 
-	property :endereco,	String
+	property :endereco, String
 
-	property :foto,	String
+	property :foto, String
 
-	property :data,	DateTime
+	property :data, DateTime
 end
 
 class Comentario
 	include DataMapper::Resource
 
-	property :id,	Serial
+	property :id, Serial
 
-	property :autor,	String
+	property :autor, String
 
-	property :data,	DateTime
+	property :data, DateTime
 
-	property :comentario,	Text
+	property :comentario, Text
 end
 
 # DataMapper.auto_migrate!
