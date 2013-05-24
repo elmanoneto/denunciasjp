@@ -14,6 +14,7 @@ set :logging, true
 #PRINCIPAL
 get '/' do
 	haml :index
+	'index page'
 end
 
 get '/como-funciona' do
@@ -42,7 +43,6 @@ end
 
 post '/denuncias' do
 	unless params[:denuncia].nil?
-
 		if params[:foto].nil?
 			foto = nil
 		else
@@ -61,7 +61,7 @@ post '/denuncias' do
 		)
 
 		if @denuncia.save
-			puts "Salvou"
+
 		elsif  @denuncia.errors && defined? params[:foto][:type]
 			if params[:foto][:type] != "image/jpeg"
 				session[:errofoto] = "Formato de imagem inválido"

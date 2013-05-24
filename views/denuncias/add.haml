@@ -1,6 +1,5 @@
 .principal
 	.titulo-registrar-denuncia Registrar Denúncia
-	- pp params[:denuncia]
 	- if session[:errors]
 		.erros
 			- session[:errors].each do |e|
