@@ -14,7 +14,6 @@ set :logging, true
 #PRINCIPAL
 get '/' do
 	haml :index
-	'index page'
 end
 
 get '/como-funciona' do
