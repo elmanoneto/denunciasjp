@@ -41,5 +41,5 @@ class Comentario
 	property :comentario, Text
 end
 
-DataMapper.auto_migrate!
+# DataMapper.auto_migrate!
 DataMapper.auto_upgrade!

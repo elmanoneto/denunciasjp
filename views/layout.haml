@@ -8,8 +8,6 @@
 		%meta{:charset => 'utf-8'}
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 		%link(rel="stylesheet" href="/css/style.css")
-		<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
-		<script type="text/javascript" src="js/jquery.js"></script>
 	%body
 		#header
 			<a href="http://localhost:4567/" title="DenúnciasJP" alt="DenúnciasJP"><img src="img/denunciasjp.png" /></a>
@@ -53,3 +51,10 @@
 				%li <a href="http://localhost:4567/">Contato</a>
 			- year = Date.today.strftime("%Y")
 			%p= '© Copyright ' + year + ' • DenúnciasJP	'
+		%script{:src => 'js/jquery-1.9.1.min.js'}
+		%script{:src => 'js/underscore-min.js'}
+		%script{:src => 'js/backbone-min.js'}
+		%script{:src => 'js/json2.js'}
+		%script{:src => 'js/jquery.js'}
+		%script{:src => 'js/handlebars.js'}
+		%script{:src => 'js/app.js'}

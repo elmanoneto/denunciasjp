@@ -30,6 +30,11 @@ post '/busca' do
 end
 
 #DENÚNCIAS
+get '/denuncias/' do
+	@denuncias = Denuncia.all(:order => [:id.desc])
+	@denuncias.to_json
+end
+
 get '/denuncias' do
 	@denuncias = Denuncia.all(:order => [:id.desc])
 	@denuncias.to_json
