@@ -7,25 +7,19 @@ class Denuncia
 	include DataMapper::Resource
 
 	property :id, Serial
-
 	property :autor, String
-
 	property :resumo, String,  :required => true,
 		:messages => {
 			:presence => 'Resumo é obrigatório'
 		}
 		validates_length_of :resumo, :max => 60, 
 			:message => 'Resumo excedeu o limite de caracteres'
-
 	property :denuncia,	Text,  :required => true,
 		:messages => {
 			:presence => 'Descrição é obrigatória'
 		}
-
 	property :endereco, String
-
 	property :foto, String
-
 	property :data, DateTime
 end
 
@@ -33,11 +27,8 @@ class Comentario
 	include DataMapper::Resource
 
 	property :id, Serial
-
 	property :autor, String
-
 	property :data, DateTime
-
 	property :comentario, Text
 end
 

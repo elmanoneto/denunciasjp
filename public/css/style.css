@@ -327,11 +327,11 @@ body{
 
 .blocodenuncias .mais{
 	float: right;
-	margin-top: 10px;
-	background-color: gray;
+	margin-top: 5px;
 	border-radius: 4px;
 	font-size: 10pt;
 	padding: 2px;
+	color: black;
 }
 
 .blocodenuncias .mais a:active{
@@ -341,10 +341,13 @@ body{
 }
 
 .blocodenuncias .mais a{
-	color: white;
 	float: right;
 	margin-top: 3px;
 	text-decoration: none;
+}
+
+.blocodenuncias .mais a:hover{
+	text-decoration: underline;
 }
 
 .blocodenuncias .autor{

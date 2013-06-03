@@ -1,7 +1,6 @@
 # encoding: UTF-8
 
 require 'sinatra'
-require 'rubygems'
 require 'haml'
 require 'data_mapper'
 require 'dm-migrations'
@@ -27,6 +26,8 @@ post '/busca' do
 	
 	@denuncias = Denuncia.all(:denuncia.like => "%#{params[:busca]}%")
 	@denuncias.to_json
+
+	haml :busca
 end
 
 #DENÚNCIAS
