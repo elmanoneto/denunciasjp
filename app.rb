@@ -12,7 +12,7 @@ set :logging, true
 
 #PRINCIPAL
 get '/' do
-	haml :index
+	File.read(File.join('views', 'index.html'))
 end
 
 get '/como-funciona' do
@@ -20,22 +20,13 @@ get '/como-funciona' do
 end
 
 post '/busca' do
-	if params[:busca].empty?
-		redirect back
-	end
+	params[:busca].empty? redirect back
 	
 	@denuncias = Denuncia.all(:denuncia.like => "%#{params[:busca]}%")
 	@denuncias.to_json
-
-	haml :busca
 end
 
 #DENÚNCIAS
-get '/denuncias/' do
-	@denuncias = Denuncia.all(:order => [:id.desc])
-	@denuncias.to_json
-end
-
 get '/denuncias' do
 	@denuncias = Denuncia.all(:order => [:id.desc])
 	@denuncias.to_json
@@ -76,7 +67,6 @@ post '/denuncias' do
 			session[:errors] = @denuncia.errors.values.map{|e| e.to_s}
 		end
 	end
-	haml :'denuncias/add'
 end
 
 put '/denuncias/:id' do

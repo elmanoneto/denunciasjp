@@ -13,10 +13,6 @@ denunciasjp.models.Denuncia = Backbone.Model.extend({
 		endereco: null,
 		foto: null,
 		data: null
-	},
-
-	initialize: function  () {
-		console.log('Criando Denúncia');
 	}
 });
 
@@ -25,11 +21,15 @@ denunciasjp.collections.Denuncias = Backbone.Collection.extend({
 	url: '/denuncias'
 });
 
-var List = new denunciasjp.collections.Denuncias();
+var denuncias = new denunciasjp.collections.Denuncias();
+
+denuncias.create();
+
+denuncias.fetch();
 
 denunciasjp.router.Denuncia = new Backbone.Router.extend({
 	routes: {
-		'/denuncias': 'getDenuncias'
+		'/denuncias/': 'getDenuncias'
 	},
 
 	getDenuncias: function  () {
@@ -41,5 +41,3 @@ var denunciaRouter = new denunciasjp.router.Denuncia();
 
 Backbone.history.start();
 denunciaRouter.navigate();
-
-denuncias.fetch();
