@@ -3,18 +3,76 @@
 	<head>
 		<title>DenúnciasJP</title>
 		<meta charset="UTF-8">
-		<script type="text/javascript">
-			var require = {
-				baseUrl: "/",
-				deps: ['js/main']
-			};
-		</script>
-		<script data-main="js/main" src="js/libs/require.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
 		<section id="home"></section>
 		<section id="content"></section>
 		<section id="footer"></section>
+
+		<script type="text/x-handlebars-template" id="denuncias-list-template">
+			<h4>Testando Template</h4>
+			<table>
+				<thead>
+					<tr>
+						<th>Denúncia</th>
+						<th>Autor</th>
+					</th>
+				</thead>
+				<tbody>
+					<tr>
+					{{#each denuncias}}
+						<th>{{resumo}}</th>
+						<th>{{data}}</th>
+					{{/each}}
+				<tbody>
+			</table>
+		</script>
+
+		<script type="text/javascript" src="js/libs/jquery.js"></script>
+		<script type="text/javascript" src="js/libs/json2.js"></script>
+		<script type="text/javascript" src="js/libs/underscore.js"></script>
+		<script type="text/javascript" src="js/libs/backbone.js"></script>
+		<script type="text/javascript" src="js/libs/handlerbars.js"></script>
+
+		<script>
+			var Denuncias = Backbone.Collection.extend({
+				url: '/denuncias'
+			});
+
+
+
+			var DenunciasList = Backbone.View.extend({
+				el: '#content',
+				render: function  () {
+					var that = this;
+					var denuncias = new Denuncias();
+					denuncias.fetch({	
+						success: function  (denuncias) {
+							var js = denuncias.toJSON();
+							var source = ($('#denuncias-list-template').html());
+							var template = Handlebars.compile(source);
+							that.$el.html(template({denuncias: js}));
+						}
+					});
+				}
+			});
+
+			var Router = Backbone.Router.extend({
+				routes: {
+					'': 'home'
+					}
+			});
+
+			var denunciasList = new DenunciasList();
+
+			var router = new Router();
+			router.on('route:home', function () {
+				denunciasList.render();
+				console.log('Home route.');
+			});
+
+			Backbone.history.start();
+		</script>
 	</body>
 </html>
