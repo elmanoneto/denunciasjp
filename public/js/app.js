@@ -1,43 +1,76 @@
-var denunciasjp = {};
-denunciasjp.models = {};
-denunciasjp.collections = {};
-denunciasjp.views = {};
-denunciasjp.router = {};
-
-denunciasjp.models.Denuncia = Backbone.Model.extend({
-	defaults: {
-		id: null,
-		autor: null,
-		resumo: null,
-		denuncia: null,
-		endereco: null,
-		foto: null,
-		data: null
-	}
+// MODELS
+var Denuncia = Backbone.Model.extend({
+	urlRoot: '/denuncias'
 });
 
-denunciasjp.collections.Denuncias = Backbone.Collection.extend({
-	model: denunciasjp.models.Denuncia,
+// COLLECTTIONS
+var Denuncias = Backbone.Collection.extend({
 	url: '/denuncias'
 });
 
-var denuncias = new denunciasjp.collections.Denuncias();
-
-denuncias.create();
-
-denuncias.fetch();
-
-denunciasjp.router.Denuncia = new Backbone.Router.extend({
-	routes: {
-		'/denuncias/': 'getDenuncias'
-	},
-
-	getDenuncias: function  () {
-		this.denunciaModel = new List();
+// VIEWS
+var DenunciasList = Backbone.View.extend({
+	el: '.denuncias-recentes',
+	render: function  () {
+		var that = this;
+		var denuncias = new Denuncias();
+		denuncias.fetch({	
+			success: function  (denuncias) {
+				var js = denuncias.toJSON();
+				var source = ($('#denuncias-list').html());
+				var template = Handlebars.compile(source);
+				that.$el.html(template({denuncias: js}));
+			}
+		});
 	}
 });
 
-var denunciaRouter = new denunciasjp.router.Denuncia();
+var FormDenuncia = Backbone.View.extend({
+  template: 'cadastrar',
+  el: '#content',
+
+  render: function(){
+  	var that = this;
+    $.get("/templates/denuncias/" + this.template + ".html", function(template){
+      var html = $(template);
+      that.$el.html(html);
+    });
+    return this;
+  }
+ 
+});
+
+var formDenuncia = new FormDenuncia();
+
+
+// ROUTERS
+var Router = Backbone.Router.extend({
+	routes: {
+		'': 'home',
+		'registrar-denuncia': 'formDenuncia'
+	},
+
+	formDenuncia: function  () {
+		formDenuncia.render();
+		console.log('haha');
+	}
+});
+
+// APP
+
+
+
+var denunciasList = new DenunciasList();
+
+var router = new Router();
+
+router.on('route:home', function () {
+	denunciasList.render();
+	console.log('Home route.');
+});
+
+router.on('route:registrar-denuncia', function () {
+	console.log('Denúncia route.');
+});
 
 Backbone.history.start();
-denunciaRouter.navigate();

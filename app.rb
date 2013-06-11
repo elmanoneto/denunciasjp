@@ -12,7 +12,7 @@ set :logging, true
 
 #PRINCIPAL
 get '/' do
-	File.read(File.join('views', 'index.html'))
+	File.read(File.join('views', 'index.hbs'))
 end
 
 get '/como-funciona' do
