@@ -34,12 +34,17 @@
 			<div class="denuncias-recentes">
 
 				<script type="text/x-handlebars-template" id="denuncias-list">
-				
 					{{#each denuncias}}
+					<div class="lista-denuncia">
 					{{resumo}}
-					{{denuncia}}
+					<br />
+					<span class="autor">Autor: {{denuncia}}</span>
+					</div>
 					{{/each}}
+					<span class="mais-denuncias">Mais Denúncias +</span>	
 				</script>
+
+
 			</div>
 		</section>
 		<!-- FIM DO CONTEÚDO -->
@@ -56,12 +61,10 @@
 		</section>
 		<section id="footer">
 			<img src="../img/barra-baixo.jpg" />
-		</section>
-
+		</section>	
 		<!-- FIM DO FOOTER -->
 
-	
-
+		<!-- SCRIPTS -->
 		<script type="text/javascript" src="js/libs/jquery.js"></script>
 		<script type="text/javascript" src="js/libs/json2.js"></script>
 		<script type="text/javascript" src="js/libs/underscore.js"></script>

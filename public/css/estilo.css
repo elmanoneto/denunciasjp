@@ -94,6 +94,7 @@ body{
 
 .topo img.barra{
 	bottom: 6px;
+	padding-bottom: 15px;
 }
 
 #content{
@@ -121,7 +122,7 @@ body{
 }
 
 #content .titulo{
-	width: 645px;
+	width: 640px;
 	padding: 5px;
 	float: left;	
 	background-image: url('../img/transversal.png');
@@ -134,22 +135,40 @@ body{
 
 .denuncias-recentes{
 	float: left;
-	width: 650px;
+	width: 652px;
 	height: 30px;
-	margin: 5px 0 0 0;
-	text-align: left;
+	margin: 5px 0 0 0px;
+	text-align: left;	
+}
+
+.denuncias-recentes .autor{
+	color: gray;
+	font-size: 11pt;
+}
+
+.lista-denuncia{
+	border-bottom: 1px solid #e8e8e8;
+	padding-bottom: 5px;
+}
+
+.mais-denuncias{
+	float: right;
+	font-size: 10pt;
+	text-decoration: underline;
 }
 
 #menu{
 	float: left;
+	position: relative;
+	bottom: 50px;
 }
 
-.teste{
+.conteudo{
 	float: left;
-	border: 1px solid black;
-	width: 650px;
+	width: 652px;
 	height: 30px;
 	margin: 13px 0 0 0;
+	text-align: left;
 }
 
 #menu .menu{
@@ -161,3 +180,4 @@ body{
 #footer img{
 	margin: 300px 0 0 0;
 }
+

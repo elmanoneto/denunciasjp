@@ -1,6 +1,28 @@
 // MODELS
+Backbone.emulateHTTP = true;
+Backbone.emulateJSON = true;
+
+Backbone._sync = Backbone.sync;
+Backbone.sync = function( method, model, options ) {
+    var beforeSend = options.beforeSend;
+ 
+    options = options || {};
+  
+    if ( method === "update" || method === "delete" || method === "patch" ) {
+        options.beforeSend = function( xhr ) {
+            xhr.setRequestHeader( "X-HTTP-Method-Override", method );
+            if ( beforeSend ) { beforeSend.apply( this, arguments ); }    
+            method = "create";                        
+        };
+    }
+   
+    return Backbone._sync( method, model, options );
+};
+
 var Denuncia = Backbone.Model.extend({
-	urlRoot: '/denuncias'
+	idAttribute: '_id',
+	urlRoot: '/denuncias',
+	url: '/denuncias'
 });
 
 // COLLECTTIONS
@@ -26,17 +48,46 @@ var DenunciasList = Backbone.View.extend({
 });
 
 var FormDenuncia = Backbone.View.extend({
-  template: 'cadastrar',
-  el: '#content',
+	template: 'cadastrar',
 
-  render: function(){
-  	var that = this;
-    $.get("/templates/denuncias/" + this.template + ".html", function(template){
-      var html = $(template);
-      that.$el.html(html);
-    });
-    return this;
-  }
+	el: '#content',
+
+	attributes: {
+        action: 'denuncias',
+        method: 'POST'
+    },
+
+	render: function(){
+	  	var that = this;
+	    $.get("/templates/denuncias/" + this.template + ".html", function(template){
+	    	var html = $(template);
+	      	that.$el.html(html);
+	    });
+	    return this;
+  	},
+
+  	events: {
+  		'click #submit': 'submitForm'
+  	},	
+	
+	submitForm: function  (e) {
+		
+  		e.preventDefault();
+
+  		var resumo = $('input#resumo').val();
+	    var denuncia = $('input#denuncia').val();
+
+  		var denuncia = new Denuncia({
+  			resumo: resumo,
+	    	denuncia: denuncia
+  		});
+  		
+		
+
+  		denuncia.save();
+
+  		console.log('hahe');
+  	}
  
 });
 
@@ -57,8 +108,6 @@ var Router = Backbone.Router.extend({
 });
 
 // APP
-
-
 
 var denunciasList = new DenunciasList();
 
