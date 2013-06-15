@@ -2,27 +2,18 @@
 Backbone.emulateHTTP = true;
 Backbone.emulateJSON = true;
 
-Backbone._sync = Backbone.sync;
-Backbone.sync = function( method, model, options ) {
-    var beforeSend = options.beforeSend;
- 
-    options = options || {};
-  
-    if ( method === "update" || method === "delete" || method === "patch" ) {
-        options.beforeSend = function( xhr ) {
-            xhr.setRequestHeader( "X-HTTP-Method-Override", method );
-            if ( beforeSend ) { beforeSend.apply( this, arguments ); }    
-            method = "create";                        
-        };
-    }
-   
-    return Backbone._sync( method, model, options );
-};
-
 var Denuncia = Backbone.Model.extend({
 	idAttribute: '_id',
 	urlRoot: '/denuncias',
-	url: '/denuncias'
+	
+	defaults: {
+		autor: '',
+		resumo: '',
+		denuncia: '',
+		endereco: '',
+		foto: '',
+		data: ''
+	}
 });
 
 // COLLECTTIONS
@@ -48,9 +39,7 @@ var DenunciasList = Backbone.View.extend({
 });
 
 var FormDenuncia = Backbone.View.extend({
-	template: 'cadastrar',
-
-	el: '#content',
+	el: '.denuncias-recentes',
 
 	attributes: {
         action: 'denuncias',
@@ -58,12 +47,23 @@ var FormDenuncia = Backbone.View.extend({
     },
 
 	render: function(){
-	  	var that = this;
-	    $.get("/templates/denuncias/" + this.template + ".html", function(template){
-	    	var html = $(template);
-	      	that.$el.html(html);
-	    });
-	    return this;
+	  	templateUrl: '/templates/denuncias/cadastrar.html',
+
+    initialize: function() {
+      AppView.__super__.initialize.apply(this); // Call parent initializator
+
+      ...
+    },
+    // You should rename render function to _render
+    _render: function() {
+      // Render here, template available in this.template variable (this.template(model))
+      this.$('.denuncias-recentes').html(this.template({...}));
+    },
+
+	    // $.get("/templates/denuncias/" + this.template + ".html", function(template){
+	    // 	var html = $(template);
+	    //   	that.$el.html(html);
+	    // });
   	},
 
   	events: {
@@ -83,9 +83,6 @@ var FormDenuncia = Backbone.View.extend({
   		});
   		
 		
-
-  		denuncia.save();
-
   		console.log('hahe');
   	}
  
@@ -119,6 +116,7 @@ router.on('route:home', function () {
 });
 
 router.on('route:registrar-denuncia', function () {
+	formDenuncia.render();
 	console.log('Denúncia route.');
 });
 

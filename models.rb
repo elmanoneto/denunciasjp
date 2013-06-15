@@ -12,8 +12,8 @@ class Denuncia
 		:messages => {
 			:presence => 'Resumo é obrigatório'
 		}
-		validates_length_of :resumo, :max => 60, 
-			:message => 'Resumo excedeu o limite de caracteres'
+		# validates_length_of :resumo, :max => 60, 
+		# 	:message => 'Resumo excedeu o limite de caracteres'
 	property :denuncia,	Text,  :required => true,
 		:messages => {
 			:presence => 'Descrição é obrigatória'
