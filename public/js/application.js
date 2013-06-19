@@ -50,27 +50,16 @@ var RegistrarDenuncia = Backbone.View.extend({
 	},
 
 	add: function () {
-		var denuncia = new Denuncia({
+		this.model.set({
 			resumo: $('.denuncia-resumo').val(),
 			endereco: $('.denuncia-endereco').val(),
 			denuncia: $('.denuncia-descricao').val(),
 			foto: $('.denuncia-foto').val()
 		});
 
-		var denuncias = new Denuncias();
 
-
-		Backbone.sync();
-		denuncia.save({
-			success: function (user){
-				console.log('passou!');
-				router.navigate('', {trigger: true});
-			},
-			error: function (error) {
-				console.log('Erro'+ error);
-				router.navigate('', {trigger: true});
-			}
-		})
+		this.model.save();
+		window.history.back();
 		return false;
 	}
 });
