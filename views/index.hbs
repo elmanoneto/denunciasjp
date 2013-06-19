@@ -13,7 +13,7 @@
 		<section id="home">
 			<div class="topo">
 				<img src="../img/denunciasjp.png" />
-				<form action="#registrar-denuncia">
+				<form>
 					<input type="text" placeholder="Pesquisar denúncia..">
 					<button>buscar</button>
 				</form>
@@ -34,14 +34,17 @@
 			<script type="text/template" id="denuncias-list">
 				<div class="titulo">Denúncias Recentes</div>
 				{{#denuncias}}
-					{{resumo}}
+					<div class="resumo">{{resumo}}</div>
+					<div class="autor">{{autor}}</div>
+					<hr />	
 				{{/denuncias}}
 			</script>
 			<script type="text/template" id="registrar-denuncia">
 				<div class="titulo">Registrar Denúncia</div>
-				<form method="post" class="form-registrar-denuncia" action="denuncias">
+				<form method="post" class="form-registrar-denuncia" action="denuncias" enctype="multipart/form-data">
 					<label>Resumo</label>
 					<input type="text" class="denuncia-resumo" name="resumo">
+					<div class="contador"></div>
 					<br>
 					<label>Endereço</label>
 					<input type="text" class="denuncia-endereco" name="endereco"/>

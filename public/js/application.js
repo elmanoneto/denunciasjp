@@ -1,17 +1,30 @@
-Backbone.emulateHTTP = true;
+//Backbone.emulateHTTP = true;
 
 var Denuncia = Backbone.Model.extend({
-	defaults: {
-		idAttribute: "_id",
-		autor: "",
-		resumo: "",
-		denuncia: "",
-		endereco: "",
-		foto: "",
-		data: ""
-	},
+	urlRoot: '/denuncias',
 
-	urlRoot: '/denuncias'
+	defaults: {
+	 	autor: '',
+	 	resumo: '',
+	 	denuncia: '',
+	 	endereco: '',
+	 	foto: '',
+	 	data: ''
+	}
+
+	// validate: function(attrs) {
+	//     errors = [];
+	//     if (_.isEmpty(attrs.resumo)) {
+	//       errors.push("Resumo é obrigatório");
+	//     }
+	//     if (_.isEmpty(attrs.descricao)) {
+	//       errors.push("Descrição é obrigatória");
+	//     }
+	//     if (attrs.resumo > 60) {
+	//     	errors.push("Resumo excedeu o limite de caracteres.");
+	//     }
+	//     return _.any(errors) ? errors : null;
+ //  	}
 });
 
 var Denuncias = Backbone.Collection.extend({
@@ -39,6 +52,10 @@ var DenunciasRecentes = Backbone.View.extend({
 var RegistrarDenuncia = Backbone.View.extend({
 	el: '.conteudo',
 
+	initialize: function () {
+		this.denuncia = this.model;
+	},
+
 	render: function () {
 		var source = ($('#registrar-denuncia').html());
 		var template = Handlebars.compile(source);
@@ -50,16 +67,29 @@ var RegistrarDenuncia = Backbone.View.extend({
 	},
 
 	add: function () {
+		var resumo = $('.denuncia-resumo').val();
+		var endereco = $('.denuncia-endereco').val();
+		var denuncia = $('.denuncia-descricao').val();
+		var foto = $('.denuncia-foto').val();
+
+		// this.model = new Denuncia();
+
 		this.model.set({
-			resumo: $('.denuncia-resumo').val(),
-			endereco: $('.denuncia-endereco').val(),
-			denuncia: $('.denuncia-descricao').val(),
-			foto: $('.denuncia-foto').val()
+			resumo: resumo,
+			endereco: endereco,
+			denuncia: denuncia,
+			foto: foto
 		});
 
+		this.model.save({
+			success: function  () {
+				console.log('Salvou');
+			},
+			error: function () {
+				console.log('Erro');
+			}
+		});
 
-		this.model.save();
-		window.history.back();
 		return false;
 	}
 });

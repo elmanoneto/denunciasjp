@@ -38,7 +38,7 @@ get '/denuncias/:id' do
 end
 
 post '/denuncias' do
-	unless params[:denuncia].nil?
+	unless params.nil?
 		if params[:foto].nil?
 			foto = nil
 		else
@@ -60,7 +60,7 @@ post '/denuncias' do
 
 		elsif  @denuncia.errors && defined? params[:foto][:type]
 			if params[:foto][:type] != "image/jpeg"
-				session[:errofoto] = "Formato de imagem inválido"
+				@denuncia.errors.add(:foto, "Formato de imagem inválido.")
 			end
 			session[:errors] = @denuncia.errors.values.map{|e| e.to_s}
 		else
