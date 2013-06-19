@@ -1,4 +1,4 @@
-$('document').ready(function () {
+$(document).ready(function () {
 	var contador = 60;
 	$('.contador').html(contador);
 	$('input[class=titulo]').keyup(function () {

@@ -30,19 +30,32 @@
 
 		<!-- CONTEÚDO -->
 		<section id="content">
-			<div class="titulo">Denúncias Recentes</div>
-			<div class="denuncias-recentes">
-				<script type="text/x-handlebars-template" id="denuncias-list">
-					{{#each denuncias}}
-					<div class="lista-denuncia">
+			<div class="conteudo"></div>
+			<script type="text/template" id="denuncias-list">
+				<div class="titulo">Denúncias Recentes</div>
+				{{#denuncias}}
 					{{resumo}}
-					<br />
-					<span class="autor">Autor: {{denuncia}}</span>
-					</div>
-					{{/each}}
-					<span class="mais-denuncias">Mais Denúncias +</span>	
-				</script>
-			</div>
+				{{/denuncias}}
+			</script>
+			<script type="text/template" id="registrar-denuncia">
+				<div class="titulo">Registrar Denúncia</div>
+				<form method="post" class="form-registrar-denuncia" action="denuncias">
+					<label>Resumo</label>
+					<input type="text" class="denuncia-resumo" name="resumo">
+					<br>
+					<label>Endereço</label>
+					<input type="text" class="denuncia-endereco" name="endereco"/>
+					<br>
+					<label>Descrição</label>
+					<br>	
+					<textarea class="denuncia-descricao" name="denuncia"></textarea>
+					<br>
+					<label>Foto</label>
+					<input type="file" class="denuncia-foto" name="foto"/>
+					<br>
+					<button>Registrar</button>
+				</form>
+			</script>
 		</section>
 		<!-- FIM DO CONTEÚDO -->
 
@@ -62,12 +75,15 @@
 		<!-- FIM DO FOOTER -->
 
 		<!-- SCRIPTS -->
+		<script type="text/javascript" src="js/utils.js"></script>
 		<script type="text/javascript" src="js/libs/jquery.js"></script>
 		<script type="text/javascript" src="js/libs/json2.js"></script>
 		<script type="text/javascript" src="js/libs/underscore.js"></script>
 		<script type="text/javascript" src="js/libs/backbone.js"></script>
 		<script type="text/javascript" src="js/libs/handlebars.js"></script>
-		<script type="text/javascript" src="js/app.js"></script>
-		<script type="text/javascript" src="js/libs/jquery.leanModal.min.js"></script>
+		<script type="text/javascript" src="js/libs/jquery.js"></script>
+		<script type="text/javascript" src="js/models/denunciamodel.js"></script>
+		<script type="text/javascript" src="js/views/homeview.js"></script>
+		<script type="text/javascript" src="js/application.js"></script>
 	</body>
 </html>

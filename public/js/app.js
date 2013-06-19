@@ -46,25 +46,17 @@ var FormDenuncia = Backbone.View.extend({
         method: 'POST'
     },
 
-	render: function(){
-	  	templateUrl: '/templates/denuncias/cadastrar.html',
-
-    initialize: function() {
-      AppView.__super__.initialize.apply(this); // Call parent initializator
-
-      ...
-    },
     // You should rename render function to _render
-    _render: function() {
+    render: function() {
       // Render here, template available in this.template variable (this.template(model))
-      this.$('.denuncias-recentes').html(this.template({...}));
+      this.$('#teste').html('hahaha');
     },
 
 	    // $.get("/templates/denuncias/" + this.template + ".html", function(template){
 	    // 	var html = $(template);
 	    //   	that.$el.html(html);
 	    // });
-  	},
+  	// },
 
   	events: {
   		'click #submit': 'submitForm'
