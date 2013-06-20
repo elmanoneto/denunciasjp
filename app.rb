@@ -56,6 +56,7 @@ post '/denuncias' do
 		)
 
 		if @denuncia.save
+			redirect back
 
 		elsif  @denuncia.errors && defined? params[:foto][:type]
 			if params[:foto][:type] != "image/jpeg"

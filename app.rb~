@@ -1,6 +1,5 @@
 # encoding: UTF-8
 require 'sinatra'
-require 'haml'
 require 'data_mapper'
 require 'dm-migrations'
 require File.dirname(__FILE__) + '/models.rb'
