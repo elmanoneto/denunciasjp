@@ -194,3 +194,73 @@ body{
     background: #000;
     display: none;
 }
+
+.denuncia{
+	border-bottom: 1px #e8e8e8 solid;
+	padding-bottom: 5px;
+}
+
+.form-registrar-denuncia {
+	position: relative;
+	top: 10px;
+}
+
+.titulo-registrar-denuncia{
+	width: 640px;
+	padding: 5px;
+	float: left;	
+	background-image: url('../img/transversal.png');
+	font-size: 16pt;
+	border-left: 6px red solid;
+	height: auto;
+	text-indent: 4px;
+	text-align: left;
+}
+
+.form-registrar-denuncia .denuncia-resumo, .denuncia-endereco{
+	font-family: 'Open Sans', sans-serif;
+	text-indent: 5px;
+	color: gray;
+	font-size: 12pt;
+	border: 1px #cecece solid;
+	height: 30px;
+	width: 500px;
+	border-radius: 4px;
+	outline: none;
+	margin-bottom: 10px;
+}
+
+.form-registrar-denuncia  textarea{
+	font-family: 'Open Sans', sans-serif;
+	text-indent: 5px;
+	border: 1px #cecece solid;
+	font-size: 12pt;
+	color: gray;
+	height: 150px;
+	width: 518px;
+	border-radius: 4px;
+	outline: none;
+	margin-bottom: 10px;
+}
+
+.form-registrar-denuncia .denuncia-foto{
+	font-size: 10pt;
+	height: 30px;
+	width: 300px;
+	border: none;
+	color: black;
+	outline: none;
+	margin-bottom: 10px;
+}
+
+.form-registrar-denuncia button{
+	background-color: #848484;
+	border: none;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12pt;
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+	position: relative;
+	bottom: 10px;
+}

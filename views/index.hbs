@@ -34,19 +34,19 @@
 			<script type="text/template" id="denuncias-list">
 				<div class="titulo">Denúncias Recentes</div>
 				{{#denuncias}}
-					<div class="resumo">{{resumo}}</div>
-					<div class="autor">{{autor}}</div>
-					<hr />	
+					<div class="denuncia">
+						<div class="resumo">{{resumo}}</div>
+						<div class="autor">{{autor}}</div>
+					</div>
 				{{/denuncias}}
 			</script>
 			<script type="text/template" id="registrar-denuncia">
-				<div class="titulo">Registrar Denúncia</div>
+				<div class="titulo-registrar-denuncia">Registrar Denúncia</div>
 				<form method="post" class="form-registrar-denuncia" action="denuncias" enctype="multipart/form-data">
-					<label>Resumo</label>
+					<label>Resumo</label><br>
 					<input type="text" class="denuncia-resumo" name="resumo">
-					<div class="contador"></div>
 					<br>
-					<label>Endereço</label>
+					<label>Endereço</label><br>
 					<input type="text" class="denuncia-endereco" name="endereco"/>
 					<br>
 					<label>Descrição</label>
@@ -56,7 +56,7 @@
 					<label>Foto</label>
 					<input type="file" class="denuncia-foto" name="foto"/>
 					<br>
-					<button>Registrar</button>
+					<button>+ Denunciar</button>
 				</form>
 			</script>
 		</section>
@@ -65,7 +65,7 @@
 		<!-- MENU -->
 		<section id="menu">
 			<div class="menu">
-				haha
+				Menu
 			</div>
 		</section>
 		<!-- FIM DO MENU -->

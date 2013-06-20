@@ -28,8 +28,8 @@ var Denuncia = Backbone.Model.extend({
 });
 
 var Denuncias = Backbone.Collection.extend({
-	url: '/denuncias',
-	model: Denuncia
+	model: Denuncia,
+	url: '/denuncias'
 });
 
 var DenunciasRecentes = Backbone.View.extend({
@@ -53,7 +53,8 @@ var RegistrarDenuncia = Backbone.View.extend({
 	el: '.conteudo',
 
 	initialize: function () {
-		this.denuncia = this.model;
+		var denuncia = this.mode;
+		this.collection = new Denuncias();
 	},
 
 	render: function () {
@@ -74,21 +75,23 @@ var RegistrarDenuncia = Backbone.View.extend({
 
 		// this.model = new Denuncia();
 
-		this.model.set({
+		denuncia.set({
 			resumo: resumo,
 			endereco: endereco,
 			denuncia: denuncia,
 			foto: foto
 		});
 
-		this.model.save({
-			success: function  () {
-				console.log('Salvou');
-			},
-			error: function () {
-				console.log('Erro');
-			}
-		});
+		this.collection.add(this.denuncia);
+
+		// this.denuncia.save({
+		// 	success: function  () {
+		// 		console.log('Salvou');
+		// 	},
+		// 	error: function () {
+		// 		console.log('Erro');
+		// 	}
+		// });
 
 		return false;
 	}
