@@ -34,13 +34,15 @@
 			<div class="conteudo"></div>
 			<script type="text/template" id="denuncias-list">
 				<div class="titulo">Denúncias Recentes</div>
-				{{#denuncias}}
+				{{#each denuncias}}
 						<div class="a">
 						<spam class="resumo">{{resumo}}</spam>
 						<br />
 						<spam class="autor">Autor: {{autor}}</spam>
 						</div>
-				{{/denuncias}}
+				{{else}}
+					Nenhuma denúncia registrada.
+				{{/each}}
 			</script>
 			<script type="text/template" id="registrar-denuncia">
 				<div class="titulo-registrar-denuncia">Registrar Denúncia</div>

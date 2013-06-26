@@ -55,11 +55,6 @@ var DenunciasRecentes = Backbone.View.extend({
 var RegistrarDenuncia = Backbone.View.extend({
 	el: '.conteudo',
 
-	initialize: function () {
-		this.model = new Denuncia();
-		this.collection = new Denuncias();
-	},
-
 	render: function () {
 		var source = ($('#registrar-denuncia').html());
 		var template = Handlebars.compile(source);
