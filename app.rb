@@ -4,20 +4,25 @@ require 'data_mapper'
 require 'dm-migrations'
 require File.dirname(__FILE__) + '/models.rb'
 require 'pp'
+require 'json'
 
 enable :session
 set :logging, true
 
 #PRINCIPAL
+
+# Retorna a página principal do site
 get '/' do
 	File.read(File.join('views', 'index.hbs'))
 	# haml :index
 end
 
+# Retorna página explicando como o site funciona
 get '/como-funciona' do
 	haml :comofunciona
 end
 
+# Retorna busca
 post '/busca' do
 	params[:busca].empty? redirect back
 	
@@ -26,16 +31,20 @@ post '/busca' do
 end
 
 #DENÚNCIAS
+
+# Retorna lista de denúncias
 get '/denuncias' do
-	@denuncias = Denuncia.all(:order => [:id.desc])
+	@denuncias = Denuncia.all(:order => [:id.desc], :limit => 10)
 	@denuncias.to_json
 end
 
+# Retorna denúncia individual
 get '/denuncias/:id' do
 	@denuncias = Denuncia.get(params[:id])
 	@denuncias.to_json
 end
 
+# Registrar denúncia
 post '/denuncias' do
 	unless params.nil?
 		if params[:foto].nil?
@@ -56,24 +65,29 @@ post '/denuncias' do
 		)
 
 		if @denuncia.save
-			redirect back
-
+			redirect '/'
 		elsif  @denuncia.errors && defined? params[:foto][:type]
 			if params[:foto][:type] != "image/jpeg"
 				@denuncia.errors.add(:foto, "Formato de imagem inválido.")
 			end
-			session[:errors] = @denuncia.errors.values.map{|e| e.to_s}
+			erros = @denuncia.errors.values.map{|e| e.to_s}
+			#redirect '/#registrar-denuncia'
+			erros
 		else
-			session[:errors] = @denuncia.errors.values.map{|e| e.to_s}
+			erros = @denuncia.errors.values.map{|e| e.to_s}
+			#redirect '/#registrar-denuncia'
+			erros
 		end
 	end
 	# haml :'denuncias/add'
 end
 
+# Editar denúncia
 put '/denuncias/:id' do
 
 end
 
+# Deletar denúncia
 delete '/denuncias/:id' do
 	@denuncia = Denuncia.get(params[:id])
 	@denuncia.destroy

@@ -1,30 +1,33 @@
 //Backbone.emulateHTTP = true;
 
 var Denuncia = Backbone.Model.extend({
+	defaults: {
+		resumo: '',
+		autor: '',
+		endereco: '',
+		foto: '',
+		denuncia: ''
+	},
+
 	urlRoot: '/denuncias',
 
-	defaults: {
-	 	autor: '',
-	 	resumo: '',
-	 	denuncia: '',
-	 	endereco: '',
-	 	foto: '',
-	 	data: ''
-	}
+	validate: function (attrs) {
+		var erros = [];
 
-	// validate: function(attrs) {
-	//     errors = [];
-	//     if (_.isEmpty(attrs.resumo)) {
-	//       errors.push("Resumo é obrigatório");
-	//     }
-	//     if (_.isEmpty(attrs.descricao)) {
-	//       errors.push("Descrição é obrigatória");
-	//     }
-	//     if (attrs.resumo > 60) {
-	//     	errors.push("Resumo excedeu o limite de caracteres.");
-	//     }
-	//     return _.any(errors) ? errors : null;
- //  	}
+		if(!attrs.resumo) {
+			erros.push('Resumo é obrigatório.');
+		}
+
+		if(!attrs.denuncia) {
+			erros.push('Denúncia é obrigatória.');
+		}
+
+		if(attrs.resumo.length > 60){
+			erros.push('Resumo excedeu o limite de caracteres.');
+		}
+
+		return erros.length > 0 ? erros : false
+	}
 });
 
 var Denuncias = Backbone.Collection.extend({
@@ -53,7 +56,7 @@ var RegistrarDenuncia = Backbone.View.extend({
 	el: '.conteudo',
 
 	initialize: function () {
-		var denuncia = this.mode;
+		this.model = new Denuncia();
 		this.collection = new Denuncias();
 	},
 
@@ -67,33 +70,39 @@ var RegistrarDenuncia = Backbone.View.extend({
 		'submit .form-registrar-denuncia': 'add'
 	},
 
-	add: function () {
-		var resumo = $('.denuncia-resumo').val();
-		var endereco = $('.denuncia-endereco').val();
-		var denuncia = $('.denuncia-descricao').val();
-		var foto = $('.denuncia-foto').val();
+	add: function (e) {
 
-		// this.model = new Denuncia();
+		var d = new Denuncia();
 
-		denuncia.set({
-			resumo: resumo,
-			endereco: endereco,
-			denuncia: denuncia,
-			foto: foto
+		d.set({
+			resumo: $('.denuncia-resumo').val(),
+			endereco: $('.denuncia-endereco').val(),
+			denuncia: $('.denuncia-descricao').val(),
+			foto: $('.denuncia-foto').val()
 		});
 
-		this.collection.add(this.denuncia);
+		var erros = [];
+		d.on('invalid', function (options, errors){
+			_.each(errors, function  (erro) {
+				console.log(erro);
+				erros.push(erro);
+			})
+			$(this.el).text(erros);
+		});
 
-		// this.denuncia.save({
-		// 	success: function  () {
-		// 		console.log('Salvou');
-		// 	},
-		// 	error: function () {
-		// 		console.log('Erro');
-		// 	}
-		// });
 
-		return false;
+		if(!d.isValid()){
+			return false;
+		}
+
+		d.save();
+
+	},
+
+	exibirErros: function (errors) {
+		_.each(errors, function (error){
+			alert(error);
+		});
 	}
 });
 

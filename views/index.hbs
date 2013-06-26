@@ -6,6 +6,8 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/estilo.css">
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+		<script type="text/javascript" src="js/autocomplete.js"></script>
 	</head>
 	<body>
 
@@ -18,7 +20,7 @@
 					<button>buscar</button>
 				</form>
 				<ul>
-					<li class="home"><a href="http://localhost:4567">Página Inicial</a></li>
+					<li class="home"><a href="#">Página Inicial</a></li>
 					<li class="denuncia"><a href="#registrar-denuncia">Registrar Denúncia</a></li>
 					<li class="cadastre-se">Cadastre-se</li>
 					<li class="como-funciona">Como Funciona</li>
@@ -34,30 +36,41 @@
 			<script type="text/template" id="denuncias-list">
 				<div class="titulo">Denúncias Recentes</div>
 				{{#denuncias}}
-					<div class="denuncia">
-						<div class="resumo">{{resumo}}</div>
-						<div class="autor">{{autor}}</div>
-					</div>
+						<div class="a">
+						<spam class="resumo">{{resumo}}</spam>
+						<br />
+						<spam class="autor">Autor: {{autor}}</spam>
+						</div>
 				{{/denuncias}}
 			</script>
 			<script type="text/template" id="registrar-denuncia">
 				<div class="titulo-registrar-denuncia">Registrar Denúncia</div>
-				<form method="post" class="form-registrar-denuncia" action="denuncias" enctype="multipart/form-data">
-					<label>Resumo</label><br>
-					<input type="text" class="denuncia-resumo" name="resumo">
-					<br>
-					<label>Endereço</label><br>
-					<input type="text" class="denuncia-endereco" name="endereco"/>
-					<br>
-					<label>Descrição</label>
-					<br>	
-					<textarea class="denuncia-descricao" name="denuncia"></textarea>
-					<br>
-					<label>Foto</label>
-					<input type="file" class="denuncia-foto" name="foto"/>
-					<br>
-					<button>+ Denunciar</button>
-				</form>
+				<div id="panel">
+					<form method="post" class="form-registrar-denuncia" action="denuncias" enctype="multipart/form-data">
+						<label>Resumo</label><br>
+						<input type="text" class="denuncia-resumo" name="resumo" value="{{#resumo}}{{/resumo}}"/>
+						<br>
+						<label>Endereço</label><br>
+						<input id="searchTextField" type="text" size="50" class="denuncia-endereco" name="denuncia">
+					    <input type="radio" name="type" id="changetype-all" checked="checked">
+					    <label for="changetype-all">All</label>
+				      	<input type="radio" name="type" id="changetype-establishment">
+					    <label for="changetype-establishment">Establishments</label>
+					    <input type="radio" name="type" id="changetype-geocode">
+					    <label for="changetype-geocode">Geocodes</lable>
+						<br>
+						<label>Descrição</label>
+						<br>	
+						<textarea class="denuncia-descricao" name="denuncia"></textarea>
+						<br>
+						<label>Foto</label>
+						<input type="file" class="denuncia-foto" name="foto"/>
+						<hr />
+						<br>
+						<button>+ Denunciar</button>
+					</form>
+				</div>
+				<div id="map-canvas"></div>
 			</script>
 		</section>
 		<!-- FIM DO CONTEÚDO -->
@@ -65,7 +78,7 @@
 		<!-- MENU -->
 		<section id="menu">
 			<div class="menu">
-				Menu
+				menu
 			</div>
 		</section>
 		<!-- FIM DO MENU -->

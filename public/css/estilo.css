@@ -183,21 +183,11 @@ body{
 	margin: 500px 0 0 0;
 }
 
-
-#lean_overlay {
-    position: fixed;
-    z-index:100;
-    top: 0px;
-    left: 0px;
-    height:100%;
-    width:100%;
-    background: #000;
-    display: none;
-}
-
 .denuncia{
 	border-bottom: 1px #e8e8e8 solid;
 	padding-bottom: 5px;
+	background-color: rgba(168, 200, 0, 0.1);
+	margin-top: 1px;
 }
 
 .form-registrar-denuncia {
@@ -262,5 +252,22 @@ body{
 	padding: 5px;
 	border-radius: 5px;
 	position: relative;
-	bottom: 10px;
+	bottom: 18px;
+
+}
+
+.autor{
+	font-size: 10pt;
+	color: gray;
+}
+
+.a{
+	border-bottom: 2px white solid;
+}
+
+hr{
+	background-color: #e8e8e8;
+	height: 1px;
+	border: none;
+	margin: 0 0 10px 0;
 }

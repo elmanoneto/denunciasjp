@@ -19,6 +19,7 @@ class Denuncia
 			:presence => 'Descrição é obrigatória'
 		}
 	property :endereco, String
+	validates_length_of :endereco, :max => 1024
 	property :foto, String
 	property :data, DateTime
 	property :tipofoto, String
