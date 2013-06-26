@@ -3,11 +3,10 @@
 	<head>
 		<title>DenúnciasJP</title>
 		<meta charset="UTF-8">
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/estilo.css">
-		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
-		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-		<script type="text/javascript" src="js/autocomplete.js"></script>
 	</head>
 	<body>
 
@@ -51,13 +50,7 @@
 						<input type="text" class="denuncia-resumo" name="resumo" value="{{#resumo}}{{/resumo}}"/>
 						<br>
 						<label>Endereço</label><br>
-						<input id="searchTextField" type="text" size="50" class="denuncia-endereco" name="denuncia">
-					    <input type="radio" name="type" id="changetype-all" checked="checked">
-					    <label for="changetype-all">All</label>
-				      	<input type="radio" name="type" id="changetype-establishment">
-					    <label for="changetype-establishment">Establishments</label>
-					    <input type="radio" name="type" id="changetype-geocode">
-					    <label for="changetype-geocode">Geocodes</lable>
+						<input id="searchTextField" type="text" size="50" class="denuncia-endereco" name="endereco">
 						<br>
 						<label>Descrição</label>
 						<br>	
@@ -90,7 +83,7 @@
 		</section>	
 		<!-- FIM DO FOOTER -->
 
-		<!-- SCRIPTS -->
+		<!-- SCRIPTS -->	
 		<script type="text/javascript" src="js/utils.js"></script>
 		<script type="text/javascript" src="js/libs/jquery.js"></script>
 		<script type="text/javascript" src="js/libs/json2.js"></script>
@@ -101,5 +94,7 @@
 		<script type="text/javascript" src="js/models/denunciamodel.js"></script>
 		<script type="text/javascript" src="js/views/homeview.js"></script>
 		<script type="text/javascript" src="js/application.js"></script>
+		
+		<script type="text/javascript" src="js/autocomplete.js"></script>
 	</body>
 </html>

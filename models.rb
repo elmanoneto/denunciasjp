@@ -12,14 +12,13 @@ class Denuncia
 		:messages => {
 			:presence => 'Resumo é obrigatório'
 		}
-		 validates_length_of :resumo, :max => 60, 
+		 validates_length_of :resumo, :max => 50, 
 		 	:message => 'Resumo excedeu o limite de caracteres'
 	property :denuncia,	Text,  :required => true,
 		:messages => {
 			:presence => 'Descrição é obrigatória'
 		}
-	property :endereco, String
-	validates_length_of :endereco, :max => 1024
+	property :endereco, Text
 	property :foto, String
 	property :data, DateTime
 	property :tipofoto, String
@@ -34,5 +33,5 @@ class Comentario
 	property :comentario, Text
 end
 
-# DataMapper.auto_migrate!
+#DataMapper.auto_migrate!
 DataMapper.auto_upgrade!
