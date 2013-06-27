@@ -92,25 +92,41 @@ var RegistrarDenuncia = Backbone.View.extend({
 
 		d.save();
 
-	},
+	}
+});
 
-	exibirErros: function (errors) {
-		_.each(errors, function (error){
-			alert(error);
-		});
+var VisualizarDenuncia = Backbone.View.extend({
+	el: '.conteudo',
+
+	render: function (options) {
+		var that = this;
+		var denuncia = new Denuncia({id: options.id});
+		console.log(denuncia.titulo);
+		denuncia.fetch({
+			success: function (denuncia){
+				var js = denuncia.toJSON();
+				js.data = moment(js.data).format('DD/MM/YYYY');
+				var source = ($('#visualizar-denuncia').html());
+				var template = Handlebars.compile(source);
+				that.$el.html(template({denuncia: js}));
+			}
+		});		
 	}
 });
 
 var Router = Backbone.Router.extend({
 	routes: {
 		'': 'home',
-		'registrar-denuncia': 'new'
+		'registrar-denuncia': 'new',
+		'denuncia/:id': 'view'
 	}
 });
 
 var registrarDenuncia = new RegistrarDenuncia();
 
 var denunciasRecentes = new DenunciasRecentes();
+
+var visualizarDenuncia = new VisualizarDenuncia();
 
 var router = new Router();
 
@@ -123,5 +139,10 @@ router.on('route:new', function(){
 	registrarDenuncia.render();
 	console.log('Registrar Denúncia');
 })
+
+router.on('route:view', function (id) {
+	visualizarDenuncia.render({id: id});
+	console.log('Visualizar denúncia');
+});
 
 Backbone.history.start();

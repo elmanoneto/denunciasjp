@@ -183,12 +183,6 @@ body{
 	margin: 500px 0 0 0;
 }
 
-.denuncia{
-	border-bottom: 1px #e8e8e8 solid;
-	padding-bottom: 5px;
-	background-color: rgba(168, 200, 0, 0.1);
-	margin-top: 1px;
-}
 
 .form-registrar-denuncia {
 	position: relative;
