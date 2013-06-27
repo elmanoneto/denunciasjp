@@ -79,7 +79,10 @@
 				<spam class="resumo">{{resumo}}</spam>
 				<br>
 				<spam class="denuncia">{{denuncia}}</spam>
-				<spam class="foto"><img src="../img/uploads/{{foto}}"></spam>
+				<br />
+				{{#if foto}}
+				<spam class="foto">Clique para ver uma imagem</spam>
+				{{/if}}
 			{{/denuncia}}
 		</script>
 		<!-- FIM VISUALIZAR DENÚNCIA -->
