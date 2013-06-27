@@ -1,0 +1,11 @@
+.principal
+	.titulo-busca Resultado da Busca
+	- p @denuncias
+	.conteudo
+		-unless @denuncias.empty?
+			- @denuncias.each do |denuncia|
+				.resultado-busca
+					.titulo= denuncia.resumo
+					.autor= denuncia.autor
+		-else
+			%p Nenhum resultado encontrado.
