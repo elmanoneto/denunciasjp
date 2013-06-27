@@ -36,7 +36,7 @@
 				<div class="titulo">Denúncias Recentes</div>
 				{{#each denuncias}}
 						<div class="a">
-						<spam class="resumo"><a href="#denuncia/{{id}}">{{resumo}}</a></spam>
+						<spam class="resumo">{{resumo}}</spam>
 						<br />
 						<spam class="autor">Autor: {{autor}}</spam>
 						</div>
@@ -70,28 +70,10 @@
 			<script type="text/template" id="como-funciona">
 				<div class="titulo-como-funciona">Como Funciona</div>
 				<div id="panel">
-					apejasoeiaioejaoejasoejoj
 				</div>
 			</script>
 		</section>
 		<!-- FIM DO CONTEÚDO -->
-
-		<!-- VISUALIZAR DENÚNCIA -->
-		<script type="text/template" id="visualizar-denuncia">
-			<div class="titulo">Denúncia</div>
-			{{#denuncia}}
-				<spam class="autor">{{autor}}</spam>
-				<spam class="data">{{data}}</spam> - 
-				<spam class="resumo">{{resumo}}</spam>
-				<br>
-				<spam class="denuncia">{{denuncia}}</spam>
-				<br />
-				{{#if foto}}
-				<spam class="foto">Clique para ver uma imagem</spam>
-				{{/if}}
-			{{/denuncia}}
-		</script>
-		<!-- FIM VISUALIZAR DENÚNCIA -->
 
 		<!-- MENU -->
 		<section id="menu">
@@ -119,7 +101,7 @@
 		<script type="text/javascript" src="js/models/denunciamodel.js"></script>
 		<script type="text/javascript" src="js/views/homeview.js"></script>
 		<script type="text/javascript" src="js/application.js"></script>
-		<script type="text/javascript" src="js/libs/moment.js"></script>
+		
 		<script type="text/javascript" src="js/autocomplete.js"></script>
 	</body>
 </html>
