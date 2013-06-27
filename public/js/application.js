@@ -118,7 +118,7 @@ var Router = Backbone.Router.extend({
 	routes: {
 		'': 'home',
 		'registrar-denuncia': 'new',
-		'denuncia/:id': 'view'
+		'denuncias/:id': 'view'
 	}
 });
 

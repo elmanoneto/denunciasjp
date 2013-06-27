@@ -20,9 +20,9 @@
 				</form>
 				<ul>
 					<li class="home"><a href="#">Página Inicial</a></li>
-					<li class="denuncia"><a href="#registrar-denuncia">Registrar Denúncia</a></li>
+					<li class="denuncia"><a href="#/registrar-denuncia">Registrar Denúncia</a></li>
 					<li class="cadastre-se">Cadastre-se</li>
-					<li class="como-funciona"><a href="#como-funciona">Como Funciona</a></li>
+					<li class="como-funciona"><a href="#/como-funciona">Como Funciona</a></li>
 				</ul>
 				<img src="../img/barra-cima.jpg" / class="barra">
 			</div>
@@ -35,8 +35,8 @@
 			<script type="text/template" id="denuncias-list">
 				<div class="titulo">Denúncias Recentes</div>
 				{{#each denuncias}}
-						<div class="a">
-						<spam class="resumo"><a href="#denuncia/{{id}}">{{resumo}}</a></spam>
+						<div class="lista-denuncias">
+						<spam class="resumo"><a href="#/denuncias/{{id}}">{{resumo}}</a></spam>
 						<br />
 						<spam class="autor">Autor: {{autor}}</spam>
 						</div>

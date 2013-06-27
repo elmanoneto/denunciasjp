@@ -255,8 +255,18 @@ body{
 	color: gray;
 }
 
-.a{
+.lista-denuncias{
 	border-bottom: 2px white solid;
+}
+
+.lista-denuncias a{
+	color: black;
+	text-decoration: none;
+}
+
+.lista-denuncias a:hover{
+	color: black;
+	text-decoration: underline;
 }
 
 hr{
