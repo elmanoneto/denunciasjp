@@ -41,7 +41,7 @@ var Usuario = Backbone.Model.extend({
 		permissao: 0
 	},
 
-	urlRoot: '/users'
+	urlRoot: 'users'
 });
 
 var Denuncias = Backbone.Collection.extend({
@@ -129,19 +129,51 @@ var VisualizarDenuncia = Backbone.View.extend({
 	}
 });
 
+var cadastrarUsuario = Backbone.View.extend({
+	el: '.conteudo',
+
+	render: function () {
+		var source = ($('#cadastre-se').html());
+		var template = Handlebars.compile(source);
+		$(this.el).html(template);
+	},
+
+	events: {
+		'submit .form-cadastre-se': 'add'
+	},
+
+	add: function (e) {
+
+		var user = new Usuario();
+
+		d.set({
+			resumo: $('.usuario-nome').val(),
+			endereco: $('.usuario-email').val()
+		});
+
+		d.save();
+		window.alert("Usuário Adicionado com Sucesso");
+
+
+	}
+});
+
 var Router = Backbone.Router.extend({
 	routes: {
 		'': 'home',
 		'registrar-denuncia': 'new',
-		'denuncias/:id': 'view'
+		'denuncias/:id': 'view', 'cadastre-se': 'newUser'
 	}
 });
+
 
 var registrarDenuncia = new RegistrarDenuncia();
 
 var denunciasRecentes = new DenunciasRecentes();
 
 var visualizarDenuncia = new VisualizarDenuncia();
+
+var cadastrarUsuario = new cadastrarUsuario();
 
 var router = new Router();
 
@@ -158,6 +190,11 @@ router.on('route:new', function(){
 router.on('route:view', function (id) {
 	visualizarDenuncia.render({id: id});
 	console.log('Visualizar denúncia');
+});
+
+router.on('route:newUser', function () {
+	cadastrarUsuario.render();
+	console.log('Cadastrar Usuário');
 });
 
 Backbone.history.start();

@@ -21,7 +21,7 @@
 				<ul>
 					<li class="home"><a href="#">Página Inicial</a></li>
 					<li class="denuncia"><a href="#/registrar-denuncia">Registrar Denúncia</a></li>
-					<li class="cadastre-se">Cadastre-se</li>
+					<li class="cadastre-se"><a href="#/cadastre-se">Cadastre-se</a></li>
 					<li class="como-funciona"><a href="#/como-funciona">Como Funciona</a></li>
 				</ul>
 				<img src="../img/barra-cima.jpg" / class="barra">
@@ -66,6 +66,31 @@
 					</form>
 				</div>
 			</script>
+
+			<script type="text/template" id="cadastre-se">
+				<div class="titulo-cadastre-se">Cadastre-se</div>
+				<div id="panel">
+				<form method="post" class="form-cadastre-se" action="usuarios" enctype="multipart/form-data">
+					
+					<label>Nome</label><br>
+					<input id="nome" type="text" size="50" class="usuario-nome" name="nome">
+					<br>
+					<label>Email</label><br>
+					<input id="email" type="text" size="50" class="usuario-email" name="email">
+					<br>
+					<label>Login</label><br>
+					<input id="login" type="text" size="50" class="usuario-login" name="login">
+					<br>
+					<label>Senha</label><br>
+					<input id="senha" type="password" size="50" class="usuario-senha" name="senha">
+					<br>
+					<br>
+					<button>+ Cadastrar</button>
+				</form>
+				</div>
+
+			</script>
+			
 			<script type="text/template" id="como-funciona">
 				<div class="titulo-como-funciona">Como Funciona</div>
 				<div id="panel">
