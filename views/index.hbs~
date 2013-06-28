@@ -20,9 +20,9 @@
 				</form>
 				<ul>
 					<li class="home"><a href="#">Página Inicial</a></li>
-					<li class="denuncia"><a href="#registrar-denuncia">Registrar Denúncia</a></li>
-					<li class="cadastre-se">Cadastre-se</li>
-					<li class="como-funciona"><a href="#como-funciona">Como Funciona</a></li>
+					<li class="denuncia"><a href="#/registrar-denuncia">Registrar Denúncia</a></li>
+					<li class="cadastre-se"><a href="#/cadastre-se">Cadastre-se</a></li>
+					<li class="como-funciona"><a href="#/como-funciona">Como Funciona</a></li>
 				</ul>
 				<img src="../img/barra-cima.jpg" / class="barra">
 			</div>
@@ -35,8 +35,8 @@
 			<script type="text/template" id="denuncias-list">
 				<div class="titulo">Denúncias Recentes</div>
 				{{#each denuncias}}
-						<div class="a">
-						<spam class="resumo">{{resumo}}</spam>
+						<div class="lista-denuncias">
+						<spam class="resumo"><a href="#/denuncias/{{id}}">{{resumo}}</a></spam>
 						<br />
 						<spam class="autor">Autor: {{autor}}</spam>
 						</div>
@@ -65,15 +65,61 @@
 						<button>+ Denunciar</button>
 					</form>
 				</div>
-				<div id="map-canvas"></div>
 			</script>
+
+			<script type="text/template" id="cadastre-se">
+				<div class="titulo-cadastre-se">Cadastre-se</div>
+				<div id="panel">
+				<form method="post" class="form-cadastre-se" action="usuarios" enctype="multipart/form-data">
+					
+					<label>Nome</label><br>
+					<input id="nome" type="text" size="50" class="usuario-nome" name="nome">
+					<br>
+					<label>Email</label><br>
+					<input id="email" type="text" size="50" class="usuario-email" name="email">
+					<br>
+					<label>Login</label><br>
+					<input id="login" type="text" size="50" class="usuario-login" name="login">
+					<br>
+					<label>Senha</label><br>
+					<input id="senha" type="password" size="50" class="usuario-senha" name="senha">
+					<br>
+					<br>
+					<button>+ Cadastrar</button>
+				</form>
+				</div>
+
+			</script>
+			
 			<script type="text/template" id="como-funciona">
 				<div class="titulo-como-funciona">Como Funciona</div>
 				<div id="panel">
+					apejasoeiaioejaoejasoejoj
 				</div>
 			</script>
 		</section>
 		<!-- FIM DO CONTEÚDO -->
+
+		<!-- VISUALIZAR DENÚNCIA -->
+		<script type="text/template" id="visualizar-denuncia">
+			<div class="titulo-denuncia">Denúncia</div>
+			{{#denuncia}}
+				<spam class="autor">{{autor}}</spam>
+				<spam class="data"><strong>{{data}}</strong></spam> - 
+				<spam class="resumo"><strong>{{resumo}}</strong></spam>
+				<br>
+				<spam class="denuncia">{{denuncia}}</spam>
+				<br>
+				{{#if foto}}
+					<spam class="foto">Clique para ver uma imagem</spam>
+				{{/if}}
+				<br>
+				{{#if endereco}}
+					<div id="map-canvas"></div>
+				{{/if}}
+			{{/denuncia}}
+		</script>
+		<!-- FIM VISUALIZAR DENÚNCIA -->
 
 		<!-- MENU -->
 		<section id="menu">
@@ -101,7 +147,7 @@
 		<script type="text/javascript" src="js/models/denunciamodel.js"></script>
 		<script type="text/javascript" src="js/views/homeview.js"></script>
 		<script type="text/javascript" src="js/application.js"></script>
-		
+		<script type="text/javascript" src="js/libs/moment.js"></script>
 		<script type="text/javascript" src="js/autocomplete.js"></script>
 	</body>
 </html>
