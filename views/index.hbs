@@ -38,7 +38,7 @@
 						<div class="lista-denuncias">
 						<spam class="resumo"><a href="#/denuncias/{{id}}">{{resumo}}</a></spam>
 						<br />
-						<spam class="autor">Autor: {{autor}}</spam>
+						<spam class="autor">Por: {{autor}}</spam>
 						</div>
 				{{else}}
 					Nenhuma denúncia registrada.
@@ -90,8 +90,9 @@
 				{{/if}}
 				<br>
 				{{#if endereco}}
-					<div id="map-canvas"></div>
+					
 				{{/if}}
+				<div id="map-canvas"></div>
 			{{/denuncia}}
 		</script>
 		<!-- FIM VISUALIZAR DENÚNCIA -->
