@@ -275,3 +275,19 @@ hr{
 	border: none;
 	margin: 0 0 10px 0;
 }
+
+.conteudo .foto{
+	font-size: 10pt;
+}
+
+.conteudo .titulo-denuncia{
+	width: 640px;
+	padding: 5px;
+	float: left;	
+	background-image: url('../img/transversal.png');
+	font-size: 16pt;
+	border-left: 6px brown solid;
+	height: auto;
+	text-indent: 4px;
+	text-align: left;
+}

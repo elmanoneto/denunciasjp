@@ -65,7 +65,6 @@
 						<button>+ Denunciar</button>
 					</form>
 				</div>
-				<div id="map-canvas"></div>
 			</script>
 			<script type="text/template" id="como-funciona">
 				<div class="titulo-como-funciona">Como Funciona</div>
@@ -78,16 +77,20 @@
 
 		<!-- VISUALIZAR DENÚNCIA -->
 		<script type="text/template" id="visualizar-denuncia">
-			<div class="titulo">Denúncia</div>
+			<div class="titulo-denuncia">Denúncia</div>
 			{{#denuncia}}
 				<spam class="autor">{{autor}}</spam>
-				<spam class="data">{{data}}</spam> - 
-				<spam class="resumo">{{resumo}}</spam>
+				<spam class="data"><strong>{{data}}</strong></spam> - 
+				<spam class="resumo"><strong>{{resumo}}</strong></spam>
 				<br>
 				<spam class="denuncia">{{denuncia}}</spam>
-				<br />
+				<br>
 				{{#if foto}}
-				<spam class="foto">Clique para ver uma imagem</spam>
+					<spam class="foto">Clique para ver uma imagem</spam>
+				{{/if}}
+				<br>
+				{{#if endereco}}
+					<div id="map-canvas"></div>
 				{{/if}}
 			{{/denuncia}}
 		</script>

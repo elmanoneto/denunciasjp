@@ -101,7 +101,6 @@ var VisualizarDenuncia = Backbone.View.extend({
 	render: function (options) {
 		var that = this;
 		var denuncia = new Denuncia({id: options.id});
-		console.log(denuncia.titulo);
 		denuncia.fetch({
 			success: function (denuncia){
 				var js = denuncia.toJSON();
