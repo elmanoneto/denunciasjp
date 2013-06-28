@@ -16,6 +16,7 @@ var Denuncia = Backbone.Model.extend({
 
 		if(!attrs.resumo) {
 			erros.push('Resumo é obrigatório.');
+			window.alert("É obrigatório preencher o resumo");
 		}
 
 		if(!attrs.denuncia) {
@@ -30,6 +31,17 @@ var Denuncia = Backbone.Model.extend({
 
 		return erros.length > 0 ? erros : false
 	}
+});
+
+var Usuario = Backbone.Model.extend({
+	defaults: {
+		id: null,
+		nome: null,
+		email: null,
+		permissao: 0
+	},
+
+	urlRoot: '/users'
 });
 
 var Denuncias = Backbone.Collection.extend({

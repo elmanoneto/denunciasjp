@@ -33,6 +33,17 @@ var Denuncia = Backbone.Model.extend({
 	}
 });
 
+var Usuario = Backbone.Model.extend({
+	defaults: {
+		id: null,
+		nome: null,
+		email: null,
+		permissao: 0
+	},
+
+	urlRoot: 'users'
+});
+
 var Denuncias = Backbone.Collection.extend({
 	model: Denuncia,
 	url: '/denuncias'
