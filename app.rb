@@ -82,7 +82,18 @@ post '/denuncias' do
 	# haml :'denuncias/add'
 end
 
-#Cadastre-Se
+# Editar denúncia
+put '/denuncias/:id' do
+
+end
+
+# Deletar denúncia
+delete '/denuncias/:id' do
+	@denuncia = Denuncia.get(params[:id])
+	@denuncia.destroy
+end
+
+#USUÁRIOS
 post '/usuarios' do
 	unless params.nil?
 		
@@ -100,23 +111,6 @@ post '/usuarios' do
 			erros
 		end
 	end
-end
-
-
-
-# Editar denúncia
-put '/denuncias/:id' do
-
-end
-
-# Deletar denúncia
-delete '/denuncias/:id' do
-	@denuncia = Denuncia.get(params[:id])
-	@denuncia.destroy
-end
-
-#USUÁRIOS
-post '/usuarios' do
 end
 
 get '/usuarios' do
