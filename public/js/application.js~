@@ -58,6 +58,9 @@ var DenunciasRecentes = Backbone.View.extend({
 		denuncias.fetch({
 			success: function (denuncias){
 				var js = denuncias.toJSON();
+				_.each(js, function  (denuncia) {
+					denuncia.data = moment(denuncia.data).startOf('hour').fromNow();
+				});
 				var source = ($('#denuncias-list').html());
 				var template = Handlebars.compile(source);
 				that.$el.html(template({denuncias: js}));
@@ -106,8 +109,6 @@ var RegistrarDenuncia = Backbone.View.extend({
 
 		d.save();
 		window.alert("Denúncia Adicionada com Sucesso");
-
-
 	}
 });
 
@@ -146,14 +147,32 @@ var cadastrarUsuario = Backbone.View.extend({
 
 		var user = new Usuario();
 
-		d.set({
-			resumo: $('.usuario-nome').val(),
-			endereco: $('.usuario-email').val()
+		user.set({
+			nome: $('.usuario-nome').val(),
+			email: $('.usuario-email').val(),
+			login: $('.usuario-login').val(),
+			senha: $('.usuario-senha').val()                                                                        
 		});
 
-		d.save();
-		window.alert("Usuário Adicionado com Sucesso");
+		var errosIncluirUsuario = [];
 
+		user.on('invalid', function (options, errors){
+			_.each(errors, function  (erro) {
+				console.log(erro);
+				erros.push(erro);
+			})
+			$(this.el).text(erros);
+		});
+
+
+		if(!user.isValid()){
+
+			window.alert("Usuário já existente");
+			return false;
+		}
+		else{
+		user.save();
+		}
 
 	}
 });
