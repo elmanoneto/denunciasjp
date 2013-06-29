@@ -59,7 +59,7 @@ var DenunciasRecentes = Backbone.View.extend({
 			success: function (denuncias){
 				var js = denuncias.toJSON();
 				_.each(js, function  (denuncia) {
-					denuncia.data = moment(denuncia.data).fromNow(new Date());
+					denuncia.data = moment(denuncia.data).fromNow();
 				});
 				var source = ($('#denuncias-list').html());
 				var template = Handlebars.compile(source);

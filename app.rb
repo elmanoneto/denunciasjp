@@ -61,7 +61,7 @@ post '/denuncias' do
 			:endereco => params[:endereco],
 			:denuncia => params[:denuncia],
 			:foto => foto,
-			:data => Date.today.strftime("%d-%m-%Y")
+			:data => DateTime.now
 		)
 
 		if @denuncia.save
