@@ -147,14 +147,33 @@ var cadastrarUsuario = Backbone.View.extend({
 
 		var user = new Usuario();
 
-		d.set({
-			resumo: $('.usuario-nome').val(),
-			endereco: $('.usuario-email').val()                                                                        
+		user.set({
+			nome: $('.usuario-nome').val(),
+			email: $('.usuario-email').val(),
+			login: $('.usuario-login').val(),
+			senha: $('.usuario-senha').val()                                                                        
 		});
 
-		d.save();
-		window.alert("Usuário Adicionado com Sucesso");
+		var errosIncluirUsuario = [];
 
+		user.on('invalid', function (options, errors){
+			_.each(errors, function  (erro) {
+				console.log(erro);
+				erros.push(erro);
+			})
+			$(this.el).text(erros);
+		});
+
+
+		if(!user.isValid()){
+
+			window.alert("Usuário já existente");
+			return false;
+		}
+		else{
+		user.save();
+		window.alert("Usuário Adicionado com Sucesso");
+		}
 
 	}
 });

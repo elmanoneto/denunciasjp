@@ -82,6 +82,29 @@ post '/denuncias' do
 	# haml :'denuncias/add'
 end
 
+#Cadastre-Se
+post '/usuarios' do
+	unless params.nil?
+		
+		@usuario = Usuario.create(
+			:nome => params[:nome],
+			:email => params[:email],
+			:login => params[:login],
+			:senha => params[:senha]
+		)
+
+		if @usuario.save
+			redirect '/'
+		else
+			erros = @usuario.errors.values.map{|e| e.to_s}
+			erros
+			redirect '/'
+		end
+	end
+end
+
+
+
 # Editar denúncia
 put '/denuncias/:id' do
 
