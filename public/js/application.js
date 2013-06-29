@@ -58,6 +58,9 @@ var DenunciasRecentes = Backbone.View.extend({
 		denuncias.fetch({
 			success: function (denuncias){
 				var js = denuncias.toJSON();
+				_.each(js, function  (denuncia) {
+					denuncia.data = moment(denuncia.data).startOf('hour').fromNow();
+				});
 				var source = ($('#denuncias-list').html());
 				var template = Handlebars.compile(source);
 				that.$el.html(template({denuncias: js}));
@@ -106,8 +109,6 @@ var RegistrarDenuncia = Backbone.View.extend({
 
 		d.save();
 		window.alert("Denúncia Adicionada com Sucesso");
-
-
 	}
 });
 

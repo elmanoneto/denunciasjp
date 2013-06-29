@@ -144,7 +144,7 @@ body{
 }
 
 .denuncias-recentes .autor{
-	color: gray;
+	color: #c8c8c8;
 	font-size: 11pt;
 }
 
@@ -295,7 +295,7 @@ body{
 
 .autor{
 	font-size: 10pt;
-	color: gray;
+	color: #696969;
 }
 
 .lista-denuncias{

@@ -14,10 +14,12 @@
 		<section id="home">
 			<div class="topo">
 				<img src="../img/denunciasjp.png" />
-				<form>
-					<input type="text" placeholder="Pesquisar denúncia..">
-					<button>buscar</button>
-				</form>
+				<script type="text/template"></script>
+					<form method="post" action="busca">
+						<input type="text" placeholder="Pesquisar denúncia.." name="busca">
+						<button>buscar</button>
+					</form>
+				</script>
 				<ul>
 					<li class="home"><a href="#">Página Inicial</a></li>
 					<li class="denuncia"><a href="#/registrar-denuncia">Registrar Denúncia</a></li>
@@ -38,7 +40,7 @@
 						<div class="lista-denuncias">
 						<spam class="resumo"><a href="#/denuncias/{{id}}">{{resumo}}</a></spam>
 						<br />
-						<spam class="autor">Por: {{autor}}</spam>
+						<spam class="autor">Por: Fulano de tal · há {{data}}</spam>
 						</div>
 				{{else}}
 					Nenhuma denúncia registrada.
