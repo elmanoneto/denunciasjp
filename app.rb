@@ -40,8 +40,13 @@ end
 
 # Retorna denúncia individual
 get '/denuncias/:id' do
+	pp 'hzhhahaha'
 	@denuncias = Denuncia.get(params[:id])
 	@denuncias.to_json
+end
+
+get '/denunciar/:id' do
+	@denuncia = Denuncia.get(:id => params[:id])
 end
 
 # Registrar denúncia
@@ -96,7 +101,6 @@ end
 #USUÁRIOS
 post '/usuarios' do
 	unless params.nil?
-		
 		@usuario = Usuario.create(
 			:nome => params[:nome],
 			:email => params[:email],
@@ -111,6 +115,10 @@ post '/usuarios' do
 			erros
 		end
 	end
+end
+
+post '/login' do
+	@usuario = Usuario.first(:login => params[:login], :senha => params[:senha])
 end
 
 get '/usuarios' do

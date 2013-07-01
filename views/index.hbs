@@ -48,10 +48,19 @@
 			</script>
 			<script type="text/template" id="registrar-denuncia">
 				<div class="titulo-registrar-denuncia">Registrar Denúncia</div>
+				{{#if erros}}
+					<div class="erros">
+						{{erros.erro0}}
+						<br>
+						{{erros.erro1}}
+						{{erros.erro3}}
+					</div>
+				{{/if}}
 				<div id="panel">
 					<form method="post" class="form-registrar-denuncia" action="denuncias" enctype="multipart/form-data">
 						<label>Resumo</label><br>
 						<input type="text" class="denuncia-resumo" name="resumo" value="{{#resumo}}{{/resumo}}"/>
+						<div class="contador"></div>
 						<br>
 						<label>Endereço</label><br>
 						<input id="searchTextField" type="text" size="50" class="denuncia-endereco" name="endereco">
@@ -112,13 +121,16 @@
 				<br>
 				<spam class="denuncia">{{denuncia}}</spam>
 				<br>
-				{{#if foto}}
-					<spam class="foto">Clique para ver uma imagem</spam>
-				{{/if}}
+				<spam class="autor">Denúncia feita por: {{autor}}</spam>
+				<br>
 				<br>
 				{{#if endereco}}
 					
 				{{/if}}
+				{{#if foto}}
+					<spam class="foto"><img src="../img/uploads/{{foto}}"></spam>
+				{{/if}}
+				<spam class="denunciar"><a href="#/denunciar/{{id}}">Denunciar</a></spam>
 				<div id="map-canvas"></div>
 			{{/denuncia}}
 		</script>
@@ -127,7 +139,11 @@
 		<!-- MENU -->
 		<section id="menu">
 			<div class="menu">
-				menu
+				<form method="post" action="login">
+					<input type="text" name="login" />
+					<input type="password" name="senha" />
+					<button>Login</button>
+				</form>
 			</div>
 		</section>
 		<!-- FIM DO MENU -->
