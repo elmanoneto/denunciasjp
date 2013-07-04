@@ -81,11 +81,30 @@ var Busca = Backbone.View.extend({
 
 	busca: function () {
 		var busca = $('input[name=buscar]').val();
-		console.log(busca);
+		if(busca == "") {
+			return false;
+		}
+
+		var denuncias = new Denuncias();
 		this.el = '.conteudo';
-		var source = ($('#resultado-busca').html());
-		var template = Handlebars.compile(source);
-		$(this.el).html(template);
+		var that = this;
+		denuncias.fetch({
+			success: function (denuncias) {
+				var js = denuncias.toJSON();
+				var list = [];
+				_.each(js, function (denuncia) {
+					if(denuncia.denuncia.search(busca) != -1) {
+						list.push(denuncia);
+					}else{
+						delete denuncia;
+					}
+				});
+				console.log(list);
+				var source = ($('#resultado-busca').html());
+				var template = Handlebars.compile(source);
+				$(that.el).html(template({denuncias: list}));
+			}
+		});
 		return false;
 	}
 });

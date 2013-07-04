@@ -145,7 +145,19 @@
 		<!-- BUSCA -->
 		<script type="text/template" id="resultado-busca">
 			<div class="titulo-denuncia">Resultado da busca</div>
-			dsfadfdf
+			<div id="panel">
+				{{#if denuncias}}
+					{{#denuncias}}
+						<div class="lista-denuncias">
+						<spam class="resumo"><a href="#/denuncias/{{id}}">{{resumo}}</a></spam>
+						<br />
+						<spam class="autor">Por: Fulano de tal</spam>
+						</div>
+					{{/denuncias}}
+				{{else}}
+					Haha
+				{{/if}}
+			</div>
 		</script>
 		<!-- FIM BUSCA -->
 
