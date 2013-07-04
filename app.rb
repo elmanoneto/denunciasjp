@@ -23,9 +23,7 @@ get '/como-funciona' do
 end
 
 # Retorna busca
-post '/busca' do
-	params[:busca].empty? redirect back
-	
+get '/busca' do
 	@denuncias = Denuncia.all(:denuncia.like => "%#{params[:busca]}%")
 	@denuncias.to_json
 end
@@ -34,19 +32,14 @@ end
 
 # Retorna lista de denúncias
 get '/denuncias' do
-	@denuncias = Denuncia.all(:order => [:id.desc], :limit => 10)
+	@denuncias = Denuncia.all(:order => [:id.desc], :limit => 5)
 	@denuncias.to_json
 end
 
 # Retorna denúncia individual
 get '/denuncias/:id' do
-	pp 'hzhhahaha'
 	@denuncias = Denuncia.get(params[:id])
 	@denuncias.to_json
-end
-
-get '/denunciar/:id' do
-	@denuncia = Denuncia.get(:id => params[:id])
 end
 
 # Registrar denúncia
@@ -101,6 +94,7 @@ end
 #USUÁRIOS
 post '/usuarios' do
 	unless params.nil?
+		
 		@usuario = Usuario.create(
 			:nome => params[:nome],
 			:email => params[:email],
@@ -115,10 +109,6 @@ post '/usuarios' do
 			erros
 		end
 	end
-end
-
-post '/login' do
-	@usuario = Usuario.first(:login => params[:login], :senha => params[:senha])
 end
 
 get '/usuarios' do

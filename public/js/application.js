@@ -1,5 +1,6 @@
-//Backbone.emulateHTTP = true;
-
+/*
+	MODELS
+			*/
 var Denuncia = Backbone.Model.extend({
 	defaults: {
 		resumo: '',
@@ -26,6 +27,12 @@ var Denuncia = Backbone.Model.extend({
 			erros.push('Resumo excedeu o limite de caracteres.');
 		}
 
+		if(attrs.foto != ""){
+			if(attrs.foto.split('.')[1] != 'jpg'){
+				erros.push('Formato de arquivo inválido.');
+			}
+		}
+
 		return erros.length > 0 ? erros : false
 	}
 });
@@ -45,6 +52,10 @@ var Usuario = Backbone.Model.extend({
 	urlRoot: 'usuarios'
 });
 
+/*
+	COLLECTIONS
+				*/
+
 var D = new Backbone.Model.extend({urlRoot: '/denuncias'});
 
 var Denuncias = Backbone.Collection.extend({
@@ -52,8 +63,39 @@ var Denuncias = Backbone.Collection.extend({
 	url: '/denuncias'
 });
 
+var ListaBusca = Backbone.Collection.extend({
+	model: Denuncia,
+	url: '/busca'
+});
+
+/*
+	VIEWS
+			*/
+
+var Busca = Backbone.View.extend({
+	el: '.busca',
+
+	events: {
+		'submit .form-busca': 'busca'
+	},
+
+	busca: function () {
+		var busca = $('input[name=buscar]').val();
+		console.log(busca);
+		this.el = '.conteudo';
+		var source = ($('#resultado-busca').html());
+		var template = Handlebars.compile(source);
+		$(this.el).html(template);
+		return false;
+	}
+});
+
 var DenunciasRecentes = Backbone.View.extend({
 	el: '.conteudo',
+
+	events: {
+		'keyup .form-busca': 'busca',
+	},
 
 	render: function () {
 		var that = this;
@@ -69,33 +111,35 @@ var DenunciasRecentes = Backbone.View.extend({
 				that.$el.html(template({denuncias: js}));
 			}
 		});		
-	}
+	},
+
+	busca: function () {
+		console.log('haha');
+	},
 });
 
 var RegistrarDenuncia = Backbone.View.extend({
 	el: '.conteudo',
 
-	initialize: function () {
-		var contador = 50;
-		$('.contador').html();
-	},
-
 	render: function () {
 		var source = ($('#registrar-denuncia').html());
 		var template = Handlebars.compile(source);
 		$(this.el).html(template);
+		var contador = 50;
+		$('.contador').html(contador);
 	},
 
 	events: {
 		'submit .form-registrar-denuncia': 'add',
-		'keyup .denuncia-resumo': 'contador'
+		'keyup .denuncia-resumo': 'contador',
+		'click .swipebox': 'dialog'
 	},
 
 	add: function (e) {
 
-		var d = new Denuncia();
+		var denuncia = new Denuncia();
 
-		d.set({
+		denuncia.set({
 			resumo: $('.denuncia-resumo').val(),
 			endereco: $('.denuncia-endereco').val(),
 			denuncia: $('.denuncia-descricao').val(),
@@ -103,21 +147,23 @@ var RegistrarDenuncia = Backbone.View.extend({
 		});
 
 		var erros = {};
-		d.on('invalid', function (options, errors){
+		denuncia.on('invalid', function (options, errors){
 			_.each(errors, function  (erro, i) {
 				erros['erro' + i] = erro;
 			})
 		});
 
-		if(!d.isValid()){
+		if(!denuncia.isValid()){
 			var that = this;
 			var source = ($('#registrar-denuncia').html());
 			var template = Handlebars.compile(source);
 			that.$el.html(template({erros: erros}));
+			var contador = 50;
+			$('.contador').html(contador);
 			return false;
 		}
 
-		d.save();
+		denuncia.save();
 
 	},
 
@@ -133,6 +179,10 @@ var RegistrarDenuncia = Backbone.View.extend({
 			$('.contador').css('color', 'black');
 		}
 		$('.contador').html(contador - tam);
+	},
+
+	dialog: function () {
+		$('.swipebox').colorbox({rel: 'swipebox'});
 	}
 });
 
@@ -190,7 +240,6 @@ var cadastrarUsuario = Backbone.View.extend({
 
 
 		if(!user.isValid()){
-
 			window.alert("Usuário já existente");
 			return false;
 		}
@@ -202,12 +251,29 @@ var cadastrarUsuario = Backbone.View.extend({
 	}
 });
 
+var ComoFunciona = Backbone.View.extend({
+	el: '.conteudo',
+
+	render: function () {
+		var source = ($('#como-funciona').html());
+		var template = Handlebars.compile(source);
+		$(this.el).html(template);
+	}
+});
+
+/*
+	ROTAS 
+			*/
+
 var Router = Backbone.Router.extend({
 	routes: {
 		'': 'home',
 		'registrar-denuncia': 'new',
-		'denuncias/:id': 'view', 'cadastre-se': 'newUser',
-		'denunciar/:id': 'denunciar'
+		'denuncias/:id': 'view',
+		'cadastre-se': 'newUser',
+		'denunciar/:id': 'denunciar',
+		'como-funciona': 'comofunciona',
+		'busca': 'busca'
 	}
 });
 
@@ -219,6 +285,10 @@ var denunciasRecentes = new DenunciasRecentes();
 var visualizarDenuncia = new VisualizarDenuncia();
 
 var cadastrarUsuario = new cadastrarUsuario();
+
+var comoFunciona = new ComoFunciona();
+
+var busca = new Busca();
 
 var router = new Router();
 
@@ -255,6 +325,14 @@ router.on('route:denunciar', function (id) {
 		}
 	});
 	//denuncia.set({denuncias: denuncia.denuncias++});
+});
+
+router.on('route:comofunciona', function () {
+	comoFunciona.render();
+});
+
+router.on('route:busca', function () {
+	busca.render();
 });
 
 Backbone.history.start();

@@ -7,6 +7,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/estilo.css">
+		<link rel="stylesheet" href="css/modal.css" type="text/css" media="screen" />
 	</head>
 	<body>
 
@@ -14,14 +15,16 @@
 		<section id="home">
 			<div class="topo">
 				<img src="../img/denunciasjp.png" />
-				<script type="text/template"></script>
-					<form method="post" action="busca">
-						<input type="text" placeholder="Pesquisar denúncia.." name="busca">
-						<button>buscar</button>
-					</form>
-				</script>
-				<ul>
-					<li class="home"><a href="#">Página Inicial</a></li>
+				<div class="busca">
+					<script type="text/template" id="formulario-busca"></script>
+						<form class="form-busca">
+							<input type="text" placeholder="Pesquisar denúncia.." name="buscar" class="input-busca">
+							<button class="btn-busca">buscar</button>
+						</form>
+					</script>
+				</div>
+				<ul
+>					<li class="home"><a href="#">Página Inicial</a></li>
 					<li class="denuncia"><a href="#/registrar-denuncia">Registrar Denúncia</a></li>
 					<li class="cadastre-se"><a href="#/cadastre-se">Cadastre-se</a></li>
 					<li class="como-funciona"><a href="#/como-funciona">Como Funciona</a></li>
@@ -53,7 +56,8 @@
 						{{erros.erro0}}
 						<br>
 						{{erros.erro1}}
-						{{erros.erro3}}
+						<br>
+						{{erros.erro2}}
 					</div>
 				{{/if}}
 				<div id="panel">
@@ -71,6 +75,8 @@
 						<br>
 						<label>Foto</label>
 						<input type="file" class="denuncia-foto" name="foto"/>
+						<br>
+						<spam class="formato">*Formato aceito: jpg</spam>
 						<hr />
 						<br>
 						<button>+ Denunciar</button>
@@ -104,9 +110,9 @@
 			
 			<script type="text/template" id="como-funciona">
 				<div class="titulo-como-funciona">Como Funciona</div>
-				<div id="panel">
-					apejasoeiaioejaoejasoejoj
-				</div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc lobortis magna non ante ornare tempor. Duis vel ultricies arcu. Ut non dolor lectus. Mauris iaculis condimentum ipsum eu condimentum. Cras egestas odio pellentesque, hendrerit erat sit amet, fermentum arcu. Cras molestie ac diam id luctus. Aliquam vestibulum, sem ut hendrerit iaculis, dolor quam iaculis mi, nec ullamcorper magna sem in nisi. Vivamus nec velit orci. Ut ut consectetur dui, a molestie nisi. Pellentesque pellentesque sem enim, quis consectetur diam malesuada in. Morbi porta, quam non fringilla malesuada, arcu odio venenatis libero, vel bibendum risus leo bibendum nunc. Aliquam at urna eleifend, malesuada enim ac, volutpat odio. Vestibulum facilisis mauris eu elit consequat, et semper erat scelerisque. Sed venenatis purus aliquam tempus molestie. Quisque varius gravida felis ut sodales.</p>
+
+					<p>Phasellus eget ligula metus. Integer ultricies volutpat mi, at iaculis metus sodales quis. Vivamus vestibulum vitae dui nec dapibus. Sed ornare ligula a neque congue, sed cursus lorem vulputate. Sed eu vestibulum orci, eu gravida ante. Aenean sit amet egestas nibh. Sed tristique dui arcu, quis hendrerit nulla euismod id. Phasellus condimentum fermentum ligula quis feugiat. Vivamus gravida arcu vitae purus pellentesque molestie. Quisque dignissim quam vitae mi sollicitudin pellentesque. Donec aliquet semper felis ac laoreet. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
 			</script>
 		</section>
 		<!-- FIM DO CONTEÚDO -->
@@ -115,35 +121,38 @@
 		<script type="text/template" id="visualizar-denuncia">
 			<div class="titulo-denuncia">Denúncia</div>
 			{{#denuncia}}
-				<spam class="autor">{{autor}}</spam>
-				<spam class="data"><strong>{{data}}</strong></spam> - 
-				<spam class="resumo"><strong>{{resumo}}</strong></spam>
-				<br>
-				<spam class="denuncia">{{denuncia}}</spam>
-				<br>
-				<spam class="autor">Denúncia feita por: {{autor}}</spam>
-				<br>
-				<br>
-				{{#if endereco}}
-					
-				{{/if}}
-				{{#if foto}}
-					<spam class="foto"><img src="../img/uploads/{{foto}}"></spam>
-				{{/if}}
-				<spam class="denunciar"><a href="#/denunciar/{{id}}">Denunciar</a></spam>
-				<div id="map-canvas"></div>
+				<spam class="detalhe-denuncia">
+					<spam class="autor">{{autor}}</spam>
+					<spam class="data"><strong>{{data}}</strong></spam> - 
+					<spam class="resumo"><strong>{{resumo}}</strong></spam>
+					<br>
+					<spam class="denuncia">{{denuncia}}</spam>
+					<br>
+					<spam class="autor">Denúncia feita por: {{autor}}</spam>
+					<br>
+					{{#if endereco}}
+						<spam class="autor">Endereço: {{endereco}}</spam>
+					{{/if}}
+					<spam class="line-denuncia"><hr /><spam>
+					{{#if foto}}
+						<a href="../img/uploads/{{foto}}" class="swipebox">Clique para ver uma imagem</a>
+					{{/if}}
+					<!-- <spam class="denunciar"><a href="#/denunciar/{{id}}" >Denunciarr</a></spam> -->
+					<div id="map-canvas"></div>
 			{{/denuncia}}
 		</script>
-		<!-- FIM VISUALIZAR DENÚNCIA -->
+
+		<!-- BUSCA -->
+		<script type="text/template" id="resultado-busca">
+			<div class="titulo-denuncia">Resultado da busca</div>
+			dsfadfdf
+		</script>
+		<!-- FIM BUSCA -->
 
 		<!-- MENU -->
 		<section id="menu">
 			<div class="menu">
-				<form method="post" action="login">
-					<input type="text" name="login" />
-					<input type="password" name="senha" />
-					<button>Login</button>
-				</form>
+				menu
 			</div>
 		</section>
 		<!-- FIM DO MENU -->
@@ -168,5 +177,7 @@
 		<script type="text/javascript" src="js/application.js"></script>
 		<script type="text/javascript" src="js/libs/moment.js"></script>
 		<script type="text/javascript" src="js/autocomplete.js"></script>
+		<script type="text/javascript" src="js/modal.js"></script>
+		<script type="text/javascript" src="js/colorbox.js"></script>
 	</body>
 </html>
