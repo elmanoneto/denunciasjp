@@ -69,11 +69,9 @@ post '/denuncias' do
 				@denuncia.errors.add(:foto, "Formato de imagem inválido.")
 			end
 			erros = @denuncia.errors.values.map{|e| e.to_s}
-			#redirect '/#registrar-denuncia'
 			erros
 		else
 			erros = @denuncia.errors.values.map{|e| e.to_s}
-			#redirect '/#registrar-denuncia'
 			erros
 		end
 	end

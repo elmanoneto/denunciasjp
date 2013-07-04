@@ -130,14 +130,18 @@ var RegistrarDenuncia = Backbone.View.extend({
 	},
 
 	events: {
-		'submit .form-registrar-denuncia': 'add',
+		'click .btn-registrar-denuncia': 'registrar',
 		'keyup .denuncia-resumo': 'contador',
 		'click .swipebox': 'dialog'
 	},
 
-	add: function (e) {
-
+	registrar: function (ev) {
 		var denuncia = new Denuncia();
+
+		var resumo = $('.denuncia-resumo').val();
+		var endereco = $('.denuncia-endereco').val();
+		var descricao  = $('.denuncia-descricao').val();
+		var foto =  $('.denuncia-foto').val();
 
 		denuncia.set({
 			resumo: $('.denuncia-resumo').val(),
@@ -151,6 +155,7 @@ var RegistrarDenuncia = Backbone.View.extend({
 			_.each(errors, function  (erro, i) {
 				erros['erro' + i] = erro;
 			})
+			return false;
 		});
 
 		if(!denuncia.isValid()){
@@ -160,11 +165,17 @@ var RegistrarDenuncia = Backbone.View.extend({
 			that.$el.html(template({erros: erros}));
 			var contador = 50;
 			$('.contador').html(contador);
+			$('.denuncia-resumo').val(resumo);
+			$('.denuncia-endereco').val(endereco);
+			$('.denuncia-descricao').val(descricao);
 			return false;
 		}
 
-		denuncia.save();
+		if(denuncia.save()){
+			window.location('/#');
+		}
 
+		return false;
 	},
 
 	contador: function () {
