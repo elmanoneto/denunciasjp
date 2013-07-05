@@ -244,12 +244,18 @@ var cadastrarUsuario = Backbone.View.extend({
 	},
 
 	events: {
-		'submit .form-cadastre-se': 'add'
+		'click .form-cadastre-se': 'add',
+		'click .swipebox': 'dialog'
 	},
 
 	add: function (e) {
 
 		var user = new Usuario();
+
+		var nome = $('.usuario-nome').val();
+		var email = $('.usuario-email').val();
+		var login = $('.usuario-login').val();
+		var senha =  $('.usuario-senha').val();
 
 		user.set({
 			nome: $('.usuario-nome').val(),
@@ -259,25 +265,36 @@ var cadastrarUsuario = Backbone.View.extend({
 		});
 
 		var errosIncluirUsuario = [];
-
 		user.on('invalid', function (options, errors){
-			_.each(errors, function  (erro) {
-				console.log(erro);
-				erros.push(erro);
+			_.each(errors, function  (erro, i) {
+				errosIncluirUsuario['erro' + i] = erro;
 			})
-			$(this.el).text(erros);
+			return false;
 		});
 
 
+
 		if(!user.isValid()){
-			window.alert("Usuário já existente");
+			var that = this;
+			var source = ($('#cadastre-se').html());
+			var template = Handlebars.compile(source);
+			that.$el.html(template({erros: erros}));
+			$('.usuario-nome').val(nome);
+			$('.usuario-email').val(email);
+			$('.usuario-login').val(login);
+			$('.usuario-senha').val(senha);
 			return false;
 		}
-		else{
-		user.save();
-		window.alert("Usuário Adicionado com Sucesso");
+		
+		if(user.save()){
+			window.location('/#');
 		}
 
+		return false;
+	},
+
+	dialog: function () {
+		$('.swipebox').colorbox({rel: 'swipebox'});
 	}
 });
 

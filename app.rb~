@@ -23,9 +23,7 @@ get '/como-funciona' do
 end
 
 # Retorna busca
-post '/busca' do
-	params[:busca].empty? redirect back
-	
+get '/busca' do
 	@denuncias = Denuncia.all(:denuncia.like => "%#{params[:busca]}%")
 	@denuncias.to_json
 end
@@ -34,7 +32,7 @@ end
 
 # Retorna lista de denúncias
 get '/denuncias' do
-	@denuncias = Denuncia.all(:order => [:id.desc], :limit => 10)
+	@denuncias = Denuncia.all(:order => [:id.desc], :limit => 5)
 	@denuncias.to_json
 end
 
@@ -61,7 +59,7 @@ post '/denuncias' do
 			:endereco => params[:endereco],
 			:denuncia => params[:denuncia],
 			:foto => foto,
-			:data => Date.today.strftime("%d-%m-%Y")
+			:data => DateTime.now
 		)
 
 		if @denuncia.save
@@ -71,18 +69,27 @@ post '/denuncias' do
 				@denuncia.errors.add(:foto, "Formato de imagem inválido.")
 			end
 			erros = @denuncia.errors.values.map{|e| e.to_s}
-			#redirect '/#registrar-denuncia'
 			erros
 		else
 			erros = @denuncia.errors.values.map{|e| e.to_s}
-			#redirect '/#registrar-denuncia'
 			erros
 		end
 	end
 	# haml :'denuncias/add'
 end
 
-#Cadastre-Se
+# Editar denúncia
+put '/denuncias/:id' do
+
+end
+
+# Deletar denúncia
+delete '/denuncias/:id' do
+	@denuncia = Denuncia.get(params[:id])
+	@denuncia.destroy
+end
+
+#USUÁRIOS
 post '/usuarios' do
 	unless params.nil?
 		
@@ -98,26 +105,8 @@ post '/usuarios' do
 		else
 			erros = @usuario.errors.values.map{|e| e.to_s}
 			erros
-			redirect '/'
 		end
 	end
-end
-
-
-
-# Editar denúncia
-put '/denuncias/:id' do
-
-end
-
-# Deletar denúncia
-delete '/denuncias/:id' do
-	@denuncia = Denuncia.get(params[:id])
-	@denuncia.destroy
-end
-
-#USUÁRIOS
-post '/usuarios' do
 end
 
 get '/usuarios' do
