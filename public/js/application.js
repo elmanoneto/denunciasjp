@@ -39,9 +39,11 @@ var Denuncia = Backbone.Model.extend({
 
 var Usuario = Backbone.Model.extend({
 	defaults: {
-		id: null,
-		nome: null,
-		email: null,
+		id: "",
+		nome: "",
+		email: "",
+		login: "",
+		senha: "",
 		logado: false
 	},
 
@@ -49,7 +51,28 @@ var Usuario = Backbone.Model.extend({
 		this.logado = true;
 	},	
 
-	urlRoot: 'usuarios'
+	urlRoot: '/usuarios',
+
+	validate: function (attrs) {
+		var erros = [];
+
+		if(!attrs.nome) {
+			erros.push('Nome é obrigatório.');
+		}
+
+		if(!attrs.email) {
+			erros.push('Email é obrigatório.');
+		}
+
+		if(!attrs.login) {
+			erros.push('Login é obrigatório.');
+		}
+		if(!attrs.senha) {
+			erros.push('Senha é obrigatório.');
+		}
+
+		return erros.length > 0 ? erros : false
+	}
 });
 
 /*

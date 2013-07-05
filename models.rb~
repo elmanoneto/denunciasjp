@@ -36,8 +36,14 @@ class Usuario
 	include DataMapper::Resource
 
 	property :id, Serial
-	property :nome, String
-	property :email, String
+	property :nome, String, :required => true,
+		:messages => {
+			:presence => 'Nome é Obrigatório'
+		}
+	property :email, String, :required => true,
+		:messages => {
+			:presence => 'Email é obrigatório'
+		}
 	property :login, String, :unique => true,
 	:messages => {
 	:is_unique => "Login já existente"

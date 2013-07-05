@@ -39,9 +39,11 @@ var Denuncia = Backbone.Model.extend({
 
 var Usuario = Backbone.Model.extend({
 	defaults: {
-		id: null,
-		nome: null,
-		email: null,
+		id: "",
+		nome: "",
+		email: "",
+		login: "",
+		senha: "",
 		logado: false
 	},
 
@@ -49,7 +51,28 @@ var Usuario = Backbone.Model.extend({
 		this.logado = true;
 	},	
 
-	urlRoot: 'usuarios'
+	urlRoot: '/usuarios',
+
+	validate: function (attrs) {
+		var erros = [];
+
+		if(!attrs.nome) {
+			erros.push('Nome é obrigatório.');
+		}
+
+		if(!attrs.email) {
+			erros.push('Email é obrigatório.');
+		}
+
+		if(!attrs.login) {
+			erros.push('Login é obrigatório.');
+		}
+		if(!attrs.senha) {
+			erros.push('Senha é obrigatório.');
+		}
+
+		return erros.length > 0 ? erros : false
+	}
 });
 
 /*
@@ -244,12 +267,18 @@ var cadastrarUsuario = Backbone.View.extend({
 	},
 
 	events: {
-		'submit .form-cadastre-se': 'add'
+		'click .form-cadastre-se': 'add',
+		'click .swipebox': 'dialog'
 	},
 
 	add: function (e) {
 
 		var user = new Usuario();
+
+		var nome = $('.usuario-nome').val();
+		var email = $('.usuario-email').val();
+		var login = $('.usuario-login').val();
+		var senha =  $('.usuario-senha').val();
 
 		user.set({
 			nome: $('.usuario-nome').val(),
@@ -259,7 +288,6 @@ var cadastrarUsuario = Backbone.View.extend({
 		});
 
 		var errosIncluirUsuario = [];
-
 		user.on('invalid', function (options, errors){
 			_.each(errors, function  (erro, i) {
 				errosIncluirUsuario['erro' + i] = erro;
@@ -280,10 +308,16 @@ var cadastrarUsuario = Backbone.View.extend({
 			$('.usuario-senha').val(senha);
 			return false;
 		}
-		else{
-		user.save();
+		
+		if(user.save()){
+			window.location('/#');
 		}
 
+		return false;
+	},
+
+	dialog: function () {
+		$('.swipebox').colorbox({rel: 'swipebox'});
 	}
 });
 
