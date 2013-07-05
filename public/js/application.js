@@ -287,10 +287,10 @@ var cadastrarUsuario = Backbone.View.extend({
 			senha: $('.usuario-senha').val()                                                                        
 		});
 
-		var errosIncluirUsuario = [];
+		var erros = [];
 		user.on('invalid', function (options, errors){
 			_.each(errors, function  (erro, i) {
-				errosIncluirUsuario['erro' + i] = erro;
+				erros['erro' + i] = erro;
 			})
 			return false;
 		});
