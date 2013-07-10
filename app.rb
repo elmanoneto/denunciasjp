@@ -110,6 +110,8 @@ post '/usuarios' do
 end
 
 get '/usuarios' do
+	@usuarios = Usuario.all(:order => [:id.desc])
+	@usuarios.to_json
 end
 
 get '/usuarios/:id' do

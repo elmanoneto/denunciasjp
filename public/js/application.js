@@ -1,3 +1,4 @@
+var session = null;
 /*
 	MODELS
 			*/
@@ -68,7 +69,7 @@ var Usuario = Backbone.Model.extend({
 			erros.push('Login é obrigatório.');
 		}
 		if(!attrs.senha) {
-			erros.push('Senha é obrigatório.');
+			erros.push('Senha é obrigatória.');
 		}
 
 		return erros.length > 0 ? erros : false
@@ -86,6 +87,11 @@ var Denuncias = Backbone.Collection.extend({
 	url: '/denuncias'
 });
 
+var Usuarios = Backbone.Collection.extend({
+	model: Usuario,
+	url: '/usuarios'
+});
+
 var ListaBusca = Backbone.Collection.extend({
 	model: Denuncia,
 	url: '/busca'
@@ -94,12 +100,11 @@ var ListaBusca = Backbone.Collection.extend({
 /*
 	VIEWS
 			*/
-
 var Busca = Backbone.View.extend({
 	el: '.busca',
 
 	events: {
-		'submit .form-busca': 'busca'
+		'click .form-busca': 'busca'
 	},
 
 	busca: function () {
@@ -113,6 +118,7 @@ var Busca = Backbone.View.extend({
 		var that = this;
 		denuncias.fetch({
 			success: function (denuncias) {
+				$('input[name=buscar]').val('');
 				var js = denuncias.toJSON();
 				var list = [];
 				_.each(js, function (denuncia) {
@@ -163,7 +169,12 @@ var DenunciasRecentes = Backbone.View.extend({
 var RegistrarDenuncia = Backbone.View.extend({
 	el: '.conteudo',
 
-	render: function () {
+	render: function (event) {
+		
+		if(session == null) {
+			window.location.hash = '#/cadastre-se';
+		}
+
 		var source = ($('#registrar-denuncia').html());
 		var template = Handlebars.compile(source);
 		$(this.el).html(template);
@@ -177,19 +188,21 @@ var RegistrarDenuncia = Backbone.View.extend({
 		'click .swipebox': 'dialog'
 	},
 
-	registrar: function (ev) {
+	registrar: function () {
 		var denuncia = new Denuncia();
 
 		var resumo = $('.denuncia-resumo').val();
 		var endereco = $('.denuncia-endereco').val();
 		var descricao  = $('.denuncia-descricao').val();
 		var foto =  $('.denuncia-foto').val();
+		var autor = session.login;
 
 		denuncia.set({
 			resumo: $('.denuncia-resumo').val(),
 			endereco: $('.denuncia-endereco').val(),
 			denuncia: $('.denuncia-descricao').val(),
-			foto: $('.denuncia-foto').val()
+			foto: $('.denuncia-foto').val(),
+			auto: autor
 		});
 
 		var erros = {};
@@ -212,12 +225,10 @@ var RegistrarDenuncia = Backbone.View.extend({
 			$('.denuncia-descricao').val(descricao);
 			return false;
 		}
-
-		if(denuncia.save()){
-			window.location('/#');
-		}
-
-		return false;
+		
+		if(denuncia.save()) {
+			
+		}		
 	},
 
 	contador: function () {
@@ -243,6 +254,7 @@ var VisualizarDenuncia = Backbone.View.extend({
 	el: '.conteudo',
 
 	render: function (options) {
+		console.log(session);
 		var that = this;
 		var denuncia = new Denuncia({id: options.id});
 		denuncia.fetch({
@@ -257,21 +269,23 @@ var VisualizarDenuncia = Backbone.View.extend({
 	}
 });
 
-var cadastrarUsuario = Backbone.View.extend({
+var CadastrarUsuario = Backbone.View.extend({
 	el: '.conteudo',
 
 	render: function () {
+		if (session != null) {
+			history.go(-1);
+		} 
 		var source = ($('#cadastre-se').html());
 		var template = Handlebars.compile(source);
 		$(this.el).html(template);
 	},
 
 	events: {
-		'click .form-cadastre-se': 'add',
-		'click .swipebox': 'dialog'
+		'click .btn-cadastrar-usuario': 'add'
 	},
 
-	add: function (e) {
+	add: function () {
 
 		var user = new Usuario();
 
@@ -287,15 +301,13 @@ var cadastrarUsuario = Backbone.View.extend({
 			senha: $('.usuario-senha').val()                                                                        
 		});
 
-		var erros = [];
+		var erros = {};
 		user.on('invalid', function (options, errors){
 			_.each(errors, function  (erro, i) {
 				erros['erro' + i] = erro;
 			})
 			return false;
 		});
-
-
 
 		if(!user.isValid()){
 			var that = this;
@@ -308,9 +320,9 @@ var cadastrarUsuario = Backbone.View.extend({
 			$('.usuario-senha').val(senha);
 			return false;
 		}
-		
+
 		if(user.save()){
-			window.location('/#');
+			Backbone.history.go('/#');
 		}
 
 		return false;
@@ -331,6 +343,51 @@ var ComoFunciona = Backbone.View.extend({
 	}
 });
 
+var Login = Backbone.View.extend({
+	el: '.menu',
+
+	render: function () {
+		if(session == null) {
+			var that = this;
+			var source = ($('#menu-login').html());
+			var template = Handlebars.compile(source);
+			that.$el.html(template({usuarios: session}));
+		} else {
+			console.log('hahahhaa');
+			var that = this;
+			var source = ($('#como-funciona').html());
+			var template = Handlebars.compile(source);
+			that.$el.html(template({usuarios: session}));
+		}
+	},
+
+	events: {
+		'click .btn-login': 'login'
+	},
+
+	login: function () {
+		var usuarios = new Usuarios();
+
+		var login = $('.login-usuario').val();
+		var senha = $('.login-senha').val();
+
+		usuarios.fetch({
+			success: function (usuarios) {
+				var list = usuarios.toJSON();
+				var lista = [];
+				_.each(list, function (usuario) {
+					if ((usuario.login == login) && (usuario.senha == senha)){
+						session = usuario;
+					}
+				});
+				session = session;
+			}
+		});
+		Backbone.history.navigate('/#');
+		return false;		
+	}
+});
+
 /*
 	ROTAS 
 			*/
@@ -343,7 +400,8 @@ var Router = Backbone.Router.extend({
 		'cadastre-se': 'newUser',
 		'denunciar/:id': 'denunciar',
 		'como-funciona': 'comofunciona',
-		'busca': 'busca'
+		'busca': 'busca',
+		'login': 'login'
 	}
 });
 
@@ -354,15 +412,18 @@ var denunciasRecentes = new DenunciasRecentes();
 
 var visualizarDenuncia = new VisualizarDenuncia();
 
-var cadastrarUsuario = new cadastrarUsuario();
+var cadastrarUsuario = new CadastrarUsuario();
 
 var comoFunciona = new ComoFunciona();
+
+var login = new Login();
 
 var busca = new Busca();
 
 var router = new Router();
 
 router.on('route:home', function(){
+	login.render();
 	denunciasRecentes.render();
 	console.log('Página Principal');
 });
@@ -403,6 +464,10 @@ router.on('route:comofunciona', function () {
 
 router.on('route:busca', function () {
 	busca.render();
+});
+
+router.on('router:login', function () {
+	login.render();
 });
 
 Backbone.history.start();

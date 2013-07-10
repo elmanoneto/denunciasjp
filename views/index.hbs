@@ -20,13 +20,14 @@
 						<form class="form-busca">
 							<input type="text" placeholder="Pesquisar denúncia.." name="buscar" class="input-busca">
 							<button class="btn-busca">buscar</button>
-						</form>
+						</form
+						>
 					</script>
 				</div>
 				<ul
 >					<li class="home"><a href="#">Página Inicial</a></li>
 					<li class="denuncia"><a href="#/registrar-denuncia">Registrar Denúncia</a></li>
-					<li class="cadastre-se"><a href="#/cadastre-se">Cadastre-se</a></li>
+					<li class="cadastre-se"><a href="#/cadastre-se">Cadastre-se / Login</a></li>
 					<li class="como-funciona"><a href="#/como-funciona">Como Funciona</a></li>
 				</ul>
 				<img src="../img/barra-cima.jpg" / class="barra">
@@ -51,15 +52,21 @@
 			</script>
 			<script type="text/template" id="registrar-denuncia">
 				<div class="titulo-registrar-denuncia">Registrar Denúncia</div>
-				{{#if erros}}
+				{{#erros}}
 					<div class="erros">
-						{{erros.erro0}}
-						<br>
-						{{erros.erro1}}
-						<br>
-						{{erros.erro2}}
+						{{#if erro0}}
+							{{erro0}}
+							<br>
+						{{/if}}
+						{{#if erro1}}
+							{{erro1}}
+							<br>
+						{{/if}}
+						{{#if erro2}}
+							{{erro2}}
+						{{/if}}
 					</div>
-				{{/if}}
+				{{/erros}}
 				<div id="panel">
 					<form method="post" class="form-registrar-denuncia" action="denuncias" enctype="multipart/form-data">
 						<label>Resumo</label><br>
@@ -86,6 +93,25 @@
 
 			<script type="text/template" id="cadastre-se">
 				<div class="titulo-cadastre-se">Cadastre-se</div>
+				{{#erros}}
+					<div class="erros">
+						{{#if erro0}}
+							{{erro0}}
+						<br>
+						{{/if}}
+						{{#if erro1}}
+							{{erro1}}
+						<br>
+						{{/if}}
+						{{#if erro2}}
+							{{erro2}}
+							<br>
+						{{/if}}
+						{{#if erro3}}
+							{{erro3}}
+						{{/if}}
+					</div>
+				{{/erros}}
 				<div id="panel">
 				<form method="post" class="form-cadastre-se" action="usuarios" enctype="multipart/form-data">
 					
@@ -102,7 +128,7 @@
 					<input id="senha" type="password" size="50" class="usuario-senha" name="senha">
 					<br>
 					<br>
-					<button>+ Cadastrar</button>
+					<button class="btn-cadastrar-usuario">+ Cadastrar</button>
 				</form>
 				</div>
 
@@ -163,20 +189,29 @@
 
 		<!-- MENU -->
 		<section id="menu">
-			<div class="menu">
-				menu
-			</div>
+			<div class="menu"></div>
 		</section>
+
+		<script type="text/template" id="menu-login">
+	
+			<form class="form-login">
+				<input type="text" class="login-usuario" />
+				<input type="password" class="login-senha" />
+				<button class="btn-login">Entrar</button>
+			</form>
+		</script>
+		
 		<!-- FIM DO MENU -->
 
 		<!-- FOOTER -->
 		</section>
 		<section id="footer">
 			<img src="../img/barra-baixo.jpg" />
-		</section>	
+		</section>
 		<!-- FIM DO FOOTER -->
 
 		<!-- SCRIPTS -->	
+
 		<script type="text/javascript" src="js/utils.js"></script>
 		<script type="text/javascript" src="js/libs/jquery.js"></script>
 		<script type="text/javascript" src="js/libs/json2.js"></script>
@@ -191,5 +226,7 @@
 		<script type="text/javascript" src="js/autocomplete.js"></script>
 		<script type="text/javascript" src="js/modal.js"></script>
 		<script type="text/javascript" src="js/colorbox.js"></script>
+		<script type="text/javascript" src="js/libs/cookie.js"></script>
+
 	</body>
 </html>
