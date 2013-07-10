@@ -3,7 +3,7 @@
 	<head>
 		<title>DenúnciasJP</title>
 		<meta charset="UTF-8">
-		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+		<script src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/estilo.css">
@@ -27,7 +27,7 @@
 				<ul
 >					<li class="home"><a href="#">Página Inicial</a></li>
 					<li class="denuncia"><a href="#/registrar-denuncia">Registrar Denúncia</a></li>
-					<li class="cadastre-se"><a href="#/cadastre-se">Cadastre-se / Login</a></li>
+					<li class="cadastre-se"><a href="#/cadastre-se">Cadastre-se</a></li>
 					<li class="como-funciona"><a href="#/como-funciona">Como Funciona</a></li>
 				</ul>
 				<img src="../img/barra-cima.jpg" / class="barra">
@@ -161,7 +161,9 @@
 					{{/if}}
 					<spam class="line-denuncia"><hr /><spam>
 					{{#if foto}}
-						<a href="../img/uploads/{{foto}}" class="swipebox">Clique para ver uma imagem</a>
+						<a href="../img/uploads/{{foto}}" class="swipebox">
+							<img src="../img/uploads/{{foto}}" style="width: 120px; height: 120px;"/>
+						</a>
 					{{/if}}
 					<!-- <spam class="denunciar"><a href="#/denunciar/{{id}}" >Denunciarr</a></spam> -->
 					<div id="map-canvas"></div>

@@ -1,4 +1,3 @@
-var session = null;
 /*
 	MODELS
 			*/
@@ -170,11 +169,6 @@ var RegistrarDenuncia = Backbone.View.extend({
 	el: '.conteudo',
 
 	render: function (event) {
-		
-		if(session == null) {
-			window.location.hash = '#/cadastre-se';
-		}
-
 		var source = ($('#registrar-denuncia').html());
 		var template = Handlebars.compile(source);
 		$(this.el).html(template);
@@ -185,7 +179,7 @@ var RegistrarDenuncia = Backbone.View.extend({
 	events: {
 		'click .btn-registrar-denuncia': 'registrar',
 		'keyup .denuncia-resumo': 'contador',
-		'click .swipebox': 'dialog'
+		'keyup .denuncia-endereco': 'autocomplete'
 	},
 
 	registrar: function () {
@@ -195,14 +189,12 @@ var RegistrarDenuncia = Backbone.View.extend({
 		var endereco = $('.denuncia-endereco').val();
 		var descricao  = $('.denuncia-descricao').val();
 		var foto =  $('.denuncia-foto').val();
-		var autor = session.login;
 
 		denuncia.set({
 			resumo: $('.denuncia-resumo').val(),
 			endereco: $('.denuncia-endereco').val(),
 			denuncia: $('.denuncia-descricao').val(),
 			foto: $('.denuncia-foto').val(),
-			auto: autor
 		});
 
 		var erros = {};
@@ -227,8 +219,9 @@ var RegistrarDenuncia = Backbone.View.extend({
 		}
 		
 		if(denuncia.save()) {
-			
-		}		
+			router.navigate('/');
+		}	
+		return false;	
 	},
 
 	contador: function () {
@@ -245,8 +238,8 @@ var RegistrarDenuncia = Backbone.View.extend({
 		$('.contador').html(contador - tam);
 	},
 
-	dialog: function () {
-		$('.swipebox').colorbox({rel: 'swipebox'});
+	autocomplete: function () {
+		$(".denuncia-endereco").geocomplete();
 	}
 });
 
@@ -254,7 +247,6 @@ var VisualizarDenuncia = Backbone.View.extend({
 	el: '.conteudo',
 
 	render: function (options) {
-		console.log(session);
 		var that = this;
 		var denuncia = new Denuncia({id: options.id});
 		denuncia.fetch({
@@ -266,6 +258,14 @@ var VisualizarDenuncia = Backbone.View.extend({
 				that.$el.html(template({denuncia: js}));
 			}
 		});		
+	},
+
+	events: {
+		'click .swipebox': 'dialog'
+	},
+
+	dialog: function () {
+		$('.swipebox').colorbox({rel: 'swipebox'});
 	}
 });
 
@@ -273,9 +273,6 @@ var CadastrarUsuario = Backbone.View.extend({
 	el: '.conteudo',
 
 	render: function () {
-		if (session != null) {
-			history.go(-1);
-		} 
 		var source = ($('#cadastre-se').html());
 		var template = Handlebars.compile(source);
 		$(this.el).html(template);
@@ -343,51 +340,6 @@ var ComoFunciona = Backbone.View.extend({
 	}
 });
 
-var Login = Backbone.View.extend({
-	el: '.menu',
-
-	render: function () {
-		if(session == null) {
-			var that = this;
-			var source = ($('#menu-login').html());
-			var template = Handlebars.compile(source);
-			that.$el.html(template({usuarios: session}));
-		} else {
-			console.log('hahahhaa');
-			var that = this;
-			var source = ($('#como-funciona').html());
-			var template = Handlebars.compile(source);
-			that.$el.html(template({usuarios: session}));
-		}
-	},
-
-	events: {
-		'click .btn-login': 'login'
-	},
-
-	login: function () {
-		var usuarios = new Usuarios();
-
-		var login = $('.login-usuario').val();
-		var senha = $('.login-senha').val();
-
-		usuarios.fetch({
-			success: function (usuarios) {
-				var list = usuarios.toJSON();
-				var lista = [];
-				_.each(list, function (usuario) {
-					if ((usuario.login == login) && (usuario.senha == senha)){
-						session = usuario;
-					}
-				});
-				session = session;
-			}
-		});
-		Backbone.history.navigate('/#');
-		return false;		
-	}
-});
-
 /*
 	ROTAS 
 			*/
@@ -401,7 +353,6 @@ var Router = Backbone.Router.extend({
 		'denunciar/:id': 'denunciar',
 		'como-funciona': 'comofunciona',
 		'busca': 'busca',
-		'login': 'login'
 	}
 });
 
@@ -416,14 +367,11 @@ var cadastrarUsuario = new CadastrarUsuario();
 
 var comoFunciona = new ComoFunciona();
 
-var login = new Login();
-
 var busca = new Busca();
 
 var router = new Router();
 
 router.on('route:home', function(){
-	login.render();
 	denunciasRecentes.render();
 	console.log('Página Principal');
 });
