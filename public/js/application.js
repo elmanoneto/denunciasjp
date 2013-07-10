@@ -239,7 +239,7 @@ var RegistrarDenuncia = Backbone.View.extend({
 	},
 
 	autocomplete: function () {
-		$(".denuncia-endereco").geocomplete();
+		$(".denuncia-endereco	").geocomplete();
 	}
 });
 
@@ -249,6 +249,19 @@ var VisualizarDenuncia = Backbone.View.extend({
 	render: function (options) {
 		var that = this;
 		var denuncia = new Denuncia({id: options.id});
+
+		// this.latlng = new google.maps.LatLng(this.latitude, this.longitude);
+
+  //       var myOptions = {
+  //           zoom: 4,
+  //           center: this.latlng,
+  //           mapTypeId: google.maps.MapTypeId.ROADMAP
+  //       };
+
+  //       var mapElem = $(".conteudo");	
+		// var map = new google.maps.Map(mapElem,mapOptions);
+        
+
 		denuncia.fetch({
 			success: function (denuncia){
 				var js = denuncia.toJSON();
@@ -261,11 +274,17 @@ var VisualizarDenuncia = Backbone.View.extend({
 	},
 
 	events: {
-		'click .swipebox': 'dialog'
+		'click .swipebox': 'dialog',
+		'click .denunciard': 'denunciar'
 	},
 
 	dialog: function () {
 		$('.swipebox').colorbox({rel: 'swipebox'});
+	},
+
+	denunciar: function (ev) {
+		var pancakes = $(ev.target).data('pancakes');
+		console.log(pancakes);
 	}
 });
 
