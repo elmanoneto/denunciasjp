@@ -217,11 +217,6 @@ var RegistrarDenuncia = Backbone.View.extend({
 			$('.denuncia-descricao').val(descricao);
 			return false;
 		}
-		
-		if(denuncia.save()) {
-			router.navigate('/');
-		}	
-		return false;	
 	},
 
 	contador: function () {
@@ -239,7 +234,7 @@ var RegistrarDenuncia = Backbone.View.extend({
 	},
 
 	autocomplete: function () {
-		$(".denuncia-endereco	").geocomplete();
+		$(".denuncia-endereco").geocomplete();
 	}
 });
 
@@ -284,7 +279,6 @@ var VisualizarDenuncia = Backbone.View.extend({
 
 	denunciar: function (ev) {
 		var pancakes = $(ev.target).data('pancakes');
-		console.log(pancakes);
 	}
 });
 

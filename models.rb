@@ -21,6 +21,7 @@ class Denuncia
 	property :endereco, Text
 	property :foto, String
 	property :data, DateTime
+	property :relevancia, Integer
 end
 
 class Comentario
