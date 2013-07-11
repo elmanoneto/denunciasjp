@@ -144,7 +144,7 @@ body{
 }
 
 .denuncias-recentes .autor{
-	color: gray;
+	color: #c8c8c8;
 	font-size: 11pt;
 }
 
@@ -175,12 +175,12 @@ body{
 
 #menu .menu{
 	border: 1px solid black;
-	width: 330px;
+	width: 300px;
 	margin: 13px 0 0 20px;
 }
 
 #footer img{
-	margin: 500px 0 0 0;
+	margin: 600px 0 0 0;
 }
 
 
@@ -219,17 +219,43 @@ body{
 	margin-bottom: 10px;
 }
 
-.form-cadastre-se  textarea{
+.login-user, .login-senha{
 	font-family: 'Open Sans', sans-serif;
 	text-indent: 5px;
-	border: 1px #cecece solid;
-	font-size: 12pt;
 	color: gray;
-	height: 150px;
-	width: 518px;
+	font-size: 12pt;
+	border: 1px #cecece solid;
+	height: 30px;
+	width: 250px;
 	border-radius: 4px;
 	outline: none;
 	margin-bottom: 10px;
+}
+
+.form-login button{
+	background-color: #848484;
+	border: none;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12pt;
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+	position: relative;
+	top: 0px;
+
+}
+
+.form-cadastre-se button{
+	background-color: #848484;
+	border: none;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12pt;
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+	position: relative;
+	bottom: 18px;
+
 }
 
 .titulo-registrar-denuncia{
@@ -295,11 +321,13 @@ body{
 
 .autor{
 	font-size: 10pt;
-	color: gray;
+	color: #696969;
 }
 
 .lista-denuncias{
-	border-bottom: 2px white solid;
+	position: relative;
+	top: 5px;
+	border-bottom: 3px white solid;
 }
 
 .lista-denuncias a{
@@ -334,3 +362,67 @@ hr{
 	text-indent: 4px;
 	text-align: left;
 }
+<<<<<<< HEAD
+
+.conteudo .denunciar {
+	float: right;
+	position: relative;
+	bottom: 80px;
+}
+
+.erros{
+	background-color: #FFE4E1;
+	margin: 5px 0 0 0;
+	float: left;
+	color: red;
+	padding: 4px;
+	width: 647px;
+	height: auto;
+}
+
+.contador {
+	float: right;
+	margin: 6px 120px 0 0;
+}
+
+.titulo-como-funciona{
+	background-image: url('../img/transversal.png');
+	width: 640px;
+	font-size: 16pt;
+	border-left: 6px pink solid;
+	padding: 5px;
+	text-indent: 4px;
+}
+
+.formato{
+	bottom: 15px;
+	position: relative;
+	font-size: 10pt;
+	font-weight: bold;
+}
+
+.line-denuncia{
+	position: relative;
+	top: 10px;
+}
+
+.detalhe-denuncia {
+	position: relative;
+	top: 10px;
+}
+
+.detalhe-denuncia a{
+	color: black;
+	text-decoration: none;
+}
+
+.detalhe-denuncia a:hover{
+	color: black;
+	text-decoration: underline;
+}
+
+.swipebox{
+	font-size: 10pt;
+}
+=======
+>>>>>>> parent of 153f4cd... contador de caracteres flash messages implementados

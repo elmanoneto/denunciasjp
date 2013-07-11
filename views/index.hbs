@@ -191,16 +191,21 @@
 
 		<!-- MENU -->
 		<section id="menu">
-			<div class="menu"></div>
-		</section>
+			<div class="menu">
+				Login
+				<br/><br/>
+				<form action="login.rb" method="POST" class="form-login">
+				<input type="text" class="login-user" value="Login" onClick="this.value=''"/>
 
-		<script type="text/template" id="menu-login">
-	
-			<form class="form-login">
-				<input type="text" class="login-usuario" />
-				<input type="password" class="login-senha" />
+				<input type="password" class="login-senha" value="Senha" onClick="this.value=''" />
 				<button class="btn-login">Entrar</button>
 			</form>
+			</div>
+		</section>
+
+		
+	
+			
 		</script>
 		
 		<!-- FIM DO MENU -->

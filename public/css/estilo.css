@@ -175,8 +175,10 @@ body{
 
 #menu .menu{
 	border: 1px solid black;
-	width: 330px;
+	width: 300px;
 	margin: 13px 0 0 20px;
+	border: 1px #cecece solid;
+	border-radius: 4px;
 }
 
 #footer img{
@@ -217,6 +219,32 @@ body{
 	border-radius: 4px;
 	outline: none;
 	margin-bottom: 10px;
+}
+
+.login-user, .login-senha{
+	font-family: 'Open Sans', sans-serif;
+	text-indent: 5px;
+	color: gray;
+	font-size: 12pt;
+	border: 1px #cecece solid;
+	height: 30px;
+	width: 250px;
+	border-radius: 4px;
+	outline: none;
+	margin-bottom: 10px;
+}
+
+.form-login button{
+	background-color: #848484;
+	border: none;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 12pt;
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+	position: relative;
+	top: 0px;
+
 }
 
 .form-cadastre-se button{

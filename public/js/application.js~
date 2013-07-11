@@ -267,7 +267,8 @@ var cadastrarUsuario = Backbone.View.extend({
 	},
 
 	events: {
-		'click .form-cadastre-se': 'add'
+		'click .form-cadastre-se': 'add',
+		'click .swipebox': 'dialog'
 	},
 
 	add: function (e) {
