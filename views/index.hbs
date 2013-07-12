@@ -24,8 +24,8 @@
 						>
 					</script>
 				</div>
-				<ul
->					<li class="home"><a href="#">Página Inicial</a></li>
+				<ul>
+					<li class="home"><a href="#">Página Inicial</a></li>
 					<li class="denuncia"><a href="#/registrar-denuncia">Registrar Denúncia</a></li>
 					<li class="cadastre-se"><a href="#/cadastre-se">Cadastre-se</a></li>
 					<li class="como-funciona"><a href="#/como-funciona">Como Funciona</a></li>
@@ -189,6 +189,28 @@
 		</script>
 		<!-- FIM BUSCA -->
 
+		<!-- MINHAS DENÚNCIAS -->
+		<script type="text/template" id="minhas-denuncias">
+			<div class="titulo-denuncia">Minhas Denúncias</div>
+			<table>
+				<thead>
+					<tr>
+						<th id="ex31a_col_jun">Junho</th>
+						<th id="ex31a_col_jul">Julho</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						{{#each denuncias}}
+						<td headers="ex31a_col_jun">{{resumo}}</td>
+						<td headers="ex31a_col_jul">{{data}}</td>
+						{{/each}}
+					</tr>
+				</tbody>
+			</table>
+		</script>
+		<!-- FIM MINHAS DENÚNCIAS -->
+
 		<!-- MENU -->
 		<section id="menu">
 			<div class="menu">
@@ -201,11 +223,7 @@
 				<button class="btn-login">Entrar</button>
 			</form>
 			</div>
-		</section>
-
-		
-	
-			
+		</section>			
 		</script>
 		
 		<!-- FIM DO MENU -->

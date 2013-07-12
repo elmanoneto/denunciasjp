@@ -34,6 +34,19 @@ var Denuncia = Backbone.Model.extend({
 		}
 
 		return erros.length > 0 ? erros : false
+	},
+
+	votar: function () {
+		if(this.relevancia == null) {
+			this.save({relevancia: 1})
+			console.log(this.get('relevancia'));
+		} else {
+			var relevancia = this.get('relevancia');
+			this.save({relevancia: relevancia + 1});
+			console.log(this.get('relevancia'));
+		}
+		
+		return false;
 	}
 });
 
@@ -278,7 +291,10 @@ var VisualizarDenuncia = Backbone.View.extend({
 	},
 
 	denunciar: function (ev) {
-		var pancakes = $(ev.target).data('pancakes');
+		var id = $(ev.target).data('pancakes');
+		var denuncia = new Denuncia({id: id});
+		denuncia.fetch();
+		denuncia.votar();
 	}
 });
 
@@ -353,6 +369,26 @@ var ComoFunciona = Backbone.View.extend({
 	}
 });
 
+var MinhasDenuncias = Backbone.View.extend({
+	el: '.conteudo',
+
+	render: function () {
+		var denuncias = new Denuncias();
+		var that = this;
+		denuncias.fetch({
+			success: function (denuncias) {
+				var js = denuncias.toJSON();
+				_.each(js, function  (denuncia) {
+					denuncia.data = moment(denuncia.data).fromNow();
+				});
+				var source = ($('#minhas-denuncias').html());
+				var template = Handlebars.compile(source);
+				that.$el.html(template({denuncias: js}));
+			}
+		})
+	}
+});
+
 /*
 	ROTAS 
 			*/
@@ -366,9 +402,9 @@ var Router = Backbone.Router.extend({
 		'denunciar/:id': 'denunciar',
 		'como-funciona': 'comofunciona',
 		'busca': 'busca',
+		'denuncias': 'denuncias'
 	}
 });
-
 
 var registrarDenuncia = new RegistrarDenuncia();
 
@@ -381,6 +417,8 @@ var cadastrarUsuario = new CadastrarUsuario();
 var comoFunciona = new ComoFunciona();
 
 var busca = new Busca();
+
+var minhasDenuncias = new MinhasDenuncias();
 
 var router = new Router();
 
@@ -426,9 +464,14 @@ router.on('route:comofunciona', function () {
 router.on('route:busca', function () {
 	busca.render();
 });
-
+	
 router.on('router:login', function () {
 	login.render();
+});
+
+router.on('route:denuncias', function () {
+	console.log('Denúncias!');
+	minhasDenuncias.render();
 });
 
 Backbone.history.start();

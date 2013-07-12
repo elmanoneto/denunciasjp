@@ -80,6 +80,10 @@ end
 
 # Editar denúncia
 put '/denuncias/:id' do
+	@denuncia = Denuncia.get(params[:id])
+	@denuncia.resumo = params[:resumo]
+	@denuncia.endereco = params[:endereco]
+	@denuncia.denuncia = params[:denuncia]
 
 end
 
