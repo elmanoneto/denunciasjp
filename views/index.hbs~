@@ -219,7 +219,7 @@
 				<form action="login" method="POST" class="form-login">
 				<input type="text" class="login-user" placeholder="Login"/>
 
-				<input type="password" class="login-senha" placeholder="Senha" />
+				<input type="password" class="login-senha" placeholder />
 				<button class="btn-login">Entrar</button>
 			</form>
 			</div>
