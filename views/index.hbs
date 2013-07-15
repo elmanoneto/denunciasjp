@@ -8,6 +8,10 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/estilo.css">
 		<link rel="stylesheet" href="css/modal.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
+		<!--[if lte IE 8]>
+		    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.ie.css" />
+		<![endif]-->
 	</head>
 	<body>
 
@@ -166,7 +170,7 @@
 						</a>
 					{{/if}}
 					<spam class="denunciar"><a class="denunciard" data-pancakes="{{id}}">Denunciar</a></spam>
-					<div class="map-canvas"></div>
+					<div class="map"></div>
 			{{/denuncia}}
 		</script>
 
@@ -217,9 +221,9 @@
 				Login
 				<br/><br/>
 				<form action="login" method="POST" class="form-login">
-				<input type="text" class="login-user" placeholder="Login"/>
+				<input type="text" class="login-user" placeholder="Login" name="login"/>
 
-				<input type="password" class="login-senha" placeholder="Senha" />
+				<input type="password" class="login-senha" placeholder="Senha" name="senha"/>
 				<button class="btn-login">Entrar</button>
 			</form>
 			</div>
@@ -253,6 +257,6 @@
 		<script type="text/javascript" src="js/colorbox.js"></script>
 		<script type="text/javascript" src="js/libs/cookie.js"></script>
 		<script type="text/javascript" src="js/libs/jquery.cookie.js"></script>
-
+		<script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script>
 	</body>
 </html>

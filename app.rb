@@ -129,7 +129,7 @@ post '/login/:id/:senha' do
 end
 
 post '/login' do
- "Em construção"
+ "Login: #{params[:login]}" " Senha: #{params[:senha]}"
 end
 
 delete '/usuarios/:id' do
