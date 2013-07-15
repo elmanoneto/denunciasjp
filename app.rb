@@ -124,12 +124,13 @@ end
 put '/usuarios/:id' do
 end
 
-post '/login/:id/:senha' do
- "Login: #{params[:id]}" " Senha: #{params[:senha]}"
-end
-
 post '/login' do
- "Login: #{params[:login]}" " Senha: #{params[:senha]}"
+	@login = Usuario.get(params[:login])
+	if @login.senha == params[:senha]
+		redirect '/'
+	else
+		redirect '/usuarios'
+	end
 end
 
 delete '/usuarios/:id' do
