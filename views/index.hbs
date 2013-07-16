@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/estilo.css">
 		<link rel="stylesheet" href="css/modal.css" type="text/css" media="screen" />
-		<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
+		<!-- <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" /> -->
 		<!--[if lte IE 8]>
 		    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.ie.css" />
 		<![endif]-->
@@ -218,14 +218,15 @@
 		<!-- MENU -->
 		<section id="menu">
 			<div class="menu">
-				Login
-				<br/><br/>
+				<div class="menu-login">Área do Usuário</div>
+				<div class="erro-login">
+					Usuário e/ou senha inválidos.
+				</div>
 				<form action="login" method="POST" class="form-login">
-				<input type="text" class="login-user" placeholder="Login" name="login" id="login"/>
-
-				<input type="password" class="login-senha" placeholder="Senha" name="senha" id="senha"/>
-				<button class="btn-login">Entrar</button>
-			</form>
+					<input type="text" class="login-user" placeholder="Login" name="login" id="login"/>
+					<input type="password" class="login-senha" placeholder="Senha" name="senha" id="senha"/>
+					<button class="btn-login">Entrar</button>
+				</form>
 			</div>
 		</section>			
 		</script>

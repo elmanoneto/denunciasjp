@@ -125,11 +125,16 @@ put '/usuarios/:id' do
 end
 
 post '/login' do
-	@login = Usuario.get(params[:login])
-	if @login.senha == params[:senha]
-		redirect '/'
+	@login = Usuario.create()
+	@login = Usuario.first(:login => "#{params['login']}", :senha => "#{params['senha']}")
+
+	if @login
+		session[:usuario] = @login
+		@login.to_json
 	else
-		redirect '/usuarios'
+		erro = ["Usuário ou senha inválidos"]
+		erro.to_json
+		halt 401
 	end
 end
 

@@ -26,6 +26,14 @@ App.Models.Session = Backbone.Model.extend({
       access_token: $.cookie('access_token')
 }); */
 
+$.ajaxSetup({
+    statusCode: {
+        401: function(){
+            // Redirec the to the login page.	
+            $('.erro-login').show('medium');
+        }
+    }
+});
 
 var Denuncia = Backbone.Model.extend({
 	defaults: {
@@ -421,6 +429,44 @@ var MinhasDenuncias = Backbone.View.extend({
 	}
 });
 
+var Login = Backbone.View.extend({
+	el: '.menu',
+
+	events: {
+		'click .btn-login': 'login'
+	},
+
+	render: function () {
+	},
+
+	login: function () {
+		var formValues = {
+            login: $('.login-user').val(),
+            senha: $('.login-senha').val()
+        };
+
+		$.ajax({
+            url:'/login',
+            type:'POST',
+            dataType:"json",
+            data: formValues,
+            success:function (data) {
+                console.log(["Login request details: ", data]);
+               
+                if(data.error) {  // If there is an error, show the error messages
+                    // $('.alert-error').text(data.error.text).show();
+                    console.log('Erro!');
+                }
+                else { // If not, send them back to the home page
+                	console.log('Entrou!');
+                    window.location.replace('#');
+                }
+            }
+        });
+        return false;
+	}
+});
+
 /*
 	ROTAS 
 			*/
@@ -434,7 +480,8 @@ var Router = Backbone.Router.extend({
 		'denunciar/:id': 'denunciar',
 		'como-funciona': 'comofunciona',
 		'busca': 'busca',
-		'denuncias': 'denuncias'
+		'denuncias': 'denuncias',
+		'login': 'login'
 	}
 });
 
@@ -452,10 +499,13 @@ var busca = new Busca();
 
 var minhasDenuncias = new MinhasDenuncias();
 
+var login = new Login();
+
 var router = new Router();
 
 router.on('route:home', function(){
 	denunciasRecentes.render();
+	login.render();
 	console.log('Página Principal');
 });
 
