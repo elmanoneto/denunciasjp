@@ -457,7 +457,7 @@ hr{
 	text-indent: 5px;
 }
 
-table {font: 85% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;padding: 0; margin: 0; border-collapse: collapse; color: #333;}
+table {font: 85% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif; margin: 5px 10px 0 0; border-collapse: collapse; color: #333; width: 655px; position: relative; top: 10px;}
 
 table a {color: #3A4856; text-decoration: none; border-bottom: 1px solid #C6C8CB;}  
 
@@ -475,7 +475,7 @@ table tbody {border-bottom: 1px solid #EAECEE;}
                       
 table tbody td, table tbody th {padding: 10px; background: url("td_back.gif") repeat-x; text-align: left;}
 
-table tbody tr {background: transparent;}
+table tbody tr {background: transparent; width: 200px;}
 
 table tbody tr.odd {background: transparent;}
 

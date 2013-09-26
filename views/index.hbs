@@ -74,7 +74,7 @@
 				<div id="panel">
 					<form method="post" class="form-registrar-denuncia" action="denuncias" enctype="multipart/form-data">
 						<label>Resumo</label><br>
-						<input type="text" class="denuncia-resumo" name="resumo" value="{{#resumo}}{{/resumo}}"/>
+						<input type="text" class="denuncia-resumo" name="resumo"/>
 						<div class="contador"></div>
 						<br>
 						<label>Endereço</label><br>
@@ -93,6 +93,53 @@
 						<button class="btn-registrar-denuncia">+ Denunciar</button>
 					</form>
 				</div>
+			</script>
+
+			<script type="text/template" id="editar-denuncia">
+				<div class="titulo-registrar-denuncia">Editar Denúncia</div>
+				{{#erros}}
+					<div class="erros">
+						{{#if erro0}}
+							{{erro0}}
+							<br>
+						{{/if}}
+						{{#if erro1}}
+							{{erro1}}
+							<br>
+						{{/if}}
+						{{#if erro2}}
+							{{erro2}}
+						{{/if}}
+					</div>
+				{{/erros}}
+
+				{{#denuncia}}
+				<div id="panel">
+					<form method="post" class="form-registrar-denuncia" action="denuncias" enctype="multipart/form-data">
+						<input type="hidden" value="{{id}}" class="id-denuncia"/>
+						<label>Resumo</label><br>
+						<input type="text" class="denuncia-resumo" name="resumo" value="{{resumo}}"/>
+						<div class="contador"></div>
+						<br>
+						<label>Endereço</label><br>
+						<input id="searchTextField" type="text" size="50" class="denuncia-endereco" name="endereco" value="{{endereco}}">
+						<br>
+						<label>Descrição</label>
+						<br>	
+						<textarea class="denuncia-descricao" name="denuncia">{{denuncia}}</textarea>
+						<br>
+						<label>Foto</label>
+						<input type="file" class="denuncia-foto" name="foto"/>
+						<br>
+						<spam class="formato">*Formato aceito: jpg</spam>
+						<hr />
+						<br>
+						<button class="btn-editar-denuncia">Editar</button>
+						<button type="button" class="btn-remover-denuncia">Remover</button>
+					</form>
+				</div>
+				{{/denuncia}}
+				
 			</script>
 
 			<script type="text/template" id="cadastre-se">
@@ -170,7 +217,6 @@
 						</a>
 					{{/if}}
 					<spam class="denunciar"><a class="denunciard" data-pancakes="{{id}}">Denunciar</a></spam>
-					<div class="map"></div>
 			{{/denuncia}}
 		</script>
 
@@ -199,17 +245,19 @@
 			<table>
 				<thead>
 					<tr>
-						<th id="ex31a_col_jun">Junho</th>
-						<th id="ex31a_col_jul">Julho</th>
+						<th id="ex31a_col_jun">Resumo</th>
+						<th id="ex31a_col_jul">Data</th>
+						<th id="ex31a_col_jun">Editar</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						{{#each denuncias}}
-						<td headers="ex31a_col_jun">{{resumo}}</td>
-						<td headers="ex31a_col_jul">{{data}}</td>
-						{{/each}}
-					</tr>
+					{{#each denuncias}}
+						<tr>
+							<td headers="ex31a_col_jun">{{resumo}}</td>
+							<td headers="ex31a_col_jul">{{data}}</td>
+							<td headers="ex31a_col_jul"><a href="#/editar-denuncia/{{id}}"><img src="../img/editar.gif" /></a></td>
+						</tr>
+					{{/each}}
 				</tbody>
 			</table>
 		</script>
@@ -218,6 +266,7 @@
 		<!-- MENU -->
 		<section id="menu">
 			<div class="menu">
+				<script type="text/template" id="logout">
 				<div class="menu-login">Área do Usuário</div>
 				<div class="erro-login">
 					Usuário e/ou senha inválidos.
@@ -227,9 +276,16 @@
 					<input type="password" class="login-senha" placeholder="Senha" name="senha" id="senha"/>
 					<button class="btn-login">Entrar</button>
 				</form>
+				</script>
+				<script type="text/template" id="meu-menu">
+				<ul>
+					<li class="logout">Logout</li>
+				</ul>		
+				</script>
 			</div>
-		</section>			
-		</script>
+		</section>
+
+
 		
 		<!-- FIM DO MENU -->
 

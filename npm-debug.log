@@ -1,0 +1,684 @@
+info it worked if it ends with ok
+verbose cli [ '/usr/bin/nodejs', '/usr/bin/npm', 'install', '-g', 'brunch' ]
+info using npm@1.1.4
+info using node@v0.6.19
+verbose config file /home/elmano/.npmrc
+verbose config file /usr/etc/npmrc
+verbose config file /usr/share/npm/npmrc
+silly exec /usr/bin/nodejs "/usr/share/npm/bin/npm-get-uid-gid.js" "nobody" 1000
+silly spawning [ '/usr/bin/nodejs',
+silly spawning   [ '/usr/share/npm/bin/npm-get-uid-gid.js', 'nobody', 1000 ],
+silly spawning   null ]
+silly output from getuid/gid {"uid":65534,"gid":1000}
+silly output from getuid/gid 
+verbose cache add [ 'brunch', null ]
+silly cache add: name, spec, args [ undefined, 'brunch', [ 'brunch', null ] ]
+verbose parsed url { pathname: 'brunch', path: 'brunch', href: 'brunch' }
+verbose addNamed [ 'brunch', '' ]
+verbose addNamed [ null, '' ]
+silly name, range, hasData [ 'brunch', '', false ]
+verbose raw, before any munging brunch
+verbose url resolving [ 'https://registry.npmjs.org/', './brunch' ]
+verbose url resolved https://registry.npmjs.org/brunch
+verbose etag "DQCQGC79WK3J606541HAK733A"
+http GET https://registry.npmjs.org/brunch
+http 304 https://registry.npmjs.org/brunch
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+silly get cb     etag: '"DQCQGC79WK3J606541HAK733A"',
+silly get cb     date: 'Wed, 28 Aug 2013 00:06:38 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag brunch from cache
+silly name, range, hasData 2 [ 'brunch', '', true ]
+silly versions [ 'brunch',
+silly versions   [ '0.0.1',
+silly versions     '0.0.2',
+silly versions     '0.0.3',
+silly versions     '0.0.4',
+silly versions     '0.0.5',
+silly versions     '0.0.6',
+silly versions     '0.0.7',
+silly versions     '0.0.8',
+silly versions     '0.1.0',
+silly versions     '0.1.1',
+silly versions     '0.1.3',
+silly versions     '0.1.4',
+silly versions     '0.1.5',
+silly versions     '0.1.6',
+silly versions     '0.1.7',
+silly versions     '0.1.8',
+silly versions     '0.1.9',
+silly versions     '0.2.0',
+silly versions     '0.2.1',
+silly versions     '0.2.2',
+silly versions     '0.2.3',
+silly versions     '0.2.4',
+silly versions     '0.2.6',
+silly versions     '0.2.7',
+silly versions     '0.2.8',
+silly versions     '0.3.0',
+silly versions     '0.3.1',
+silly versions     '0.3.2',
+silly versions     '0.3.4',
+silly versions     '0.3.5',
+silly versions     '0.3.6',
+silly versions     '0.3.7',
+silly versions     '0.4.0',
+silly versions     '0.4.1',
+silly versions     '0.4.2',
+silly versions     '0.4.3',
+silly versions     '0.4.4',
+silly versions     '0.4.5',
+silly versions     '0.5.1',
+silly versions     '0.5.2',
+silly versions     '0.5.3',
+silly versions     '0.5.4',
+silly versions     '0.5.5',
+silly versions     '0.5.6',
+silly versions     '0.6.0',
+silly versions     '0.6.1',
+silly versions     '0.6.2',
+silly versions     '0.7.0',
+silly versions     '0.7.1',
+silly versions     '0.7.2',
+silly versions     '0.7.3',
+silly versions     '0.7.4',
+silly versions     '0.8.0',
+silly versions     '0.8.1',
+silly versions     '0.9.0-beta1',
+silly versions     '0.9.0',
+silly versions     '0.9.1',
+silly versions     '1.0.0',
+silly versions     '1.0.1',
+silly versions     '1.0.2',
+silly versions     '1.0.3',
+silly versions     '1.1.0',
+silly versions     '1.1.1',
+silly versions     '1.1.2',
+silly versions     '1.2.0',
+silly versions     '1.2.1',
+silly versions     '1.2.2',
+silly versions     '1.3.0',
+silly versions     '1.3.1',
+silly versions     '1.3.2',
+silly versions     '1.3.3',
+silly versions     '1.3.4',
+silly versions     '1.4.0',
+silly versions     '1.4.1',
+silly versions     '1.4.2',
+silly versions     '1.4.3',
+silly versions     '1.4.4',
+silly versions     '1.4.5',
+silly versions     '1.5.0',
+silly versions     '1.5.1',
+silly versions     '1.5.2',
+silly versions     '1.5.3',
+silly versions     '1.5.4',
+silly versions     '1.6.0',
+silly versions     '1.6.1',
+silly versions     '1.6.2',
+silly versions     '1.6.3',
+silly versions     '1.6.4',
+silly versions     '1.6.5',
+silly versions     '1.6.6',
+silly versions     '1.6.7',
+silly versions     '1.7.0',
+silly versions     '1.7.1',
+silly versions     '1.7.2' ] ]
+verbose bin dist [ '0.6-ares1.9.1-evundefined-openssl1.0.1c-v83.8.9.20-linux-ia32-3.5.0-40-generic',
+verbose bin dist   { shasum: 'fffeb7f9c6d613e82de32b152bf010d0895a5d9f',
+verbose bin dist     tarball: 'http://registry.npmjs.org/brunch/-/brunch-1.7.2.tgz' } ]
+verbose caching /home/elmano/.npm/brunch/1.7.2/package/package.json
+verbose loadDefaults brunch@1.7.2
+silly resolved [ { name: 'brunch',
+silly resolved     description: 'A lightweight approach to building HTML5 applications with emphasis on elegance and simplicity',
+silly resolved     version: '1.7.2',
+silly resolved     keywords: 
+silly resolved      [ 'assembler',
+silly resolved        'builder',
+silly resolved        'stack',
+silly resolved        'chaplin',
+silly resolved        'backbone',
+silly resolved        'ember',
+silly resolved        'angular',
+silly resolved        'html5' ],
+silly resolved     homepage: 'http://brunch.io/',
+silly resolved     author: { name: 'Brunch team', url: 'http://brunch.io' },
+silly resolved     repository: { type: 'git', url: 'git://github.com/brunch/brunch.git' },
+silly resolved     bugs: { name: 'http://github.com/brunch/brunch/issues' },
+silly resolved     licenses: 
+silly resolved      [ { type: 'MIT',
+silly resolved          url: 'http://github.com/brunch/brunch/raw/master/LICENSE' } ],
+silly resolved     main: './lib/index',
+silly resolved     bin: { brunch: './bin/brunch' },
+silly resolved     scripts: 
+silly resolved      { prepublish: 'node setup.js prepublish',
+silly resolved        postpublish: 'node setup.js postpublish',
+silly resolved        postinstall: 'node setup.js postinstall',
+silly resolved        test: 'node setup.js test' },
+silly resolved     preferGlobal: true,
+silly resolved     dependencies: 
+silly resolved      { 'coffee-script': '~1.6.3',
+silly resolved        commander: '~2.0.0',
+silly resolved        mkdirp: '~0.3.5',
+silly resolved        ncp: '~0.4.2',
+silly resolved        debug: '~0.7.2',
+silly resolved        'source-map': '~0.1.26',
+silly resolved        chokidar: '~0.6.2',
+silly resolved        'init-skeleton': '~0.2.0',
+silly resolved        loggy: '~0.2.0',
+silly resolved        pushserve: '~0.1.6',
+silly resolved        'read-components': '~0.5.1',
+silly resolved        'commonjs-require-definition': '~0.1.0',
+silly resolved        'async-each': '~0.1.2',
+silly resolved        'async-waterfall': '~0.1.2' },
+silly resolved     devDependencies: 
+silly resolved      { mocha: '~1.12.0',
+silly resolved        chai: '~1.7.0',
+silly resolved        rewire: '~1.1.3',
+silly resolved        express: '~3.3.0' },
+silly resolved     _id: 'brunch@1.7.2',
+silly resolved     optionalDependencies: {},
+silly resolved     engines: { node: '*' },
+silly resolved     _engineSupported: true,
+silly resolved     _npmVersion: '1.1.4',
+silly resolved     _nodeVersion: 'v0.6.19',
+silly resolved     _defaultsLoaded: true,
+silly resolved     _from: 'brunch' } ]
+info into /usr/local/lib brunch@1.7.2
+info installOne brunch@1.7.2
+verbose from cache /home/elmano/.npm/brunch/1.7.2/package/package.json
+info unbuild /usr/local/lib/node_modules/brunch
+verbose mkdir (expected) error ENOENT, stat '/usr/local/lib/node_modules/___brunch.npm'
+verbose mkdir done: /usr/local/lib/node_modules/___brunch.npm 755
+verbose unpack_ uid, gid [ 65534, 1000 ]
+verbose unpackTarget /usr/local/lib/node_modules/brunch
+silly gunzTarPerm modes [ '755', '644' ]
+silly afterUntar ok
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/package.json
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/.npmignore
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/CHANGELOG.md
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/README.md
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/setup.js
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/LICENSE
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/.travis.yml
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/.gitmodules
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/CONTRIBUTING.md
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/bin
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/bin/brunchcoffee
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/bin/brunch
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/src
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/src/helpers.coffee
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/src/watch.coffee
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/src/index.coffee
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/src/cli.coffee
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/src/fs_utils
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/src/fs_utils/pipeline.coffee
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/src/fs_utils/common.coffee
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/src/fs_utils/generate.coffee
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/src/fs_utils/write.coffee
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/src/fs_utils/index.coffee
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/src/fs_utils/asset.coffee
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/src/fs_utils/source_file.coffee
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/src/fs_utils/file_list.coffee
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/package.json
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/win_config.coffee
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/unix_config.coffee
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/app
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/app/app.js
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/vendor
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/vendor/scripts
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/vendor/scripts/backbone-0.9.2.js
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/vendor/scripts/console-helper.js
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/vendor/scripts/underscore-1.3.1.js
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/vendor/scripts/jquery-1.7.2.js
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/vendor/styles
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/vendor/styles/helpers.css
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/vendor/styles/normalize.css
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/public
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/public/stylesheets
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/public/stylesheets/app.css
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/public/javascripts
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/public/javascripts/vendor.js
+silly asyncMap in gTP /usr/local/lib/node_modules/___brunch.npm/package/test/fixtures/public/javascripts/app.js
+verbose gunzed /usr/local/lib/node_modules/___brunch.npm/package
+verbose rm'ed /usr/local/lib/node_modules/brunch
+verbose renamed [ '/usr/local/lib/node_modules/___brunch.npm/package',
+verbose renamed   '/usr/local/lib/node_modules/brunch' ]
+verbose caching /usr/local/lib/node_modules/brunch/package.json
+verbose loadDefaults brunch@1.7.2
+info preinstall brunch@1.7.2
+verbose from cache /usr/local/lib/node_modules/brunch/package.json
+verbose readDependencies: using package.json deps
+verbose from cache /usr/local/lib/node_modules/brunch/package.json
+verbose readDependencies: using package.json deps
+verbose cache add [ 'coffee-script@~1.6.3', null ]
+silly cache add: name, spec, args [ undefined,
+silly cache add: name, spec, args   'coffee-script@~1.6.3',
+silly cache add: name, spec, args   [ 'coffee-script@~1.6.3', null ] ]
+verbose parsed url { pathname: 'coffee-script@~1.6.3',
+verbose parsed url   path: 'coffee-script@~1.6.3',
+verbose parsed url   href: 'coffee-script@~1.6.3' }
+silly cache add: name, spec, args [ 'coffee-script', '~1.6.3', [ 'coffee-script', '~1.6.3' ] ]
+verbose parsed url { pathname: '~1.6.3', path: '~1.6.3', href: '~1.6.3' }
+verbose addNamed [ 'coffee-script', '~1.6.3' ]
+verbose addNamed [ null, '>=1.6.3- <1.7.0-' ]
+silly name, range, hasData [ 'coffee-script', '>=1.6.3- <1.7.0-', false ]
+verbose cache add [ 'commander@~2.0.0', null ]
+silly cache add: name, spec, args [ undefined, 'commander@~2.0.0', [ 'commander@~2.0.0', null ] ]
+verbose parsed url { pathname: 'commander@~2.0.0',
+verbose parsed url   path: 'commander@~2.0.0',
+verbose parsed url   href: 'commander@~2.0.0' }
+silly cache add: name, spec, args [ 'commander', '~2.0.0', [ 'commander', '~2.0.0' ] ]
+verbose parsed url { pathname: '~2.0.0', path: '~2.0.0', href: '~2.0.0' }
+verbose addNamed [ 'commander', '~2.0.0' ]
+verbose addNamed [ null, '>=2.0.0- <2.1.0-' ]
+silly name, range, hasData [ 'commander', '>=2.0.0- <2.1.0-', false ]
+verbose cache add [ 'mkdirp@~0.3.5', null ]
+silly cache add: name, spec, args [ undefined, 'mkdirp@~0.3.5', [ 'mkdirp@~0.3.5', null ] ]
+verbose parsed url { pathname: 'mkdirp@~0.3.5',
+verbose parsed url   path: 'mkdirp@~0.3.5',
+verbose parsed url   href: 'mkdirp@~0.3.5' }
+silly cache add: name, spec, args [ 'mkdirp', '~0.3.5', [ 'mkdirp', '~0.3.5' ] ]
+verbose parsed url { pathname: '~0.3.5', path: '~0.3.5', href: '~0.3.5' }
+verbose addNamed [ 'mkdirp', '~0.3.5' ]
+verbose addNamed [ null, '>=0.3.5- <0.4.0-' ]
+silly name, range, hasData [ 'mkdirp', '>=0.3.5- <0.4.0-', false ]
+verbose raw, before any munging coffee-script
+verbose url resolving [ 'https://registry.npmjs.org/', './coffee-script' ]
+verbose url resolved https://registry.npmjs.org/coffee-script
+verbose etag "FMB4Y6SCJR32P6J30F565TLM"
+http GET https://registry.npmjs.org/coffee-script
+verbose cache add [ 'ncp@~0.4.2', null ]
+silly cache add: name, spec, args [ undefined, 'ncp@~0.4.2', [ 'ncp@~0.4.2', null ] ]
+verbose parsed url { pathname: 'ncp@~0.4.2',
+verbose parsed url   path: 'ncp@~0.4.2',
+verbose parsed url   href: 'ncp@~0.4.2' }
+silly cache add: name, spec, args [ 'ncp', '~0.4.2', [ 'ncp', '~0.4.2' ] ]
+verbose parsed url { pathname: '~0.4.2', path: '~0.4.2', href: '~0.4.2' }
+verbose addNamed [ 'ncp', '~0.4.2' ]
+verbose addNamed [ null, '>=0.4.2- <0.5.0-' ]
+silly name, range, hasData [ 'ncp', '>=0.4.2- <0.5.0-', false ]
+verbose cache add [ 'debug@~0.7.2', null ]
+silly cache add: name, spec, args [ undefined, 'debug@~0.7.2', [ 'debug@~0.7.2', null ] ]
+verbose parsed url { pathname: 'debug@~0.7.2',
+verbose parsed url   path: 'debug@~0.7.2',
+verbose parsed url   href: 'debug@~0.7.2' }
+silly cache add: name, spec, args [ 'debug', '~0.7.2', [ 'debug', '~0.7.2' ] ]
+verbose parsed url { pathname: '~0.7.2', path: '~0.7.2', href: '~0.7.2' }
+verbose addNamed [ 'debug', '~0.7.2' ]
+verbose addNamed [ null, '>=0.7.2- <0.8.0-' ]
+silly name, range, hasData [ 'debug', '>=0.7.2- <0.8.0-', false ]
+verbose cache add [ 'source-map@~0.1.26', null ]
+silly cache add: name, spec, args [ undefined,
+silly cache add: name, spec, args   'source-map@~0.1.26',
+silly cache add: name, spec, args   [ 'source-map@~0.1.26', null ] ]
+verbose parsed url { pathname: 'source-map@~0.1.26',
+verbose parsed url   path: 'source-map@~0.1.26',
+verbose parsed url   href: 'source-map@~0.1.26' }
+silly cache add: name, spec, args [ 'source-map', '~0.1.26', [ 'source-map', '~0.1.26' ] ]
+verbose parsed url { pathname: '~0.1.26', path: '~0.1.26', href: '~0.1.26' }
+verbose addNamed [ 'source-map', '~0.1.26' ]
+verbose addNamed [ null, '>=0.1.26- <0.2.0-' ]
+silly name, range, hasData [ 'source-map', '>=0.1.26- <0.2.0-', false ]
+verbose cache add [ 'chokidar@~0.6.2', null ]
+silly cache add: name, spec, args [ undefined, 'chokidar@~0.6.2', [ 'chokidar@~0.6.2', null ] ]
+verbose parsed url { pathname: 'chokidar@~0.6.2',
+verbose parsed url   path: 'chokidar@~0.6.2',
+verbose parsed url   href: 'chokidar@~0.6.2' }
+silly cache add: name, spec, args [ 'chokidar', '~0.6.2', [ 'chokidar', '~0.6.2' ] ]
+verbose parsed url { pathname: '~0.6.2', path: '~0.6.2', href: '~0.6.2' }
+verbose addNamed [ 'chokidar', '~0.6.2' ]
+verbose addNamed [ null, '>=0.6.2- <0.7.0-' ]
+silly name, range, hasData [ 'chokidar', '>=0.6.2- <0.7.0-', false ]
+verbose cache add [ 'init-skeleton@~0.2.0', null ]
+silly cache add: name, spec, args [ undefined,
+silly cache add: name, spec, args   'init-skeleton@~0.2.0',
+silly cache add: name, spec, args   [ 'init-skeleton@~0.2.0', null ] ]
+verbose parsed url { pathname: 'init-skeleton@~0.2.0',
+verbose parsed url   path: 'init-skeleton@~0.2.0',
+verbose parsed url   href: 'init-skeleton@~0.2.0' }
+silly cache add: name, spec, args [ 'init-skeleton', '~0.2.0', [ 'init-skeleton', '~0.2.0' ] ]
+verbose parsed url { pathname: '~0.2.0', path: '~0.2.0', href: '~0.2.0' }
+verbose addNamed [ 'init-skeleton', '~0.2.0' ]
+verbose addNamed [ null, '>=0.2.0- <0.3.0-' ]
+silly name, range, hasData [ 'init-skeleton', '>=0.2.0- <0.3.0-', false ]
+verbose raw, before any munging mkdirp
+verbose url resolving [ 'https://registry.npmjs.org/', './mkdirp' ]
+verbose url resolved https://registry.npmjs.org/mkdirp
+verbose etag "A3251S0G3NT2AB7LYIM1NH7UK"
+http GET https://registry.npmjs.org/mkdirp
+verbose raw, before any munging commander
+verbose url resolving [ 'https://registry.npmjs.org/', './commander' ]
+verbose url resolved https://registry.npmjs.org/commander
+verbose etag "963K7TYH6UP7JSFBNMS9L3V8X"
+http GET https://registry.npmjs.org/commander
+verbose cache add [ 'loggy@~0.2.0', null ]
+silly cache add: name, spec, args [ undefined, 'loggy@~0.2.0', [ 'loggy@~0.2.0', null ] ]
+verbose parsed url { pathname: 'loggy@~0.2.0',
+verbose parsed url   path: 'loggy@~0.2.0',
+verbose parsed url   href: 'loggy@~0.2.0' }
+silly cache add: name, spec, args [ 'loggy', '~0.2.0', [ 'loggy', '~0.2.0' ] ]
+verbose parsed url { pathname: '~0.2.0', path: '~0.2.0', href: '~0.2.0' }
+verbose addNamed [ 'loggy', '~0.2.0' ]
+verbose addNamed [ null, '>=0.2.0- <0.3.0-' ]
+silly name, range, hasData [ 'loggy', '>=0.2.0- <0.3.0-', false ]
+verbose cache add [ 'pushserve@~0.1.6', null ]
+silly cache add: name, spec, args [ undefined, 'pushserve@~0.1.6', [ 'pushserve@~0.1.6', null ] ]
+verbose parsed url { pathname: 'pushserve@~0.1.6',
+verbose parsed url   path: 'pushserve@~0.1.6',
+verbose parsed url   href: 'pushserve@~0.1.6' }
+silly cache add: name, spec, args [ 'pushserve', '~0.1.6', [ 'pushserve', '~0.1.6' ] ]
+verbose parsed url { pathname: '~0.1.6', path: '~0.1.6', href: '~0.1.6' }
+verbose addNamed [ 'pushserve', '~0.1.6' ]
+verbose addNamed [ null, '>=0.1.6- <0.2.0-' ]
+silly name, range, hasData [ 'pushserve', '>=0.1.6- <0.2.0-', false ]
+verbose cache add [ 'read-components@~0.5.1', null ]
+silly cache add: name, spec, args [ undefined,
+silly cache add: name, spec, args   'read-components@~0.5.1',
+silly cache add: name, spec, args   [ 'read-components@~0.5.1', null ] ]
+verbose parsed url { pathname: 'read-components@~0.5.1',
+verbose parsed url   path: 'read-components@~0.5.1',
+verbose parsed url   href: 'read-components@~0.5.1' }
+silly cache add: name, spec, args [ 'read-components', '~0.5.1', [ 'read-components', '~0.5.1' ] ]
+verbose parsed url { pathname: '~0.5.1', path: '~0.5.1', href: '~0.5.1' }
+verbose addNamed [ 'read-components', '~0.5.1' ]
+verbose addNamed [ null, '>=0.5.1- <0.6.0-' ]
+silly name, range, hasData [ 'read-components', '>=0.5.1- <0.6.0-', false ]
+verbose cache add [ 'commonjs-require-definition@~0.1.0', null ]
+silly cache add: name, spec, args [ undefined,
+silly cache add: name, spec, args   'commonjs-require-definition@~0.1.0',
+silly cache add: name, spec, args   [ 'commonjs-require-definition@~0.1.0', null ] ]
+verbose parsed url { pathname: 'commonjs-require-definition@~0.1.0',
+verbose parsed url   path: 'commonjs-require-definition@~0.1.0',
+verbose parsed url   href: 'commonjs-require-definition@~0.1.0' }
+silly cache add: name, spec, args [ 'commonjs-require-definition',
+silly cache add: name, spec, args   '~0.1.0',
+silly cache add: name, spec, args   [ 'commonjs-require-definition', '~0.1.0' ] ]
+verbose parsed url { pathname: '~0.1.0', path: '~0.1.0', href: '~0.1.0' }
+verbose addNamed [ 'commonjs-require-definition', '~0.1.0' ]
+verbose addNamed [ null, '>=0.1.0- <0.2.0-' ]
+silly name, range, hasData [ 'commonjs-require-definition', '>=0.1.0- <0.2.0-', false ]
+verbose cache add [ 'async-each@~0.1.2', null ]
+silly cache add: name, spec, args [ undefined, 'async-each@~0.1.2', [ 'async-each@~0.1.2', null ] ]
+verbose parsed url { pathname: 'async-each@~0.1.2',
+verbose parsed url   path: 'async-each@~0.1.2',
+verbose parsed url   href: 'async-each@~0.1.2' }
+silly cache add: name, spec, args [ 'async-each', '~0.1.2', [ 'async-each', '~0.1.2' ] ]
+verbose parsed url { pathname: '~0.1.2', path: '~0.1.2', href: '~0.1.2' }
+verbose addNamed [ 'async-each', '~0.1.2' ]
+verbose addNamed [ null, '>=0.1.2- <0.2.0-' ]
+silly name, range, hasData [ 'async-each', '>=0.1.2- <0.2.0-', false ]
+verbose cache add [ 'async-waterfall@~0.1.2', null ]
+silly cache add: name, spec, args [ undefined,
+silly cache add: name, spec, args   'async-waterfall@~0.1.2',
+silly cache add: name, spec, args   [ 'async-waterfall@~0.1.2', null ] ]
+verbose parsed url { pathname: 'async-waterfall@~0.1.2',
+verbose parsed url   path: 'async-waterfall@~0.1.2',
+verbose parsed url   href: 'async-waterfall@~0.1.2' }
+silly cache add: name, spec, args [ 'async-waterfall', '~0.1.2', [ 'async-waterfall', '~0.1.2' ] ]
+verbose parsed url { pathname: '~0.1.2', path: '~0.1.2', href: '~0.1.2' }
+verbose addNamed [ 'async-waterfall', '~0.1.2' ]
+verbose addNamed [ null, '>=0.1.2- <0.2.0-' ]
+silly name, range, hasData [ 'async-waterfall', '>=0.1.2- <0.2.0-', false ]
+verbose raw, before any munging debug
+verbose url resolving [ 'https://registry.npmjs.org/', './debug' ]
+verbose url resolved https://registry.npmjs.org/debug
+verbose etag "BHGB14WW3U36Q48DRIX4RUQL1"
+http GET https://registry.npmjs.org/debug
+verbose raw, before any munging ncp
+verbose url resolving [ 'https://registry.npmjs.org/', './ncp' ]
+verbose url resolved https://registry.npmjs.org/ncp
+verbose etag "ATS9XSOJIH1FYJKRVWQHX9UNW"
+http GET https://registry.npmjs.org/ncp
+verbose raw, before any munging chokidar
+verbose url resolving [ 'https://registry.npmjs.org/', './chokidar' ]
+verbose url resolved https://registry.npmjs.org/chokidar
+verbose etag "AP0Q227LQ7JEH4M6ZBOJTO3JZ"
+http GET https://registry.npmjs.org/chokidar
+verbose raw, before any munging init-skeleton
+verbose url resolving [ 'https://registry.npmjs.org/', './init-skeleton' ]
+verbose url resolved https://registry.npmjs.org/init-skeleton
+verbose etag "EH2K3Y6ONBHN4PTBZN3G1LF3X"
+http GET https://registry.npmjs.org/init-skeleton
+verbose raw, before any munging loggy
+verbose url resolving [ 'https://registry.npmjs.org/', './loggy' ]
+verbose url resolved https://registry.npmjs.org/loggy
+verbose etag "BMO5BC6N4XQ482J40UR6FN4MK"
+http GET https://registry.npmjs.org/loggy
+verbose raw, before any munging pushserve
+verbose url resolving [ 'https://registry.npmjs.org/', './pushserve' ]
+verbose url resolved https://registry.npmjs.org/pushserve
+verbose etag "BFPU64DZX4TP3046V5TUEC3KR"
+http GET https://registry.npmjs.org/pushserve
+verbose raw, before any munging read-components
+verbose url resolving [ 'https://registry.npmjs.org/', './read-components' ]
+verbose url resolved https://registry.npmjs.org/read-components
+verbose etag "2525VKCP3DTVQ1DNPE92L7S23"
+http GET https://registry.npmjs.org/read-components
+verbose raw, before any munging commonjs-require-definition
+verbose url resolving [ 'https://registry.npmjs.org/',
+verbose url resolving   './commonjs-require-definition' ]
+verbose url resolved https://registry.npmjs.org/commonjs-require-definition
+verbose etag "69RZLH9TRWZHOHPB4VYIBQXWC"
+http GET https://registry.npmjs.org/commonjs-require-definition
+verbose raw, before any munging async-each
+verbose url resolving [ 'https://registry.npmjs.org/', './async-each' ]
+verbose url resolved https://registry.npmjs.org/async-each
+verbose etag "2982IDOH68K69NOXYUHYGJE2Y"
+http GET https://registry.npmjs.org/async-each
+verbose raw, before any munging async-waterfall
+verbose url resolving [ 'https://registry.npmjs.org/', './async-waterfall' ]
+verbose url resolved https://registry.npmjs.org/async-waterfall
+verbose etag "7HN1NPF2XS0K0W8KSQAGAELVG"
+http GET https://registry.npmjs.org/async-waterfall
+verbose raw, before any munging source-map
+verbose url resolving [ 'https://registry.npmjs.org/', './source-map' ]
+verbose url resolved https://registry.npmjs.org/source-map
+verbose etag "C2SGDI0IMMF3BD5IDW7NZ84GD"
+http GET https://registry.npmjs.org/source-map
+http 304 https://registry.npmjs.org/debug
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+silly get cb     etag: '"BHGB14WW3U36Q48DRIX4RUQL1"',
+silly get cb     date: 'Wed, 28 Aug 2013 00:06:39 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag debug from cache
+http 304 https://registry.npmjs.org/commander
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+silly get cb     etag: '"963K7TYH6UP7JSFBNMS9L3V8X"',
+silly get cb     date: 'Wed, 28 Aug 2013 00:06:39 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag commander from cache
+silly name, range, hasData 2 [ 'debug', '>=0.7.2- <0.8.0-', true ]
+silly versions [ 'debug',
+silly versions   [ '0.0.1',
+silly versions     '0.1.0',
+silly versions     '0.2.0',
+silly versions     '0.3.0',
+silly versions     '0.4.0',
+silly versions     '0.4.1',
+silly versions     '0.5.0',
+silly versions     '0.6.0',
+silly versions     '0.7.0',
+silly versions     '0.7.1',
+silly versions     '0.7.2' ] ]
+verbose bin dist [ '0.6-ares1.9.1-evundefined-openssl1.0.1c-v83.8.9.20-linux-ia32-3.5.0-40-generic',
+verbose bin dist   { shasum: '056692c86670977f115de82917918b8e8b9a10f0',
+verbose bin dist     tarball: 'http://registry.npmjs.org/debug/-/debug-0.7.2.tgz' } ]
+silly name, range, hasData 2 [ 'commander', '>=2.0.0- <2.1.0-', true ]
+silly versions [ 'commander',
+silly versions   [ '0.2.1',
+silly versions     '0.3.0',
+silly versions     '0.3.1',
+silly versions     '0.3.2',
+silly versions     '0.3.3',
+silly versions     '0.4.0',
+silly versions     '0.4.1',
+silly versions     '0.4.2',
+silly versions     '0.4.3',
+silly versions     '0.5.0',
+silly versions     '0.5.1',
+silly versions     '0.6.0',
+silly versions     '0.6.1',
+silly versions     '0.5.2',
+silly versions     '1.0.0',
+silly versions     '1.0.1',
+silly versions     '1.0.2',
+silly versions     '1.0.3',
+silly versions     '1.0.4',
+silly versions     '1.0.5',
+silly versions     '1.1.0',
+silly versions     '1.1.1',
+silly versions     '1.2.0',
+silly versions     '1.3.0',
+silly versions     '1.3.1',
+silly versions     '1.3.2',
+silly versions     '2.0.0' ] ]
+verbose bin dist [ '0.6-ares1.9.1-evundefined-openssl1.0.1c-v83.8.9.20-linux-ia32-3.5.0-40-generic',
+verbose bin dist   { shasum: 'd1b86f901f8b64bd941bdeadaf924530393be928',
+verbose bin dist     tarball: 'http://registry.npmjs.org/commander/-/commander-2.0.0.tgz' } ]
+verbose addRemoteTarball [ 'https://registry.npmjs.org/commander/-/commander-2.0.0.tgz',
+verbose addRemoteTarball   'd1b86f901f8b64bd941bdeadaf924530393be928' ]
+verbose caching /home/elmano/.npm/debug/0.7.2/package/package.json
+verbose loadDefaults debug@0.7.2
+verbose mkdir (expected) error ENOENT, stat '/tmp/npm-1377648400058'
+verbose mkdir (expected) error ENOENT, stat '/tmp/npm-1377648400058/1377648400058-0.6305679609067738'
+verbose mkdir done: /tmp/npm-1377648400058/1377648400058-0.6305679609067738 755
+verbose fetch to /tmp/npm-1377648400058/1377648400058-0.6305679609067738/tmp.tgz
+http GET https://registry.npmjs.org/commander/-/commander-2.0.0.tgz
+http 304 https://registry.npmjs.org/chokidar
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+silly get cb     etag: '"AP0Q227LQ7JEH4M6ZBOJTO3JZ"',
+silly get cb     date: 'Wed, 28 Aug 2013 00:06:40 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag chokidar from cache
+silly name, range, hasData 2 [ 'chokidar', '>=0.6.2- <0.7.0-', true ]
+silly versions [ 'chokidar',
+silly versions   [ '0.1.1',
+silly versions     '0.2.0',
+silly versions     '0.2.1',
+silly versions     '0.2.2',
+silly versions     '0.2.3',
+silly versions     '0.2.4',
+silly versions     '0.2.5',
+silly versions     '0.2.6',
+silly versions     '0.3.0',
+silly versions     '0.4.0',
+silly versions     '0.5.0',
+silly versions     '0.5.1',
+silly versions     '0.5.2',
+silly versions     '0.5.3',
+silly versions     '0.6.0',
+silly versions     '0.6.1',
+silly versions     '0.6.2',
+silly versions     '0.6.3' ] ]
+verbose bin dist [ '0.6-ares1.9.1-evundefined-openssl1.0.1c-v83.8.9.20-linux-ia32-3.5.0-40-generic',
+verbose bin dist   { shasum: 'e85968fa235f21773d388c617af085bf2104425a',
+verbose bin dist     tarball: 'http://registry.npmjs.org/chokidar/-/chokidar-0.6.3.tgz' } ]
+verbose caching /home/elmano/.npm/chokidar/0.6.3/package/package.json
+verbose loadDefaults chokidar@0.6.3
+http 304 https://registry.npmjs.org/init-skeleton
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+silly get cb     etag: '"EH2K3Y6ONBHN4PTBZN3G1LF3X"',
+silly get cb     date: 'Wed, 28 Aug 2013 00:06:40 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag init-skeleton from cache
+silly name, range, hasData 2 [ 'init-skeleton', '>=0.2.0- <0.3.0-', true ]
+silly versions [ 'init-skeleton',
+silly versions   [ '0.1.0',
+silly versions     '0.1.1',
+silly versions     '0.1.2',
+silly versions     '0.1.3',
+silly versions     '0.1.4',
+silly versions     '0.1.5',
+silly versions     '0.1.6',
+silly versions     '0.2.0',
+silly versions     '0.2.1',
+silly versions     '0.2.2',
+silly versions     '0.2.3',
+silly versions     '0.2.4' ] ]
+verbose bin dist [ '0.6-ares1.9.1-evundefined-openssl1.0.1c-v83.8.9.20-linux-ia32-3.5.0-40-generic',
+verbose bin dist   { shasum: '82655737a62d3b3b0153371c5847209132171863',
+verbose bin dist     tarball: 'http://registry.npmjs.org/init-skeleton/-/init-skeleton-0.2.4.tgz' } ]
+verbose addRemoteTarball [ 'https://registry.npmjs.org/init-skeleton/-/init-skeleton-0.2.4.tgz',
+verbose addRemoteTarball   '82655737a62d3b3b0153371c5847209132171863' ]
+verbose mkdir (expected) error ENOENT, stat '/tmp/npm-1377648400058/1377648400182-0.917782902950421'
+verbose mkdir done: /tmp/npm-1377648400058/1377648400182-0.917782902950421 755
+verbose fetch to /tmp/npm-1377648400058/1377648400182-0.917782902950421/tmp.tgz
+http GET https://registry.npmjs.org/init-skeleton/-/init-skeleton-0.2.4.tgz
+http 304 https://registry.npmjs.org/coffee-script
+silly get cb [ 304,
+silly get cb   { server: 'CouchDB/1.3.1 (Erlang OTP/R15B03)',
+silly get cb     etag: '"FMB4Y6SCJR32P6J30F565TLM"',
+silly get cb     date: 'Wed, 28 Aug 2013 00:06:40 GMT',
+silly get cb     'content-length': '0' } ]
+verbose etag coffee-script from cache
+silly name, range, hasData 2 [ 'coffee-script', '>=1.6.3- <1.7.0-', true ]
+silly versions [ 'coffee-script',
+silly versions   [ '0.7.0',
+silly versions     '0.7.1',
+silly versions     '0.7.2',
+silly versions     '0.9.0',
+silly versions     '0.9.1',
+silly versions     '0.9.2',
+silly versions     '0.9.3',
+silly versions     '0.9.4',
+silly versions     '0.9.5',
+silly versions     '0.9.6',
+silly versions     '1.0.0',
+silly versions     '1.0.1',
+silly versions     '1.1.0',
+silly versions     '1.1.1',
+silly versions     '1.1.2',
+silly versions     '1.1.3',
+silly versions     '1.2.0',
+silly versions     '1.3.0',
+silly versions     '1.3.1',
+silly versions     '1.3.2',
+silly versions     '1.3.3',
+silly versions     '1.4.0',
+silly versions     '1.5.0',
+silly versions     '1.6.0',
+silly versions     '1.6.1' ] ]
+verbose about to build /usr/local/lib/node_modules/brunch
+ERR! error installing brunch@1.7.2
+info unbuild /usr/local/lib/node_modules/brunch
+verbose from cache /usr/local/lib/node_modules/brunch/package.json
+info preuninstall brunch@1.7.2
+info uninstall brunch@1.7.2
+verbose unbuild brunch@1.7.2 [ true,
+verbose unbuild brunch@1.7.2   '/usr/local/lib/node_modules',
+verbose unbuild brunch@1.7.2   '/usr/local/lib/node_modules' ]
+verbose binRoot [ '/usr/local/bin', { brunch: './bin/brunch' } ]
+info postuninstall brunch@1.7.2
+verbose installOne cb brunch@1.7.2
+ERR! Error: No compatible version found: coffee-script@'>=1.6.3- <1.7.0-'
+ERR! Valid install targets:
+ERR! ["0.7.0","0.7.1","0.7.2","0.9.0","0.9.1","0.9.2","0.9.3","0.9.4","0.9.5","0.9.6","1.0.0","1.0.1","1.1.0","1.1.1","1.1.2","1.1.3","1.2.0","1.3.0","1.3.1","1.3.2","1.3.3","1.4.0","1.5.0","1.6.0","1.6.1"]
+ERR!     at installTargetsError (/usr/share/npm/lib/cache.js:488:10)
+ERR!     at next_ (/usr/share/npm/lib/cache.js:438:17)
+ERR!     at next (/usr/share/npm/lib/cache.js:415:44)
+ERR!     at /usr/share/npm/lib/cache.js:408:5
+ERR!     at saved (/usr/share/npm/lib/utils/npm-registry-client/get.js:147:7)
+ERR!     at Object.oncomplete (/usr/lib/nodejs/graceful-fs.js:230:7)
+ERR! You may report this log at:
+ERR!     <http://bugs.debian.org/npm>
+ERR! or use
+ERR!     reportbug --attach /home/elmano/apps/denunciasjp/npm-debug.log npm
+ERR! 
+ERR! System Linux 3.5.0-40-generic
+ERR! command "/usr/bin/nodejs" "/usr/bin/npm" "install" "-g" "brunch"
+ERR! cwd /home/elmano/apps/denunciasjp
+ERR! node -v v0.6.19
+ERR! npm -v 1.1.4
+ERR! message No compatible version found: coffee-script@'>=1.6.3- <1.7.0-'
+ERR! message Valid install targets:
+ERR! message ["0.7.0","0.7.1","0.7.2","0.9.0","0.9.1","0.9.2","0.9.3","0.9.4","0.9.5","0.9.6","1.0.0","1.0.1","1.1.0","1.1.1","1.1.2","1.1.3","1.2.0","1.3.0","1.3.1","1.3.2","1.3.3","1.4.0","1.5.0","1.6.0","1.6.1"]
+verbose exit [ 1, true ]

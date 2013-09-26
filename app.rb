@@ -5,9 +5,12 @@ require 'dm-migrations'
 require File.dirname(__FILE__) + '/models.rb'
 require 'pp'
 require 'json'
+require 'sinatra/authorization'
 
-enable :session
 set :logging, true
+set :authorization_realm, 'Protected zone'
+
+enable :sessions
 
 #PRINCIPAL
 
@@ -24,6 +27,7 @@ end
 
 # Retorna busca
 get '/busca' do
+
 	@denuncias = Denuncia.all(:denuncia.like => "%#{params[:busca]}%")
 	@denuncias.to_json
 end
@@ -32,6 +36,7 @@ end
 
 # Retorna lista de denúncias
 get '/denuncias' do
+	response['Access-Control-Allow-Origin'] = '*'
 	@denuncias = Denuncia.all(:order => [:id.desc], :limit => 5)
 	@denuncias.to_json
 end
@@ -44,6 +49,7 @@ end
 
 # Registrar denúncia
 post '/denuncias' do
+
 	unless params.nil?
 		if params[:foto].nil?
 			foto = nil
@@ -75,7 +81,6 @@ post '/denuncias' do
 			erros
 		end
 	end
-	# haml :'denuncias/add'
 end
 
 # Editar denúncia

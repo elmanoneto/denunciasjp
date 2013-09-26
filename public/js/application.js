@@ -26,11 +26,16 @@ App.Models.Session = Backbone.Model.extend({
       access_token: $.cookie('access_token')
 }); */
 
+
+
 $.ajaxSetup({
     statusCode: {
         401: function(){
             // Redirec the to the login page.	
             $('.erro-login').show('medium');
+        },
+        410: function (){
+        	
         }
     }
 });
@@ -121,6 +126,8 @@ var Usuario = Backbone.Model.extend({
 		return erros.length > 0 ? erros : false
 	}
 });
+
+var user = {'logado': false};
 
 /*
 	COLLECTIONS
@@ -412,20 +419,28 @@ var ComoFunciona = Backbone.View.extend({
 var MinhasDenuncias = Backbone.View.extend({
 	el: '.conteudo',
 
+	events: {
+		'click .delete': 'delete'
+	},
+
 	render: function () {
-		var denuncias = new Denuncias();
 		var that = this;
+		denuncias = new Denuncias();
 		denuncias.fetch({
 			success: function (denuncias) {
 				var js = denuncias.toJSON();
 				_.each(js, function  (denuncia) {
-					denuncia.data = moment(denuncia.data).fromNow();
+					denuncia.data = moment(denuncia.data).format('DD/MM/YYYY');
 				});
 				var source = ($('#minhas-denuncias').html());
 				var template = Handlebars.compile(source);
 				that.$el.html(template({denuncias: js}));
 			}
-		})
+		});
+	},
+
+	delete: function (ev) {
+		console.log($('.id-denuncia').val());
 	}
 });
 
@@ -433,37 +448,144 @@ var Login = Backbone.View.extend({
 	el: '.menu',
 
 	events: {
-		'click .btn-login': 'login'
+		'click .btn-login': 'login',
+		'click .logout': 'logout'
 	},
 
 	render: function () {
+		var source = ($('#logout').html());
+		var template = Handlebars.compile(source);
+		this.$el.html(template);
 	},
 
 	login: function () {
+			
 		var formValues = {
             login: $('.login-user').val(),
             senha: $('.login-senha').val()
         };
 
-		$.ajax({
-            url:'/login',
-            type:'POST',
-            dataType:"json",
-            data: formValues,
-            success:function (data) {
-                console.log(["Login request details: ", data]);
-               
-                if(data.error) {  // If there is an error, show the error messages
-                    // $('.alert-error').text(data.error.text).show();
-                    console.log('Erro!');
-                }
-                else { // If not, send them back to the home page
-                	console.log('Entrou!');
-                    window.location.replace('#');
-                }
-            }
-        });
-        return false;
+        var login =  $('.login-user').val();
+        var senha = $('.login-senha').val();
+
+		// $.ajax({
+  //           url:'/login',
+  //           type:'POST',
+  //           dataType:"json",
+  //           data: formValues,
+  //           success:function (data) {
+  //               if(data.error) {  // If there is an error, show the error messages
+  //                   document.cookie = 'erro';
+  //                   return false;
+  //               }
+  //               else { // If not, send them back to the home page	
+  //               	document.cookie = 'logado';
+  //               	return false;
+  //               }
+  //           },
+  //           error: function () {
+  //           	$.removeCookie('user');
+  //           	return false;
+  //           } 
+  //       });
+		
+
+		// $.post('login', {login: login, senha: senha}, function(data){
+		// 	$
+		// });
+
+		console.log('oi');
+
+		var users = new Usuarios();
+
+		users.fetch({
+			success: function (users) {
+				var list = users.toJSON();
+				_.each(list, function  (usuario) {
+					if(usuario.login == login && usuario.senha == senha){
+						user.logado = true;
+						Backbone.history.navigate('/');
+					}
+				});
+			}
+		});
+
+
+		// if ($.cookie('usuario')) {
+		// 	var source = ($('#meu-menu').html());
+		//  	var template = Handlebars.compile(source);
+		//  	this.$el.html(template);
+		// }
+
+		return false;
+
+	 },
+
+	logout: function () {
+		var source = ($('#logout').html());
+		var template = Handlebars.compile(source);
+		this.$el.html(template);	
+		$.removeCookie('usuario');
+	}
+});
+
+var Logout = Backbone.View.extend({
+	el: '.menu',
+
+	render: function () {
+		console.log('haha');
+		var source = ($('#meu-menu').html());
+		var template = Handlebars.compile(source);
+		this.$el.html(template);
+	},
+});
+
+var EditarDenuncia = Backbone.View.extend({
+	el: '.conteudo',
+
+	events: {
+		'click .btn-editar-denuncia': 'editar',
+		'click .btn-remover-denuncia': 'remover'
+	},
+
+	render: function (id) {
+		var that = this;
+		var denuncia = new Denuncia({id: id});
+		denuncia.fetch({
+			success: function (denuncia) {
+				var js = denuncia.toJSON();
+				var source = ($('#editar-denuncia').html());
+				var template = Handlebars.compile(source);
+				that.$el.html(template({denuncia: js}));
+			}
+		});
+	},
+
+	editar: function () {
+		var id = $('.id-denuncia').val();
+
+		var denuncia = new Denuncia({id: id});
+
+		denuncia.fetch({
+			success: function (denuncia) {
+				console.log(denuncia.toJSON());
+			}
+		});	
+
+		return false;
+	},
+
+	remover: function () {
+		var id = $('.id-denuncia').val();
+		var denuncia = new Denuncia({id: id});
+		denuncia.fetch();
+		denuncia.destroy({
+			success: function () {
+				console.log('apagou');
+			}
+		});
+		router.navigate('#/minhas-denuncias', {trigger: true});
+		return false;
 	}
 });
 
@@ -480,8 +602,9 @@ var Router = Backbone.Router.extend({
 		'denunciar/:id': 'denunciar',
 		'como-funciona': 'comofunciona',
 		'busca': 'busca',
-		'denuncias': 'denuncias',
-		'login': 'login'
+		'minhas-denuncias': 'minhasdenuncias',
+		'login': 'login',
+		'editar-denuncia/:id': 'editardenuncia'
 	}
 });
 
@@ -501,26 +624,45 @@ var minhasDenuncias = new MinhasDenuncias();
 
 var login = new Login();
 
+var editarDenuncia = new EditarDenuncia();
+
+var logout = new Logout();
+
 var router = new Router();
 
 router.on('route:home', function(){
 	denunciasRecentes.render();
-	login.render();
-	console.log('Página Principal');
+	if (user.logado == false) {
+		login.render();
+	} else {
+		logout.render();
+	}
+
+	console.log(user);
+	
 });
 
 router.on('route:new', function(){
+	console.log(user);
+
+	if(user.logado == true){
+		login.render();
+	}else{
+		logout.render();
+	}
+
 	registrarDenuncia.render();
-	console.log('Registrar Denúncia');
 })
 
 router.on('route:view', function (id) {
 	visualizarDenuncia.render({id: id});
+	login.render();
 	console.log('Visualizar denúncia');
 });
 
 router.on('route:newUser', function () {
 	cadastrarUsuario.render();
+	login.render();
 	console.log('Cadastrar Usuário');
 });
 
@@ -541,30 +683,30 @@ router.on('route:denunciar', function (id) {
 
 router.on('route:comofunciona', function () {
 	comoFunciona.render();
+	login.render();
 });
 
 router.on('route:busca', function () {
 	busca.render();
+	login.render();
 });
 	
 router.on('router:login', function () {
 	login.render();
+	login.render();
 });
 
-router.on('route:denuncias', function () {
+router.on('route:minhasdenuncias', function () {
 	console.log('Denúncias!');
 	minhasDenuncias.render();
+	login.render();
+});
+
+router.on('route:editardenuncia', function (id) {
+	editarDenuncia.render(id);
+	console.log('oi');
+	login.render();
 });
 
 
 Backbone.history.start();
-
-/* DANILO PARTE 02
-
-App.start = ->
-  @session = new App.Models.Session()
-  if @session.authenticated()
-    # redirect to user page
-  else
-    # launch a login form
-*/
