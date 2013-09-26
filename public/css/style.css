@@ -528,3 +528,15 @@ body{
 	font-size: 10pt;
 	font-weight: bold;
 }
+
+.meu-menu{
+	margin: 0 0 100px 0;
+}
+
+.meu-menu li{
+	list-style-type: none;
+	margin-left: -200px;
+}
+
+.logout{
+}

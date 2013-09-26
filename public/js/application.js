@@ -532,12 +532,21 @@ var Login = Backbone.View.extend({
 var Logout = Backbone.View.extend({
 	el: '.menu',
 
+	events: {
+		'click .logout': 'logout'
+	},
+
 	render: function () {
 		console.log('haha');
 		var source = ($('#meu-menu').html());
 		var template = Handlebars.compile(source);
 		this.$el.html(template);
 	},
+
+	logout: function () {
+		user.logado = false;
+		console.log('logout');
+	}
 });
 
 var EditarDenuncia = Backbone.View.extend({
@@ -653,11 +662,10 @@ router.on('route:home', function(){
 router.on('route:new', function(){
 	console.log(user);
 
-	registrarDenuncia.render();
-
 	if(user.logado == true){
 		login.render();
 	}else{
+		registrarDenuncia.render();
 		logout.render();
 	}
 
