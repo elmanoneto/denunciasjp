@@ -118,18 +118,18 @@
 					<form method="post" class="form-registrar-denuncia" action="denuncias" enctype="multipart/form-data">
 						<input type="hidden" value="{{id}}" class="id-denuncia"/>
 						<label>Resumo</label><br>
-						<input type="text" class="denuncia-resumo" name="resumo" value="{{resumo}}"/>
+						<input type="text" class="denuncia-resumo" name="resumo" value="{{resumo}}" id="resumo-denuncia"/>
 						<div class="contador"></div>
 						<br>
 						<label>Endereço</label><br>
-						<input id="searchTextField" type="text" size="50" class="denuncia-endereco" name="endereco" value="{{endereco}}">
+						<input id="searchTextField" type="text" size="50" class="denuncia-endereco" name="endereco" value="{{endereco}}" id="endereco-denuncia">
 						<br>
 						<label>Descrição</label>
 						<br>	
-						<textarea class="denuncia-descricao" name="denuncia">{{denuncia}}</textarea>
+						<textarea class="denuncia-descricao" name="denuncia" id="descricao-denuncia">{{denuncia}}</textarea>
 						<br>
 						<label>Foto</label>
-						<input type="file" class="denuncia-foto" name="foto"/>
+						<input type="file" class="denuncia-foto" name="foto" id="foto-denuncia"/>
 						<br>
 						<spam class="formato">*Formato aceito: jpg</spam>
 						<hr />

@@ -328,7 +328,7 @@ var VisualizarDenuncia = Backbone.View.extend({
 	},
 
 	dialog: function () {
-		$('.swipebox').colorbox({rel: 'swipebox'});
+		$('.swipebox').colorbox({rel: 'swipebox'});editar
 	},
 
 	denunciar: function (ev) {
@@ -504,7 +504,7 @@ var Login = Backbone.View.extend({
 				_.each(list, function  (usuario) {
 					if(usuario.login == login && usuario.senha == senha){
 						user.logado = true;
-						Backbone.history.navigate('/');
+						router.navigate('#/', {trigger: true});
 					}
 				});
 			}
@@ -570,7 +570,15 @@ var EditarDenuncia = Backbone.View.extend({
 			success: function (denuncia) {
 				console.log(denuncia.toJSON());
 			}
-		});	
+		});
+
+		denuncia.update({
+			resumo: $('#resumo-denuncia').val(),
+			endereco: $('#endereco-denuncia').val(),
+			denuncia: $('#descricao-denuncia').val(),
+			foto: $('#foto-denuncia')
+		});
+
 
 		return false;
 	},
@@ -645,13 +653,14 @@ router.on('route:home', function(){
 router.on('route:new', function(){
 	console.log(user);
 
+	registrarDenuncia.render();
+
 	if(user.logado == true){
 		login.render();
 	}else{
 		logout.render();
 	}
 
-	registrarDenuncia.render();
 })
 
 router.on('route:view', function (id) {
