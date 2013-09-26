@@ -309,6 +309,7 @@ var VisualizarDenuncia = Backbone.View.extend({
 
   //       var mapElem = $(".conteudo");	
 		// var map = new google.maps.Map(mapElem,mapOptions);
+
         
 
 		denuncia.fetch({

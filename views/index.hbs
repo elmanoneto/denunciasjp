@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="stylesheet" type="text/css" href="css/estilo.css">
 		<link rel="stylesheet" href="css/modal.css" type="text/css" media="screen" />
+
 		<!-- <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" /> -->
 		<!--[if lte IE 8]>
 		    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.ie.css" />
@@ -216,6 +217,7 @@
 							<img src="../img/uploads/{{foto}}" style="width: 120px; height: 120px;"/>
 						</a>
 					{{/if}}
+					<div id="map"></div>
 					<spam class="denunciar"><a class="denunciard" data-pancakes="{{id}}">Denunciar</a></spam>
 			{{/denuncia}}
 		</script>
@@ -300,7 +302,8 @@
 		<!-- FIM DO FOOTER -->
 
 		<!-- SCRIPTS -->	
-
+		<script type="text/javascript" src="js/gmap3.min.js"></script>
+		<script type="text/javascript" src="js/uimap.js"></script>
 		<script type="text/javascript" src="js/utils.js"></script>
 		<script type="text/javascript" src="js/libs/jquery.js"></script>
 		<script type="text/javascript" src="js/libs/json2.js"></script>
@@ -317,6 +320,7 @@
 		<script type="text/javascript" src="js/colorbox.js"></script>
 		<script type="text/javascript" src="js/libs/cookie.js"></script>
 		<script type="text/javascript" src="js/libs/jquery.cookie.js"></script>
+		
 		<script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script>
 	</body>
 </html>
