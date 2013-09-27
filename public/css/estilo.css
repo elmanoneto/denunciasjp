@@ -86,6 +86,12 @@ body{
 	padding-left: 0px;
 }
 
+.topo li.minhas-denuncias{
+	background: url('../img/icone-minhas-denuncias.png') no-repeat 0px 0px;
+	padding-right: 55px;
+	padding-left: 25px;
+}
+
 .topo li.como-funciona{
 	background: url('../img/icone-como-funciona.png') no-repeat 10px 0px;
 	padding-right: 40px;
