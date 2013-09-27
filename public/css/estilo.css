@@ -11,6 +11,15 @@ body{
 	margin-top: 30px;
 }
 
+#map_canvas{
+       z-index: 9999;
+       position: absolute;
+       top: 80px;
+       left: 600px;
+       width: 400px;
+       height: 300px;
+}
+
 .topo{
 	margin: 0 auto;
 	width: 1005px;

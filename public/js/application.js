@@ -26,6 +26,56 @@ App.Models.Session = Backbone.Model.extend({
       access_token: $.cookie('access_token')
 }); */
 
+var MapView = Backbone.View.extend({            
+   _initialize_map : function(){
+
+     var center = new google.maps.LatLng(41.63, -1);
+     var styles = [
+       {
+         elementType: "geometry",
+         stylers: [
+           { lightness: 33 },
+           { saturation: -90 }
+         ]
+       }
+     ];
+
+     var mapOptions = {
+         zoom: 9,
+         mapTypeId: google.maps.MapTypeId.ROADMAP,
+         center: center,
+         styles: styles
+     };
+     this.map = new google.maps.Map($('#map_canvas')[0], mapOptions);
+     console.log(this.map)
+
+   },
+
+   //--------------------------------------
+   // App Initialization
+   //--------------------------------------
+   initialize: function() {
+
+     var self = this;
+
+     //--------------------------------------
+     // Cache UI control references
+     //--------------------------------------
+     self.map_canvas = $('#map_canvas');
+     
+     //initialize map
+     self._initialize_map();
+
+     //--------------------------------------
+     // Initial control positions
+     // Move header up (out of window)
+   }
+});
+var Map = null;
+
+$(function(){
+       Map = new MapView();
+})
 
 
 $.ajaxSetup({
