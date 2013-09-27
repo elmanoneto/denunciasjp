@@ -5,7 +5,6 @@ require 'dm-migrations'
 require File.dirname(__FILE__) + '/models.rb'
 require 'pp'
 require 'json'
-require 'sinatra/authorization'
 
 set :logging, true
 set :authorization_realm, 'Protected zone'
