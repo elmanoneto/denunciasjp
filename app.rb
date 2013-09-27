@@ -27,6 +27,7 @@ end
 # Retorna busca
 get '/busca' do
 
+	
 	@denuncias = Denuncia.all(:denuncia.like => "%#{params[:busca]}%")
 	@denuncias.to_json
 end

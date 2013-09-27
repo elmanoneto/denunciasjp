@@ -178,7 +178,12 @@ var Busca = Backbone.View.extend({
 					if(denuncia.denuncia.search(busca) != -1) {
 						list.push(denuncia);
 					}else{
-						delete denuncia;
+						if(denuncia.resumo.search(busca) != -1){
+							list.push(denuncia);
+						}
+						else{
+							delete denuncia;
+						}
 					}
 				});
 				console.log(list);
