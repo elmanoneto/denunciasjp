@@ -304,6 +304,8 @@ var RegistrarDenuncia = Backbone.View.extend({
 			endereco: $('.denuncia-endereco').val(),
 			denuncia: $('.denuncia-descricao').val(),
 			foto: $('.denuncia-foto').val(),
+			lat: $('.denuncia-lat').val(),
+			lng: $('.denuncia-lng').val()
 		});
 
 		var erros = {};
@@ -343,7 +345,7 @@ var RegistrarDenuncia = Backbone.View.extend({
 	},
 
 	autocomplete: function () {
-		$(".denuncia-endereco").geocomplete();
+		$(".denuncia-endereco").geocomplete({ details: ".form-registrar-denuncia" });
 	}
 });
 

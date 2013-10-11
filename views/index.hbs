@@ -75,6 +75,8 @@
 				{{/erros}}
 				<div id="panel">
 					<form method="post" class="form-registrar-denuncia" action="denuncias" enctype="multipart/form-data">
+						<input type="hidden" name="lat" type="text" value="" class="denuncia-lat">
+						<input type="hidden" name="lng" type="text" value="" class="denuncia-lng">
 						<label>Resumo</label><br>
 						<input type="text" class="denuncia-resumo" name="resumo"/>
 						<div class="contador"></div>
