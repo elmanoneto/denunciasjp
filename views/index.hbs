@@ -34,6 +34,7 @@
 					<li class="denuncia"><a href="#/registrar-denuncia">Registrar Denúncia</a></li>
 					<li class="minhas-denuncias"><a href="#/minhas-denuncias">Minhas Denúncias</a></li>
 					<li class="como-funciona"><a href="#/como-funciona">Como Funciona</a></li>
+					<a href="/">Sair</a>
 				</ul>
 				<img src="../img/barra-cima.jpg" / class="barra">
 			</div>
@@ -202,11 +203,11 @@
 			<div class="titulo-denuncia">Denúncia</div>
 			{{#denuncia}}
 				<spam class="detalhe-denuncia">
-					<spam class="autor">{{autor}}</spam>
-					<spam class="data"><strong>{{data}}</strong></spam> - 
-					<spam class="resumo"><strong>{{resumo}}</strong></spam>
+					Data: <spam class="data"><strong>{{data}}</strong></spam>
 					<br>
-					<spam class="denuncia">{{denuncia}}</spam>
+					Título: <spam class="resumo"><strong>{{resumo}}</strong></spam>
+					<br>
+					Descrição: <spam class="denuncia">{{denuncia}}</spam>
 					<br>
 					<spam class="autor">Denúncia feita por: {{autor}}</spam>
 					<br>
@@ -222,7 +223,6 @@
 					<div id="map_canvas">map div</div>
 					<div id="mapContainer"></div>
 					
-					<spam class="denunciar"><a class="denunciard" data-pancakes="{{id}}">Denunciar</a></spam>
 			{{/denuncia}}
 		</script>
 

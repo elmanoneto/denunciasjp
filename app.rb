@@ -31,7 +31,11 @@ end
 
 # Retorna página explicando como o site funciona
 get '/como-funciona' do
-	haml :comofunciona
+	if session[:user]
+		haml :comofunciona
+	else
+		redirect '/'
+	end
 end
 
 # Retorna busca
@@ -105,6 +109,7 @@ end
 
 # Editar denúncia
 put '/denuncias/:id' do
+	
 	@denuncia = Denuncia.get(params[:id])
 	@denuncia.resumo = params[:resumo]
 	@denuncia.endereco = params[:endereco]

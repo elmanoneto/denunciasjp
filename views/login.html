@@ -28,6 +28,10 @@
  		});
  	});
 
+		$("cadastro").submit(function(){
+			alert('Cliente Cadastrado com Sucesso!');	
+		});
+
 </script>
 </head>
 
@@ -48,7 +52,7 @@
 		</div>
 
 			<div id="panel">
-				<form method="post" class="form-cadastre-se" action="usuarios" enctype="multipart/form-data">
+				<form method="post" class="form-cadastre-se" action="usuarios" enctype="multipart/form-data" id="cadastro">
 					
 					<label>Nome</label><br>
 					<input id="nome" type="text" size="50" class="usuario-nome" name="nome">

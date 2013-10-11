@@ -26,8 +26,6 @@ App.Models.Session = Backbone.Model.extend({
       access_token: $.cookie('access_token')
 }); */
 
-
-
 $.ajaxSetup({
     statusCode: {
         401: function(){
