@@ -49,6 +49,12 @@ get '/denuncias' do
 	@denuncias.to_json
 end
 
+get '/minhas-denuncias' do
+	response['Access-Control-Allow-Origin'] = '*'
+	@denuncias = Denuncia.all(:order => [:id.desc], :limit => 5 , :autor => session[:user].nome)
+	@denuncias.to_json
+end
+
 # Retorna denúncia individual
 get '/denuncias/:id' do
 

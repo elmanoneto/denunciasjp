@@ -7,7 +7,32 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/estilo.css">
+	<script type="text/javascript" src="js/libs/jquery.js"></script>
+
+	<script type="text/javascript">
+
+		$(document).ready(function(){
+ 			$('#panel').hide();
+
+ 			iniciar = 0
+
+ 			$('#mostrar').click(function(event){
+ 				event.preventDefault();
+ 				if(iniciar == 0){
+ 					$("#panel").show("slow");
+ 					iniciar++;
+ 				}else{
+ 					$("#panel").hide("slow");
+ 					iniciar = 0;
+ 				}
+ 		});
+ 	});
+
+</script>
 </head>
+
+
+
 <body>
 	<section id="login">
 		<img src="../img/denunciasjp.png" />
@@ -16,8 +41,31 @@
 				<input type="text" placeholder="Usuário" name="user"/>
 				<input type="text" placeholder="Senha" name="pwd" />
 				<button>Login</button>
+				<br><br>
+				<a href="#" id="mostrar">Não cadastrado ainda?</a>
 			</form>
+
 		</div>
+
+			<div id="panel">
+				<form method="post" class="form-cadastre-se" action="usuarios" enctype="multipart/form-data">
+					
+					<label>Nome</label><br>
+					<input id="nome" type="text" size="50" class="usuario-nome" name="nome">
+					<br>
+					<label>Email</label><br>
+					<input id="email" type="text" size="50" class="usuario-email" name="email">
+					<br>
+					<label>Login</label><br>
+					<input id="login" type="text" size="50" class="usuario-login" name="login">
+					<br>
+					<label>Senha</label><br>
+					<input id="senha" type="password" size="50" class="usuario-senha" name="senha">
+					<br>
+					<br>
+					<button class="btn-cadastrar-usuario">+ Cadastrar</button>
+				</form>
+			</div>
 	</section>
 </body>
 </html>
