@@ -77,7 +77,9 @@ post '/denuncias' do
 			:denuncia => params[:denuncia],
 			:foto => foto,
 			:data => DateTime.now,
-			:autor => session[:user].nome
+			:autor => session[:user].nome,
+			:lat => params[:lat],
+			:lng => params[:lng]
 		)
 
 		if @denuncia.save
