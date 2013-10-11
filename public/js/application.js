@@ -27,7 +27,7 @@ App.Models.Session = Backbone.Model.extend({
 }); */
 
 var MapView = Backbone.View.extend({            
-   _initialize_map : function(){
+   _initialize_map : function(lat, long){
 
      var center = new google.maps.LatLng(-34.397, 150.644);
      var styles = [
@@ -72,10 +72,6 @@ var MapView = Backbone.View.extend({
    }
 });
 var Map = null;
-
-$(function(){
-       Map = new MapView();
-})
 
 
 $.ajaxSetup({
@@ -373,6 +369,7 @@ var VisualizarDenuncia = Backbone.View.extend({
 			success: function (denuncia){
 				var js = denuncia.toJSON();
 				js.data = moment(js.data).format('DD/MM/YYYY');
+ 
 				var source = ($('#visualizar-denuncia').html());
 				var template = Handlebars.compile(source);
 				that.$el.html(template({denuncia: js}));
