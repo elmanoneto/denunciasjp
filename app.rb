@@ -20,7 +20,12 @@ get '/' do
 end
 
 get '/principal' do
-	File.read(File.join('views', 'index.hbs'))
+
+	if session[:user]
+		File.read(File.join('views', 'index.hbs'))
+	else
+		redirect '/'
+	end
 	# haml :index
 end
 
@@ -46,8 +51,11 @@ end
 
 # Retorna denúncia individual
 get '/denuncias/:id' do
-	@denuncias = Denuncia.get(params[:id])
-	@denuncias.to_json
+
+	if session[:user]
+		@denuncias = Denuncia.get(params[:id])
+		@denuncias.to_json
+	end
 end
 
 # Registrar denúncia
@@ -73,7 +81,7 @@ post '/denuncias' do
 		)
 
 		if @denuncia.save
-			redirect '/'
+			redirect '/principal'
 		elsif  @denuncia.errors && defined? params[:foto][:type]
 			if params[:foto][:type] != "image/jpeg"
 				@denuncia.errors.add(:foto, "Formato de imagem inválido.")
@@ -139,6 +147,9 @@ post '/login' do
 
 	if @login
 		session[:user] = @login
+		
+		puts session[:user].nome
+
 		redirect '/principal'
 	end
 end
