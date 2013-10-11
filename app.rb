@@ -68,7 +68,8 @@ post '/denuncias' do
 			:endereco => params[:endereco],
 			:denuncia => params[:denuncia],
 			:foto => foto,
-			:data => DateTime.now
+			:data => DateTime.now,
+			:autor => session[:user].nome
 		)
 
 		if @denuncia.save
@@ -140,15 +141,6 @@ post '/login' do
 		session[:user] = @login
 		redirect '/principal'
 	end
-
-	# if @login
-	# 	session[:usuario] = @login
-	# 	@login.to_json
-	# else
-	# 	erro = ["Usuário ou senha inválidos"]
-	# 	erro.to_json
-	# 	halt 401
-	# end
 end
 
 delete '/usuarios/:id' do
