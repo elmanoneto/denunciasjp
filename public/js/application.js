@@ -186,6 +186,11 @@ var Denuncias = Backbone.Collection.extend({
 	url: '/denuncias'
 });
 
+var MinhasDenunciasList = Backbone.Collection.extend({
+	model: Denuncia,
+	url: '/minhas-denuncias'
+});
+
 var Usuarios = Backbone.Collection.extend({
 	model: Usuario,
 	url: '/usuarios'
@@ -480,7 +485,7 @@ var MinhasDenuncias = Backbone.View.extend({
 
 	render: function () {
 		var that = this;
-		denuncias = new Denuncias();
+		denuncias = new MinhasDenunciasList();
 		denuncias.fetch({
 			success: function (denuncias) {
 				var js = denuncias.toJSON();
