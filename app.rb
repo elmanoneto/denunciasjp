@@ -7,14 +7,19 @@ require 'pp'
 require 'json'
 
 set :logging, true
-set :authorization_realm, 'Protected zone'
-
 enable :sessions
+
 
 #PRINCIPAL
 
 # Retorna a página principal do site
 get '/' do
+	session[:user] = nil
+	File.read(File.join('views', 'login.html'))
+	# haml :index
+end
+
+get '/principal' do
 	File.read(File.join('views', 'index.hbs'))
 	# haml :index
 end
@@ -26,8 +31,6 @@ end
 
 # Retorna busca
 get '/busca' do
-
-	
 	@denuncias = Denuncia.all(:denuncia.like => "%#{params[:busca]}%")
 	@denuncias.to_json
 end
@@ -131,16 +134,21 @@ end
 
 post '/login' do
 	@login = Usuario.create()
-	@login = Usuario.first(:login => "#{params['login']}", :senha => "#{params['senha']}")
+	@login = Usuario.first(:login => "#{params['user']}", :senha => "#{params['pwd']}")
 
 	if @login
-		session[:usuario] = @login
-		@login.to_json
-	else
-		erro = ["Usuário ou senha inválidos"]
-		erro.to_json
-		halt 401
+		session[:user] = @login
+		redirect '/principal'
 	end
+
+	# if @login
+	# 	session[:usuario] = @login
+	# 	@login.to_json
+	# else
+	# 	erro = ["Usuário ou senha inválidos"]
+	# 	erro.to_json
+	# 	halt 401
+	# end
 end
 
 delete '/usuarios/:id' do

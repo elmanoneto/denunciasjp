@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 DataMapper::Logger.new($stdout, :debug)
-DataMapper.setup(:default, 'mysql://root:@localhost/denunciasjp')
+DataMapper.setup(:default, 'mysql://root:qwe123@localhost/denunciasjp')
 
 class Denuncia
 	include DataMapper::Resource

@@ -29,7 +29,7 @@ App.Models.Session = Backbone.Model.extend({
 var MapView = Backbone.View.extend({            
    _initialize_map : function(){
 
-     var center = new google.maps.LatLng(41.63, -1);
+     var center = new google.maps.LatLng(-34.397, 150.644);
      var styles = [
        {
          elementType: "geometry",
@@ -624,6 +624,8 @@ var EditarDenuncia = Backbone.View.extend({
 				that.$el.html(template({denuncia: js}));
 			}
 		});
+
+		return false;
 	},
 
 	editar: function () {
@@ -644,11 +646,12 @@ var EditarDenuncia = Backbone.View.extend({
 			foto: $('#foto-denuncia')
 		});
 
-
+		
 		return false;
 	},
 
 	remover: function () {
+
 		var id = $('.id-denuncia').val();
 		var denuncia = new Denuncia({id: id});
 		denuncia.fetch();
@@ -657,7 +660,10 @@ var EditarDenuncia = Backbone.View.extend({
 				console.log('apagou');
 			}
 		});
+		$(this).remove();
+
 		router.navigate('#/minhas-denuncias', {trigger: true});
+
 		return false;
 	}
 });
@@ -777,7 +783,6 @@ router.on('route:minhasdenuncias', function () {
 
 router.on('route:editardenuncia', function (id) {
 	editarDenuncia.render(id);
-	console.log('oi');
 	login.render();
 });
 
